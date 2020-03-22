@@ -1,5 +1,3 @@
-// Change the file name to tcp_server1.go
-
 package main
 
 import (
