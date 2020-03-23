@@ -23,3 +23,20 @@ func main() {
 	flag.StringVar(&network, "n", "tcp", "network protocol to use")
 	flag.Parse()
 	text := flag.Arg(0)
+
+	// validate network
+	switch network {
+	case "tcp", "tcp4", "tcp6", "unix":
+	default:
+		fmt.Println("unsupported network protocol")
+		os.Exit(1)
+	}
+
+	// Use function Dial to create a generic connection to the
+	// remote address.
+	conn, err := net.Dial(network, addr)
+	if err != nil {
+		fmt.Println("failed to connect to server:", err)
+		os.Exit(1)
+	}
+	defer conn.Close()
