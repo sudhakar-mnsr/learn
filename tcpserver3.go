@@ -40,3 +40,20 @@ func main() {
 	}
 	defer l.Close()
 	fmt.Printf("listening at (%s) %s\n", network, addr)
+
+	// req/response loop
+	for {
+		// use Listener to block and wait for connection
+		// request using function Accept() which then
+		// creates a generic Conn value.
+		conn, err := l.Accept()
+		if err != nil {
+			fmt.Println("failed to accept conn:", err)
+			conn.Close()
+			continue
+		}
+		fmt.Println("connected to: ", conn.RemoteAddr())
+
+		go handleConnection(conn)
+	}
+}
