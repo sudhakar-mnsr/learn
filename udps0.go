@@ -52,3 +52,27 @@ func main() {
 		fmt.Println("error getting request:", err)
 		os.Exit(1)
 	}
+
+	// ensure laddr is set
+	if raddr == nil {
+		fmt.Println("request missing remote addr")
+		os.Exit(1)
+	}
+
+	// get seconds and fractional secs since 1900
+	secs, fracs := getNTPSeconds(time.Now())
+
+	// response packet is filled with the seconds and
+	// fractional sec values using Big-Endian
+	rsp := make([]byte, 48)
+	// write seconds (as uint32) in buffer at [40:43]
+	binary.BigEndian.PutUint32(rsp[40:], uint32(secs))
+	// write seconds (as uint32) in buffer at [44:47]
+	binary.BigEndian.PutUint32(rsp[44:], uint32(fracs))
+
+	// send data
+	if _, err := conn.WriteToUDP(rsp, raddr); err != nil {
+		fmt.Println("err sending data:", err)
+		os.Exit(1)
+	}
+}
