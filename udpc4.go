@@ -30,3 +30,18 @@ func main() {
 	// req is initialized with 0x1B or 0001 1011 which is
 	// a request setting for time server.
 	req[0] = 0x1B
+
+	// rsp byte slice used to receive server response
+	rsp := make([]byte, 48)
+
+	// Create a Dialer which allows us to specify dialing options.
+	// We will need this a bit later to configure the local address
+	// when the program is using "unixgram"
+	dialer := net.Dialer{}
+
+	// IMPORTANT: when network is "unixgram", the local address
+	// must be created and set explicitly (see ntpc2.go).
+	if network == "unixgram" {
+		laddr := &net.UnixAddr{Name: fmt.Sprintf("%s-client", host), Net: network}
+		dialer.LocalAddr = laddr
+	}
