@@ -45,3 +45,18 @@ func main() {
 		laddr := &net.UnixAddr{Name: fmt.Sprintf("%s-client", host), Net: network}
 		dialer.LocalAddr = laddr
 	}
+
+	// Setup connection (net.Conn) with Dial()
+	conn, err := dialer.Dial(network, host)
+	if err != nil {
+		fmt.Printf("failed to connect: %v\n", err)
+		os.Exit(1)
+	}
+	defer func() {
+		if err := conn.Close(); err != nil {
+			fmt.Println("failed while closing connection:", err)
+		}
+	}()
+
+	// Once connection is established, the code pattern
+	// is the same as in the previos impl.
