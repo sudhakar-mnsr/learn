@@ -76,3 +76,12 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+// getNTPSecs decompose current time as NTP seconds
+func getNTPSeconds(t time.Time) (int64, int64) {
+	// convert time to total # of secs since 1970
+	// add NTP epoch offets as total #secs between 1900-1970
+	secs := t.Unix() + int64(getNTPOffset())
+	fracs := t.Nanosecond()
+	return secs, int64(fracs)
+}
