@@ -33,3 +33,22 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+
+
+	// IMPORTANT: create a separate local address that is bound
+	// to a different socket for the client.  This is not done
+	// automatically when using unix socket datagram.  Here, the
+	// local address is given by <remote_socket_path>-client
+	laddr := &net.UnixAddr{Name: fmt.Sprintf("%s-client", raddr.Name), Net: "unixgram"}
+
+	// setup a connection (net.UnixConn) using net.DialUnix
+	conn, err := net.DialUnix("unixgram", laddr, raddr)
+	if err != nil {
+		fmt.Printf("failed to connect: %v\n", err)
+		os.Exit(1)
+	}
+	defer func() {
+		if err := conn.Close(); err != nil {
+			fmt.Println("failed while closing connection:", err)
+		}
+	}()
