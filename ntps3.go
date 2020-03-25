@@ -25,3 +25,19 @@ func main() {
 	flag.StringVar(&host, "e", ":1123", "server address")
 	flag.StringVar(&network, "n", "udp", "the network protocol [udp,unixgram]")
 	flag.Parse()
+	// validate network protocols
+	switch network {
+	case "udp", "udp4", "udp6", "unixgram":
+	default:
+		fmt.Println("unsupported network:", network)
+		os.Exit(1)
+	}
+
+	// create a generic packet connection, PacketConn, with
+	// ListenPacket. PacketConn implements common ReadFrom and
+	// WriteTo that are protocol agnostic.
+	conn, err := net.ListenPacket(network, host)
+	if err != nil {
+		fmt.Println("failed to create socket:", err)
+		os.Exit(1)
+	}
