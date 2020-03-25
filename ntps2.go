@@ -39,3 +39,25 @@ func main() {
 	fmt.Printf("listening on (unixgram) %s\n", conn.LocalAddr())
 
 	// request/response loo
+
+	// request/response loop
+	for {
+		// block to read incoming requests
+		// since we are using a sessionless proto, each request can
+		// potentially go to a different client.  Therefore, the ReadFromXXX
+		// operation returns the remote address (saved in raddr)
+		// where to send the response.
+		_, raddr, err := conn.ReadFromUnix(make([]byte, 48))
+		if err != nil {
+			fmt.Println("error getting request:", err)
+			os.Exit(1)
+		}
+		// ensure raddr is set
+		if raddr == nil {
+			fmt.Println("warning: request missing remote addr")
+			continue
+		}
+		// go handle request
+		go handleRequest(conn, raddr)
+	}
+}
