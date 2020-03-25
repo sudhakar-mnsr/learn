@@ -41,3 +41,19 @@ func main() {
 		fmt.Println("failed to create socket:", err)
 		os.Exit(1)
 	}
+	defer conn.Close()
+	fmt.Printf("listening on (%s)%s\n", network, conn.LocalAddr())
+
+	// request/response loop
+	for {
+		// block to read incoming requests
+		// since we are using a sessionless proto, each request can
+		// potentially go to a different client.  Therefore, the ReadFrom
+		// operation returns the remote address (saved in laddr)
+		// where to send the response.
+		// NOTE: use of generic ReadFrom instead of ReadFromXXX
+		_, raddr, err := conn.ReadFrom(make([]byte, 48))
+		if err != nil {
+			fmt.Println("error getting request:", err)
+			os.Exit(1)
+		}
