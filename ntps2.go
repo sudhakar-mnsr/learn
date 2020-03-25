@@ -28,3 +28,14 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+
+	// setup connection UnixConn with ListenUnixgram
+	conn, err := net.ListenUnixgram("unixgram", addr)
+	if err != nil {
+		fmt.Println("failed to create socket:", err)
+		os.Exit(1)
+	}
+	defer conn.Close()
+	fmt.Printf("listening on (unixgram) %s\n", conn.LocalAddr())
+
+	// request/response loo
