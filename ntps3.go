@@ -57,3 +57,13 @@ func main() {
 			fmt.Println("error getting request:", err)
 			os.Exit(1)
 		}
+		// ensure raddr is set
+		if raddr == nil {
+			fmt.Println("warning: request missing remote addr")
+			continue
+		}
+
+		// handle request
+		go handleRequest(conn, raddr)
+	}
+}
