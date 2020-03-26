@@ -90,3 +90,20 @@ func handleConnection(conn net.Conn) {
 		fmt.Println("failed to set deadline:", err)
 		return
 	}
+	// loop to keep connection alive until client breaks connection
+	for {
+		// The following call uses the JSON encoder support for
+		// Go's IO streaming API (io.Reader).
+		dec := json.NewDecoder(conn)
+
+		// Next, the decoder blocks waiting for incoming data.
+		// As data comes from client, it streams it from net.Conn,
+		// which implements io.Reader, and decodes the incoming data
+		// into Go value curr.CurrencyRequest
+		var req curr.CurrencyRequest
+		if err := dec.Decode(&req); err != nil {
+			// json.Decode() could return decoding err,
+			// io err, or networking err.  This makes error handling
+			// a little more complex.
+
+			// handle error based on error type
