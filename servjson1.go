@@ -107,3 +107,22 @@ func handleConnection(conn net.Conn) {
 			// a little more complex.
 
 			// handle error based on error type
+			// handle error based on error type
+			switch err := err.(type) {
+			//network error: disconnect
+			case net.Error:
+				// depending on requirements, the timeout can be
+				// renewed or subsequently rejected.
+				if err.Timeout() {
+					fmt.Println("deadline reached, disconnecting...")
+				}
+				// dont continue, break connection
+				fmt.Println("network error:", err)
+				return
+
+			//other errors: send error info to client, then continue
+			default:
+				if err == io.EOF {
+					fmt.Println("closing connection:", err)
+					return
+				}
