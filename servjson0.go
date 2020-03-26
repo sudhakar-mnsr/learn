@@ -119,3 +119,25 @@ func handleConnection(conn net.Conn) {
 				continue
 			}
 		}
+
+		// search currencies, result is []curr.Currency
+		result := curr.Find(currencies, req.Get)
+
+		// marshal result to JSON array
+		enc := json.NewEncoder(conn)
+		if err := enc.Encode(&result); err != nil {
+			switch err := err.(type) {
+			case net.Error:
+				fmt.Println("failed to send response:", err)
+				return
+			default:
+				enc := json.NewEncoder(conn)
+				if err := enc.Encode(&curr.CurrencyError{Error: err.Error()}); err != nil {
+					fmt.Println("failed to send error:", err)
+					return
+				}
+				continue
+			}
+		}
+	}
+}
