@@ -76,3 +76,14 @@ func main() {
 		go handleConnection(conn)
 	}
 }
+
+// handle client connection
+func handleConnection(conn net.Conn) {
+	defer conn.Close()
+
+	// loop to keep connection alive until client breaks connection
+	for {
+		// The following call uses the JSON encoder support for
+		// Go's IO streaming API (io.Reader). It blocks
+		// then stream incoming data from net.Conn implements io.Reader.
+		dec := json.NewDecoder(conn)
