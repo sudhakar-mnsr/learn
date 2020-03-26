@@ -8,7 +8,7 @@ import (
 	"net"
 	"os"
 
-	curr "github.com/vladimirvivien/go-networking/tcp/curlib"
+	curr "currency1"
 )
 
 var (
