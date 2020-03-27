@@ -97,3 +97,15 @@ func handleConnection(conn net.Conn) {
 	// io.Writer and io.Reader for streaming IO
 	dec := json.NewDecoder(conn)
 	enc := json.NewEncoder(conn)
+
+	// command-loop
+	for {
+		// Next decode the incoming data into Go value curr.CurrencyRequest
+		var req curr.CurrencyRequest
+		if err := dec.Decode(&req); err != nil {
+			log.Println("failed to unmarshal request:", err)
+			return
+		}
+
+		// search currencies, result is []curr.Currency
+		result := curr.Find(currencies, req.Get)
