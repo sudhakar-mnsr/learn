@@ -107,3 +107,25 @@ func handleConnection(conn net.Conn) {
 				return
 			}
 		}
+
+		reader.Reset(conn)
+
+		// unmarshal request into value of type curr.CurrencyRequest
+		var req curr.CurrencyRequest
+		if err := json.Unmarshal(buf, &req); err != nil {
+			log.Println("failed to unmarshal request:", err)
+			// inform the client of bad request by marshaling
+			// curr.CurrencyError value as JSON to the client.
+			// This could be wrapped in its own function.
+			cerr, jerr := json.Marshal(&curr.CurrencyError{Error: err.Error()})
+			if jerr != nil {
+				log.Println("failed to marshal CurrencyError:", jerr)
+				continue
+			}
+
+			if _, werr := conn.Write(cerr); werr != nil {
+				log.Println("failed to write to CurrencyError:", werr)
+				return
+			}
+			continue
+		}
