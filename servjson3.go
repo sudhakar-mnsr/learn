@@ -63,3 +63,13 @@ func main() {
 		fmt.Println("unsupported network protocol")
 		os.Exit(1)
 	}
+
+	// create a listener for provided network and host address
+	ln, err := net.Listen(network, addr)
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+	defer ln.Close()
+	log.Println("**** Global Currency Service ***")
+	log.Printf("Service started: (%s) %s\n", network, addr)
