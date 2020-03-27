@@ -129,3 +129,14 @@ func handleConnection(conn net.Conn) {
 			}
 			continue
 		}
+		// marshal result to JSON array
+		rsp, err := json.Marshal(&result)
+		if err != nil {
+			log.Println("failed to marshal data:", err)
+			// Note fmt.Fprintf prints a raw JSON object directly to the client without encoding.
+			if _, err := fmt.Fprintf(conn, `{"currency_error":"internal error"}`); err != nil {
+				log.Printf("failed to write to client: %v", err)
+				return
+			}
+			continue
+		}
