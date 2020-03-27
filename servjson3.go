@@ -10,7 +10,7 @@ import (
 	"net"
 	"os"
 
-	curr "github.com/vladimirvivien/go-networking/currency/lib"
+	curr "currency"
 )
 
 var (
