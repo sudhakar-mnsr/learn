@@ -84,3 +84,16 @@ func main() {
 		go handleConnection(conn)
 	}
 }
+
+// handle client connection
+func handleConnection(conn net.Conn) {
+	defer func() {
+		if err := conn.Close(); err != nil {
+			log.Println("error closing connection:", err)
+		}
+	}()
+
+	// create json encoder/decoder using the io.Conn as
+	// io.Writer and io.Reader for streaming IO
+	dec := json.NewDecoder(conn)
+	enc := json.NewEncoder(conn)
