@@ -123,3 +123,11 @@ func handleConnection(conn net.Conn) {
 				continue
 			}
 		}
+		// search currencies, result is []curr.Currency
+		result := curr.Find(currencies, req.Get)
+
+		// encode result to JSON array
+		enc := json.NewEncoder(conn)
+		if err := enc.Encode(&result); err != nil {
+			switch err := err.(type) {
+			case net.Error:
