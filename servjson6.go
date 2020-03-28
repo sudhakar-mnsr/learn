@@ -93,3 +93,15 @@ func main() {
 					time.Sleep(acceptDelay)
 					continue
 				}
+			default:
+				log.Println(err)
+				conn.Close()
+				continue
+			}
+			acceptDelay = time.Millisecond * 10
+			acceptCount = 0
+		}
+		log.Println("Connected to ", conn.RemoteAddr())
+		go handleConnection(conn)
+	}
+}
