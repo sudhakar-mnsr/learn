@@ -119,3 +119,21 @@ func handleConnection(conn net.Conn) {
 		dec := json.NewDecoder(conn)
 		var req curr.CurrencyRequest
 		if err := dec.Decode(&req); err != nil 
+
+			switch err := err.(type) {
+			case net.Error:
+				fmt.Println("network error:", err)
+				return
+			default:
+				if err == io.EOF {
+					fmt.Println("closing connection:", err)
+					return
+				}
+				enc := json.NewEncoder(conn)
+				if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+					fmt.Println("failed error encoding:", encerr)
+					return
+				}
+				continue
+			}
+		}
