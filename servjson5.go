@@ -113,3 +113,13 @@ func handleConnection(conn net.Conn) {
 					fmt.Println("closing connection:", err)
 					return
 				}
+				// encode curr.CurrencyError to send to client
+				enc := json.NewEncoder(conn)
+				if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+					// if failure at this point, drop connection
+					fmt.Println("failed error encoding:", encerr)
+					return
+				}
+				continue
+			}
+		}
