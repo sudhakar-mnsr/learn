@@ -99,3 +99,17 @@ func handleConnection(conn net.Conn) {
 			// json.Decode() could return decoding err,
 			// io err, or networking err.  This makes error handling
 			// a little more complex.
+			// handle error based on error type
+			switch err := err.(type) {
+			//network error: disconnect
+			case net.Error:
+				// dont continue, break connection
+				fmt.Println("network error:", err)
+				return
+
+			//other errors: send error info to client, then continue
+			default:
+				if err == io.EOF {
+					fmt.Println("closing connection:", err)
+					return
+				}
