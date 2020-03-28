@@ -75,3 +75,21 @@ func main() {
 	// delay to sleep when accept fails with a temporary error
 	acceptDelay := time.Millisecond * 10
 	acceptCount := 0
+
+	// connection loop
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			switch e := err.(type) {
+			case net.Error:
+				// if temporary error, attempt to connect again
+				if e.Temporary() {
+					if acceptCount > 5 {
+						log.Printf("unable to connect after %d retries: %v", err)
+						return
+					}
+					acceptDelay *= 2
+					acceptCount++
+					time.Sleep(acceptDelay)
+					continue
+				}
