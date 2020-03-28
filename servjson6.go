@@ -105,3 +105,17 @@ func main() {
 		go handleConnection(conn)
 	}
 }
+
+// handle client connection
+func handleConnection(conn net.Conn) {
+	defer func() {
+		if err := conn.Close(); err != nil {
+			log.Println("error closing connection:", err)
+		}
+	}()
+
+	// command-loop
+	for {
+		dec := json.NewDecoder(conn)
+		var req curr.CurrencyRequest
+		if err := dec.Decode(&req); err != nil 
