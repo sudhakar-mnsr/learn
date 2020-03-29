@@ -140,3 +140,20 @@ func handleConnection(conn net.Conn) {
 				}
 				fmt.Println("network error:", err)
 				return
+
+			default:
+				if err == io.EOF {
+					fmt.Println("closing connection:", err)
+					return
+				}
+				enc := json.NewEncoder(conn)
+				if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+					fmt.Println("failed error encoding:", encerr)
+					return
+				}
+				continue
+			}
+		}
+
+		// search currencies, result is []curr.Currency
+		result := curr.Find(currencies, req.Get)
