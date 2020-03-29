@@ -122,3 +122,21 @@ func handleConnection(conn net.Conn) {
 		log.Println("failed to set deadline:", err)
 		return
 	}
+
+	// command-loop
+	for {
+		dec := json.NewDecoder(conn)
+		var req curr.CurrencyRequest
+		if err := dec.Decode(&req); err != nil {
+			switch err := err.(type) {
+			//network error: disconnect
+			case net.Error:
+				// is it a timeout error?
+				// A deadline policy maybe implemented here using a decreasing
+				// grace period that eventually causes an error if reached.
+				// Here we just reject the connection if timeout is reached.
+				if err.Timeout() {
+					fmt.Println("deadline reached, disconnecting...")
+				}
+				fmt.Println("network error:", err)
+				return
