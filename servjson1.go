@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	curr "github.com/vladimirvivien/go-networking/tcp/curlib"
+	curr "currency"
 )
 
 var (
