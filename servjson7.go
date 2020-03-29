@@ -164,3 +164,19 @@ func handleConnection(conn net.Conn) {
 			case net.Error:
 				fmt.Println("failed to send response:", err)
 				return
+			default:
+				if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+					fmt.Println("failed to send error:", encerr)
+					return
+				}
+				continue
+			}
+		}
+
+		// renew deadline for 45 secs later
+		if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
+			fmt.Println("failed to set deadline:", err)
+			return
+		}
+	}
+}
