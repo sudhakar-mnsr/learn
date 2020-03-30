@@ -121,3 +121,19 @@ func handleConnection(conn net.Conn) {
 				// dont continue, break connection
 				fmt.Println("network error:", err)
 				return
+			//other errors: send error info to client, then continue
+			default:
+				if err == io.EOF {
+					fmt.Println("closing connection:", err)
+					return
+				}
+				// encode curr.CurrencyError to send to client
+				enc := json.NewEncoder(conn)
+				if err := enc.Encode(&curr.CurrencyError{Error: err.Error()}); err != nil {
+					// if encoding fails, just stop
+					fmt.Println("failed error encoding:", err)
+					return
+				}
+				continue
+			}
+		}
