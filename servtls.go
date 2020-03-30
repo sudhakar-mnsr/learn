@@ -104,3 +104,20 @@ func handleConnection(conn net.Conn) {
 		// which implements io.Reader, and decodes the incoming data
 		// into Go value curr.CurrencyRequest
 		var req curr.CurrencyRequest
+		if err := dec.Decode(&req); err != nil {
+			// json.Decode() could return decoding err,
+			// io err, or networking err.  This makes error handling
+			// a little more complex.
+
+			// handle error based on error type
+			switch err := err.(type) {
+			//network error: disconnect
+			case net.Error:
+				// depending on requirements, the timeout can be
+				// renewed or subsequently rejected.
+				if err.Timeout() {
+					fmt.Println("deadline reached, disconnecting...")
+				}
+				// dont continue, break connection
+				fmt.Println("network error:", err)
+				return
