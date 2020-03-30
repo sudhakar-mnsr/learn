@@ -148,3 +148,12 @@ func handleConnection(conn net.Conn) {
 			case net.Error:
 				fmt.Println("failed to send response:", err)
 				return
+			default:
+				enc := json.NewEncoder(conn)
+				if err := enc.Encode(&curr.CurrencyError{Error: err.Error()}); err != nil {
+					fmt.Println("failed to send error:", err)
+					return
+				}
+				continue
+			}
+		}
