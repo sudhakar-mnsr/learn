@@ -51,3 +51,15 @@ func main() {
 	if err != nil {
 		log.Fatal("failed to read CA cert", err)
 	}
+
+	certPool := x509.NewCertPool()
+	certPool.AppendCertsFromPEM(caCert)
+
+	// TLS configuration
+	tlsConf := &tls.Config{
+		RootCAs:      certPool,
+		Certificates: []tls.Certificate{cer},
+	}
+
+	// create a tls.Conn to connect to server
+	conn, err := tls.Dial(network, addr, tlsConf)
