@@ -96,3 +96,11 @@ func main() {
 				continue
 			}
 		}
+		// Receive response
+		var currencies []curr.Currency
+		err = json.NewDecoder(conn).Decode(&currencies)
+		if err != nil {
+			switch err := err.(type) {
+			case net.Error:
+				fmt.Println("failed to receive response:", err)
+				continue
