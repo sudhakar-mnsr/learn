@@ -70,3 +70,15 @@ func main() {
 	fmt.Println("connected to currency service: ", addr)
 
 	var param string
+
+	// start REPL
+	for {
+		fmt.Println("Enter search string or *")
+		fmt.Print(prompt, "> ")
+		_, err = fmt.Scanf("%s", &param)
+		if err != nil {
+			fmt.Println("Usage: <search string or *>")
+			continue
+		}
+
+		req := curr.CurrencyRequest{Get: param}
