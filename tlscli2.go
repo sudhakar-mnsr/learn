@@ -10,7 +10,7 @@ import (
 	"log"
 	"net"
 
-	curr "github.com/vladimirvivien/go-networking/currency/lib"
+	curr "currency"
 )
 
 const prompt = "currency"
