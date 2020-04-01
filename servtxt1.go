@@ -148,3 +148,16 @@ func handleConnection(conn net.Conn) {
 				}
 				continue
 			}
+			// send each currency info as a line to the client wiht fmt.Fprintf()
+			for _, cur := range result {
+				_, err := conn.Write([]byte(
+					fmt.Sprintf(
+						"%s %s %s %s\n",
+						cur.Name, cur.Code, cur.Number, cur.Country,
+					),
+				))
+				if err != nil {
+					log.Println("failed to write response:", err)
+					return
+				}
+			}
