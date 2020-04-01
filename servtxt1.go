@@ -123,3 +123,16 @@ func handleConnection(conn net.Conn) {
 				log.Println("connection read error:", err)
 				return
 			}
+			if cmdLine, err = appendBytes(cmdLine, chunk[:n]); err == io.EOF {
+				break
+			}
+		}
+
+		cmd, param := parseCommand(string(cmdLine))
+		if cmd == "" {
+			if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+				log.Println("failed to write:", err)
+				return
+			}
+			continue
+		}
