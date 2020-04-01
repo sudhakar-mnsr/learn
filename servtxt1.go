@@ -161,3 +161,11 @@ func handleConnection(conn net.Conn) {
 					return
 				}
 			}
+		default:
+			if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+				log.Println("failed to write:", err)
+				return
+			}
+		}
+	}
+}
