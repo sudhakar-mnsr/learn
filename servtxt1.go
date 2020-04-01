@@ -103,3 +103,23 @@ func handleConnection(conn net.Conn) {
 		}
 		return dest, nil
 	}
+
+	// loop to stay connected with client until client breaks connection
+	for {
+		// buffer for client command
+		var cmdLine []byte
+
+		// stream data using 4-byte chunks until io.EOF ('\n\')
+		// The chunks are kept small to demonstrate streaming using io.Reader.
+		for {
+			chunk := make([]byte, 4)
+			n, err := conn.Read(chunk)
+			if err != nil {
+				// io.EOF may never happen since this is a stream
+				if err == io.EOF {
+					cmdLine, _ = appendBytes(cmdLine, chunk[:n]) // read remaining bytes
+					break
+				}
+				log.Println("connection read error:", err)
+				return
+			}
