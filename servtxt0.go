@@ -7,7 +7,7 @@ import (
 	"net"
 	"strings"
 
-	curr "github.com/vladimirvivien/go-networking/currency/lib0"
+	curr "currency"
 )
 
 var currencies = curr.Load("../data.csv"
