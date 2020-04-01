@@ -63,3 +63,18 @@ func main() {
 	defer ln.Close()
 	log.Println("**** Global Currency Service ***")
 	log.Printf("Service started: (%s) %s\n", network, addr)
+	// connection-loop - handle incoming requests
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			fmt.Println(err)
+			if err := conn.Close(); err != nil {
+				log.Println("failed to close listener:", err)
+			}
+			continue
+		}
+		log.Println("Connected to", conn.RemoteAddr())
+
+		go handleConnection(conn)
+	}
+}
