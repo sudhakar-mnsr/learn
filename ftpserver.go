@@ -42,3 +42,16 @@ func handleClient(conn net.Conn) {
                         conn.Close()
                         return
                 }
+
+                s := string(buf[0:n])
+                // decode request
+                if s[0:2] == CD {
+                        chdir(conn, s[3:])
+                } else if s[0:3] == DIR {
+                        dirList(conn)
+                } else if s[0:3] == PWD {
+                        pwd(conn)
+                }
+
+        }
+}
