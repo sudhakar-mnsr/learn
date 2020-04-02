@@ -90,3 +90,10 @@ func dirList(conn net.Conn) {
                 conn.Write([]byte(nm + "\r\n"))
         }
 }
+
+func checkError(err error) {
+        if err != nil {
+                fmt.Println("Fatal error ", err.Error())
+                os.Exit(1)
+        }
+}
