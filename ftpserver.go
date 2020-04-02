@@ -22,3 +22,12 @@ func main() {
 
         listener, err := net.ListenTCP("tcp", tcpAddr)
         checkError(err)
+
+        for {
+                conn, err := listener.Accept()
+                if err != nil {
+                        continue
+                }
+                go handleClient(conn)                                                                              
+        }
+}
