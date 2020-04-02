@@ -72,3 +72,12 @@ func pwd(conn net.Conn) {
         }
         conn.Write([]byte(s))
 }
+
+func dirList(conn net.Conn) {
+        // send a blank line on termination
+        defer conn.Write([]byte("\r\n"))
+
+        dir, err := os.Open(".")
+        if err != nil {
+                return
+        }
