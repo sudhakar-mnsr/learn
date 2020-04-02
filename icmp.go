@@ -34,3 +34,14 @@ func main() {
 
         conn, err := net.DialIP("ip4:icmp", localAddr, remoteAddr)
         checkError(err
+
+        var msg [512]byte
+        msg[0] = 8  // echo
+        msg[1] = 0  // code 0
+        msg[2] = 0  // checksum, fix later
+        msg[3] = 0  // checksum, fix later
+        msg[4] = 0  // identifier[0]
+        msg[5] = 13 // identifier[1] (arbitrary)
+        msg[6] = 0  // sequence[0]
+        msg[7] = 37 // sequence[1] (arbitrary)
+        len := 8
