@@ -64,3 +64,10 @@ func main() {
         // receive a reply
         size, err2 := conn.Read(msg[0:])
         checkError(err2)
+        fmt.Print("Message received:")
+        for n := ipv4HeaderSize; n < size; n++ {
+                fmt.Print(" ", msg[n])
+        }
+        fmt.Println()
+        os.Exit(0)                                                  
+}
