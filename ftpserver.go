@@ -81,3 +81,12 @@ func dirList(conn net.Conn) {
         if err != nil {
                 return
         }
+
+        names, err := dir.Readdirnames(-1)                                                                              
+        if err != nil {
+                return
+        }
+        for _, nm := range names {
+                conn.Write([]byte(nm + "\r\n"))
+        }
+}
