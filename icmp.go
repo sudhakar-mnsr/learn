@@ -45,3 +45,12 @@ func main() {
         msg[6] = 0  // sequence[0]
         msg[7] = 37 // sequence[1] (arbitrary)
         len := 8
+
+        // now fix checksum bytes
+        check := checkSum(msg[0:len])
+        msg[2] = byte(check >> 8)
+        msg[3] = byte(check & 255)
+
+        // send the message
+        _, err = conn.Write(msg[0:len])
+        checkError(err)
