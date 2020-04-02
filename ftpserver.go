@@ -63,3 +63,12 @@ func chdir(conn net.Conn, s string) {
                 conn.Write([]byte("ERROR"))
         }
 }
+
+func pwd(conn net.Conn) {
+        s, err := os.Getwd()
+        if err != nil {
+                conn.Write([]byte(""))
+                return
+        }
+        conn.Write([]byte(s))
+}
