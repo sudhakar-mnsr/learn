@@ -25,3 +25,12 @@ func main() {
                 fmt.Println("Resolution error", err.Error())
                 os.Exit(1)
         }
+
+        remoteAddr, err := net.ResolveIPAddr("ip4", os.Args[1])
+        if err != nil {
+                fmt.Println("Resolution error", err.Error())                                                  
+                os.Exit(1)
+        }
+
+        conn, err := net.DialIP("ip4:icmp", localAddr, remoteAddr)
+        checkError(err
