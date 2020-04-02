@@ -54,3 +54,13 @@ func main() {
         // send the message
         _, err = conn.Write(msg[0:len])
         checkError(err)
+
+        fmt.Print("Message sent:    ")
+        for n := 0; n < 8; n++ {
+                fmt.Print(" ", msg[n])
+        }
+        fmt.Println()
+
+        // receive a reply
+        size, err2 := conn.Read(msg[0:])
+        checkError(err2)
