@@ -17,3 +17,12 @@ func main() {
 	}
 	req.Header.Add("Accept", "text/plain")
 	req.Header.Add("User-Agent", "SampleClient/1.0")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+	io.Copy(os.Stdout, resp.Body)
+}
