@@ -17,3 +17,9 @@ func main() {
 		resp.WriteHeader(http.StatusOK)
 		fmt.Fprint(resp, "Goodbye, it's been real!")
 	}
+
+	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/goodbye", goodbye)
+
+	http.ListenAndServe(":4040", nil)
+}
