@@ -9,7 +9,7 @@ import (
    curr "currency0"
 )
 
-var currencies "./data.csv"
+var currencies = curr.Load("./data.csv")
 
 func main() {
    ln, err := net.Listen("tcp", ":4040")
@@ -33,7 +33,7 @@ func main() {
    }
 }
 
-func handleConn(conn net.Conn) {
+func handleConnection(conn net.Conn) {
    defer conn.Close()
    for {
       cmdLine := make([]byte, 1024 * 4)
@@ -47,7 +47,7 @@ func handleConn(conn net.Conn) {
       }
    
       // execute command
-      switch strings.ToUpper(cmd)
+      switch strings.ToUpper(cmd) {
       case "GET":
          result := curr.Find(currencies, param)
          if len(result) == 0 {
@@ -63,7 +63,7 @@ func handleConn(conn net.Conn) {
          
             // reset deadline while writing,
             // causes server to close conn if client is gone
-            conn.SetWriteDeadline(time.Now().Add(time.second * 5)
+            conn.SetWriteDeadline(time.Now().Add(time.Second * 5))
          }
          // reset read deadline for next read
          conn.SetWriteDeadline(time.Time{})
@@ -79,7 +79,7 @@ func parseCommand(cmdLine string) (cmd, param string) {
       return "",""
    } 
    
-   cmd := strings.TrimSpace(parts[0])
-   param := strings.TrimSpace(parts[1])
+   cmd = strings.TrimSpace(parts[0])
+   param = strings.TrimSpace(parts[1])
    return
 }
