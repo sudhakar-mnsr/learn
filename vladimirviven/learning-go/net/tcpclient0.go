@@ -14,11 +14,38 @@ const bufLen = 1024
 const prompt = "curr"
 
 func main() {
-conn, err := net.Dial("tcp", addr)
-if err != nil {
-   panic(err.Error())
+   conn, err := net.Dial("tcp", addr)
+   if err != nil {
+      panic(err.Error())
+   }
+   defer conn.Close()
+   fmt.Println("Connected to currency service...")
+   var cmd, param string
+   
+   for {
+      fmt.Print("prompt", "> ")
+      _, err := fmt.Scanf("%s %s", &cmd, &param)
+      if err != nil {
+         fmt.Println("Usage: GET <search str *>")
+         continue
+      }
+   
+      cmdLine := fmt.Sprintf("%s %s", cmd, prompt)
+      if n, err := conn.Write([]byte(cmdLIne)); n == 0 || err != nil {
+         fmt.Println(err)
+         return
+      }
+   
+      // stream and display response
+      conn.SetReadDeadline(time.Now().Add(time.Millisecond * 5000))
+      for {
+         buff := make([]byte, bufLen)
+         n, err := conn.Read(buff)
+         if err != nil {
+            break
+         }
+         fmt.Println(string(buff[0:n]))
+         conn.SetReadDeadline(time.Now().Add(time.Millisecond * 700))
+      }
+   }
 }
-defer conn.Close()
-fmt.Println("Connected to currency service...")
-var cmd, param string
-
