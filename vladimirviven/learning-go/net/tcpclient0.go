@@ -31,7 +31,7 @@ func main() {
       }
    
       cmdLine := fmt.Sprintf("%s %s", cmd, prompt)
-      if n, err := conn.Write([]byte(cmdLIne)); n == 0 || err != nil {
+      if n, err := conn.Write([]byte(cmdLine)); n == 0 || err != nil {
          fmt.Println(err)
          return
       }
