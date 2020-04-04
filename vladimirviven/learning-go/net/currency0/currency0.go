@@ -1,4 +1,4 @@
-package curr0
+package currency0
 
 import (
    "encoding/csv"
@@ -7,7 +7,7 @@ import (
    "strings"
 )
 
-type currency struct {
+type Currency struct {
    Code string
    Name string
    Number string
