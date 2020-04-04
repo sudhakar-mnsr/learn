@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-//   host, port := "www.gutenberg.org", "80"
-//   addr := net.JoinHostPort(host, port)
-   httpRequest := "GET /cache/epub/16328/pg16328.txt HTTP/1.1\n" + "Host: " + "152.19.134.47" + "\n\n"
+   host, port := "www.gutenberg.org", "80"
+   addr := net.JoinHostPort(host, port)
+   httpRequest := "GET /cache/epub/16328/pg16328.txt HTTP/1.1\n" + "Host: " + host + "\n\n"
    
-   conn, err := net.Dial("ip:80", "152.19.134.47")
+   conn, err := net.Dial("tcp", addr)
    if err != nil {
       fmt.Println(err)
       return
