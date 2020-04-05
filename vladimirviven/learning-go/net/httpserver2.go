@@ -16,6 +16,7 @@ func main() {
                  resp.Header().Add("Content-Type", "text/html")
                  resp.WriteHeader(http.StatusOK)
                  fmt.Fprint(resp, "Goodbye from Below")
+   }
    mux.HandleFunc("/hello", hello)
    mux.HandleFunc("/goodbye", goodbye)
    
