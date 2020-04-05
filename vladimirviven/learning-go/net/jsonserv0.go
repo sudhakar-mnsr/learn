@@ -13,17 +13,17 @@ import (
 // Test with:
 // curl-X POST -d '{"get":"Euro"} http://localhost:4040/currency
 
-var currencies = curr1.Load("./data.csv")
+var currencies = currency1.Load("./data.csv")
 
 func currs(resp http.ResponseWriter, req *http.Request) {
-   var currRequest curr1.CurrencyRequest
+   var currRequest currency1.CurrencyRequest
    dec := json.NewDecoder(req.Body)
    if err := dec.Decode(&currRequest); err != nil {
-      resp.WriteHeader(http.Status.BadRequest)
+      resp.WriteHeader(http.StatusBadRequest)
       return
    }
    
-   result := curr1.Find(currencies, currRequest.Get)
+   result := currency1.Find(currencies, currRequest.Get)
    enc := json.NewEncoder(resp)
    if err := enc.Encode(&result); err != nil {
       fmt.Println(err)

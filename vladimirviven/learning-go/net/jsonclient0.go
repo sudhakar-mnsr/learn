@@ -9,8 +9,8 @@ import (
 )
 
 // Currency service client json
-// sends request as curr1.CurrencyRequest
-// receives []curr1Currency
+// sends request as currency1.CurrencyRequest
+// receives []currency1.Currency
 func main() {
    var param string
    fmt.Print("Currency> ")
@@ -18,7 +18,7 @@ func main() {
    
    // encode request
    buf := new(bytes.Buffer)
-   currRequest := &curr1.CurrencyRequest{Get: param}
+   currRequest := &currency1.CurrencyRequest{Get: param}
    err = json.NewEncoder(buf).Encode(currRequest)
    if err != nil {
       fmt.Println(err)
@@ -38,7 +38,7 @@ func main() {
       return
    }
    defer resp.Body.Close()
-   var currencies []curr1.Currency
+   var currencies []currency1.Currency
    err = json.NewDecoder(resp.Body).Decode(&currencies)
    if err != nil {
       fmt.Println(err)
