@@ -1,4 +1,4 @@
-package curr1
+package currency1
 
 import (
 	"encoding/csv"
