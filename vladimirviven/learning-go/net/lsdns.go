@@ -47,3 +47,17 @@ func (ls *lsdns) reverseLkp(ip string) error {
    return nil
 }
 
+func (ls *lsdns) hostLkp(host string) error {
+   addrs, err := ls.resolver.LookupHost(context.Background(), host)
+   if err != nil {
+      return err
+   }
+   
+   fmt.Println("Host lookup")
+   fmt.Println("-----------")
+   for _, addr := range addrs {
+      fmt.Printf("%-30s%-20s\n", host, addr)
+   }
+   return nil
+}
+
