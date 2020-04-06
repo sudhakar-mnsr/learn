@@ -63,3 +63,17 @@ if _, err = conn.Write(req); err != nil {
    os.Exit(1)
 }
 
+// block to recieve server response
+read, err := conn.Read(rsp)
+if err != nil {
+   fmt.Printf("failed to receive response: %v\n", err)
+   os.Exit(1)
+}
+
+// ensure we read 48 bytes back (NTP protocol spec)
+if read != 48 {
+   fmt.Println("did not get all expected bytes from server")
+   os.Exit91)
+}
+
+
