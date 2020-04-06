@@ -99,3 +99,14 @@ func (ls *lsdns) txtLkp(host string) error {
    }
    return nil
 }
+
+func (ls *lsdns) cnameLkp(host string) error {
+   name, err := ls.resolver.LookupCNAME(context.Background(), host)
+   if err != nil {
+      return err
+   }
+   fmt.Println("CNAME lookup")
+   fmt.Println("------------")
+   fmt.Printf("%s: %s\n", host, name)
+   return nil
+}
