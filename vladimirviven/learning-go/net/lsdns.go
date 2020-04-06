@@ -115,9 +115,9 @@ func main() {
    flag.Parse()
    ls := newLsdns()
    switch {
-   case ip != ""
+   case ip != "":
       ls.reverseLkp(ip)
-   case host != ""
+   case host != "":
       switch {
          case ns:
             ls.nsLkp(host)
@@ -125,7 +125,7 @@ func main() {
             ls.mxLkp(host)
          case cname:
             ls.cnameLkp(host)
-         cast txt:
+         case txt:
             ls.txtLkp(host)
          default:
             ls.hostLkp(host)
