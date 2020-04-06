@@ -86,3 +86,16 @@ func (ls *lsdns) mxLkp(host string) error {
    }
    return nil
 }
+
+func (ls *lsdns) txtLkp(host string) error {
+   txts, err := ls.resolver.LookupTXT(context.Background(), host)
+   if err != nil {
+      return err
+   }
+   fmt.Println("TXT lookup")
+   fmt.Println("----------")
+   for _, txt := range txts {
+      fmt.Printf("%-17s%-11s\n", host, txt)
+   }
+   return nil
+}
