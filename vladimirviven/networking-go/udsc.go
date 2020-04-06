@@ -73,7 +73,7 @@ func main() {
    // ensure we read 48 bytes back (NTP protocol spec)
    if read != 48 {
       fmt.Println("did not get all expected bytes from server")
-      os.Exit91)
+      os.Exit(1)
    }
    
    // NTP data comes in as big-endian (LSB [0...47] MSB)
