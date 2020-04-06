@@ -52,4 +52,14 @@ defer func() {
    }
 }()
 
+fmt.Printf("time from (unixgram) (%s)\n", conn.RemoteAddr())
+
+// Once connection is established, the code pattern
+// is the same as in the other impl.
+
+// send time request
+if _, err = conn.Write(req); err != nil {
+   fmt.Printf("failed to send request: %v\n", err)
+   os.Exit(1)
+}
 
