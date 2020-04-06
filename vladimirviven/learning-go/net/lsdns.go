@@ -110,3 +110,28 @@ func (ls *lsdns) cnameLkp(host string) error {
    fmt.Printf("%s: %s\n", host, name)
    return nil
 }
+
+func main() {
+   flag.Parse()
+   ls := newLsdns()
+   switch {
+   case ip != ""
+      ls.reverseLkp(ip)
+   case host != ""
+      switch {
+         case ns:
+            ls.nsLkp(host)
+         case mx:
+            ls.mxLkp(host)
+         case cname:
+            ls.cnameLkp(host)
+         cast txt:
+            ls.txtLkp(host)
+         default:
+            ls.hostLkp(host)
+      }
+   default:
+      fmt.Println("flag ip or host must be provided")
+      os.Exit(1)
+   }
+}   
