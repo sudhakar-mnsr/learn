@@ -73,3 +73,14 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
+	// echo buffer
+	w, err := conn.Write(buf[:n])
+	if err != nil {
+		fmt.Println("failed to write to client:", err)
+		return
+	}
+	if w != n { // was all data sent
+		fmt.Println("warning: not all data sent to client")
+		return
+	}
+}
