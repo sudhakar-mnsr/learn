@@ -35,3 +35,20 @@ func main() {
    }
    defer l.Close()
    fmt.Println("listening at (unix)", laddr.String())
+
+   // req/response loop
+   for {
+      // use UnixListener to block and wait for Unix Domain Socket
+      // connection request using AcceptUnix which then
+      // creates a UnixConn
+      conn, err := l.AcceptUnix()
+      if err != nil {
+         fmt.Println("failed to accept conn:", err)
+         conn.Close()
+         continue
+      }
+      fmt.Println("connected to:", conn.RemoteAddr())
+
+      go handleConnection(conn)
+   }
+}
