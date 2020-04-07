@@ -35,6 +35,13 @@ if err != nil {
 }
 defer conn.Close()
 
+// send text to server
+_, err = conn.Write([]byte(text))
+if err != nil {
+   fmt.Println(err)
+   os.Exit(1)
+}
+
 // read response
 buf := make([]byte, 1024)
 n, err := conn.Read(buf)
