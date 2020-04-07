@@ -27,12 +27,12 @@ func main() {
    
    // Use DialUnix to create a connection to the remote address.
    // Note: there is no requirement to specify the local address.
-   conn, err := net.DialUnix("unix, nil, raddr)
+   conn, err := net.DialUnix("unix", nil, raddr)
    if err != nil {
       fmt.Println("failed to connect to server:", err)
       os.Exit(1)
    }
-   defer.Close()  
+   defer conn.Close()  
    
    // send text to server
    _, err = conn.Write([]byte(text))
