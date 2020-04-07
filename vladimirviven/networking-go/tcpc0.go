@@ -35,3 +35,12 @@ if err != nil {
 }
 defer conn.Close()
 
+// read response
+buf := make([]byte, 1024)
+n, err := conn.Read(buf)
+if err != nil {
+   fmt.Println("failed reading response:", err)
+   os.Exit(1)
+}
+fmt.Println(string(buf[:n]))
+}   
