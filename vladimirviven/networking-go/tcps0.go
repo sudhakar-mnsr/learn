@@ -50,3 +50,28 @@ func main() {
    }
 }
 
+// handleConnection reads request from connection
+// with conn.Read() then write response using
+// conn.Write().  Then the connection is closed.
+func handleConnection(conn *net.TCPConn) {
+	defer conn.Close() // clean up when done
+
+	buf := make([]byte, 1024)
+
+	n, err := conn.Read(buf)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// echo buffer
+	w, err := conn.Write(buf[:n])
+	if err != nil {
+		fmt.Println("failed to write to client:", err)
+		return
+	}
+	if w != n { // was all data sent
+		fmt.Println("warning: not all data sent to client")
+		return
+	}
+}
