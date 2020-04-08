@@ -54,3 +54,16 @@ func main() {
       go handleRequest(conn, raddr)
    }
 }
+
+func handleRequest(conn *net.UnixConn, addr net.UnixAddr) {
+   secs, fracs := getNTPSeconds(time.Now())
+   rsp := make([]byte, 48)
+   binary.BigEndian.PutUint32(rsp[40:], uint32(secs))
+   binary.BigEndian.PutUint32(rsp[44:], uint32(fracs))
+   
+   fmt.Printf("writing response %v to %v\n", rsp, addr)
+   if _, err := conn.WriteToUnix(rsp, addr); err != nil {
+      fmt.Println("err sending data:", err)
+      os.Exit(1)
+   }
+}
