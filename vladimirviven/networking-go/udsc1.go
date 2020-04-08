@@ -76,3 +76,13 @@ if err != nil {
 	// it is the number of secs since 1900 (NTP epoch)
 	secs := binary.BigEndian.Uint32(rsp[40:])
 	frac := binary.BigEndian.Uint32(rsp[44:])
+	// Many OSs use Unix time epoch which is num of secs since 1970,
+	// while NTP's ephoch starts on Jan 1, 1900.  Therefore,
+	// to get the correct time, we must adjust the epocs properly
+	// by removing 70 yrs of seconds (1970-1900) offset.
+	ntpEpoch := time.Date(1900, 1, 1, 0, 0, 0, 0, time.UTC)
+	unixEpoch := time.Date(1970, 1, 1, 0, 0, 0, 0, time.UTC)
+	offset := unixEpoch.Sub(ntpEpoch).Seconds()
+	now := float64(secs) - offset
+	fmt.Printf("%v\n", time.Unix(int64(now), int64(frac)))
+}
