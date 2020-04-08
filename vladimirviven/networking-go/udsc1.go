@@ -45,4 +45,22 @@ defer func() {
    }
 }()
 
+// Once the connection is established, the code pattern
+// is the same as in the previous impl.
+
+fmt.Printf("time from (%s) (%s)\n", network, conn.RemoteAddr())
+
+// Send time request
+if _, err = conn.Write(req); err != nil {
+   fmt.Printf("failed to send request: %v\n", err)
+   os.Exit(1)
+}
+
+// block to recieve server response
+read, err := conn.Read(rsp)
+if err != nil {
+   fmt.Printf("failed to receive response: %v\n", err)
+   os.Exit(1)
+}
+
 
