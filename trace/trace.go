@@ -10,6 +10,7 @@ import (
    "log"
    "os"
    "runtime"
+   "runtime/pprof"
    "runtime/trace"
    "strings"
    "sync"
@@ -45,6 +46,11 @@ func main() {
 
    topic := "president"
    n := freq(topic, docs)
+   // n := freqConcurrent(topic, docs)
+   // n := freqConcurrentSem(topic, docs)
+   // n := freq(topic, docs)
+   // n := freqProcessorsTasks(topic, docs)
+   // n := freqActor(topic, docs)
 
    log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
