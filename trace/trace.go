@@ -48,3 +48,30 @@ func main() {
 
    log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
+
+func freq(topic string, docs []string) int {
+   var found int
+
+   for _, doc := range docs {
+      file := fmt.Sprintf("%s.xml", doc[:8])
+      f, err := os.OpenFile(file, os.O_RDONLY, 0)
+      if err != nil {
+         log.Printf("Opening Document [%s] : ERROR : %v", doc, err)
+         return 0
+      }
+
+      data, err := ioutil.ReadAll(f)
+      if err != nil {
+         f.Close()
+         log.Printf("Reading Document [%s] : ERROR : %v", doc, err)
+         return 0
+      }
+      f.Close()
+
+      var d document
+      if err := xml.Unmarshal(data, &d); err != nil {
+         log.Printf("Decoding Document [%s] : ERROR : %v", doc, err)
+         return 0
+      }
+
+      
