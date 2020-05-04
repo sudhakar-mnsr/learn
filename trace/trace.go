@@ -32,7 +32,7 @@ type (
       XMLName xml.Name `xml:"rss"`
       Channel channel `xml:"channel"`
    }
-}
+)
 
 func main() {
    pprof.StartCPUProfile(os.Stdout)
