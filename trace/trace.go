@@ -205,3 +205,65 @@ func freqConcurrentSem(topic string, docs []string) int {
 	wg.Wait()
 	return int(found)
 }
+
+func freqProcessors(topic string, docs []string) int {
+	var found int32
+
+	g := runtime.GOMAXPROCS(0)
+	var wg sync.WaitGroup
+	wg.Add(g)
+
+	ch := make(chan string, g)
+
+	for i := 0; i < g; i++ {
+		go func() {
+			var lFound int32
+			defer func() {
+				atomic.AddInt32(&found, lFound)
+				wg.Done()
+			}()
+
+			for doc := range ch {
+				file := fmt.Sprintf("%s.xml", doc[:8])
+				f, err := os.OpenFile(file, os.O_RDONLY, 0)
+				if err != nil {
+					log.Printf("Opening Document [%s] : ERROR : %v", doc, err)
+					return
+				}
+
+				data, err := ioutil.ReadAll(f)
+				if err != nil {
+					f.Close()
+					log.Printf("Reading Document [%s] : ERROR : %v", doc, err)
+					return
+				}
+				f.Close()
+
+				var d document
+				if err := xml.Unmarshal(data, &d); err != nil {
+					log.Printf("Decoding Document [%s] : ERROR : %v", doc, err)
+					return
+				}
+
+				for _, item := range d.Channel.Items {
+					if strings.Contains(item.Title, topic) {
+						lFound++
+						continue
+					}
+
+					if strings.Contains(item.Description, topic) {
+						lFound++
+					}
+				}
+			}
+		}()
+	}
+
+	for _, doc := range docs {
+		ch <- doc
+	}
+	close(ch)
+
+	wg.Wait()
+	return int(found)
+}
