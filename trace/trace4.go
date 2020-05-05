@@ -33,3 +33,15 @@ type (
 		Channel channel  `xml:"channel"`
 	}
 )
+
+func main() {
+	// pprof.StartCPUProfile(os.Stdout)
+	// defer pprof.StopCPUProfile()
+
+	trace.Start(os.Stdout)
+	defer trace.Stop()
+
+	docs := make([]string, 4000)
+	for i := range docs {
+		docs[i] = fmt.Sprintf("newsfeed-%.4d.xml", i)
+	}
