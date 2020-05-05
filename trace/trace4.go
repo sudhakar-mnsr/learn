@@ -51,3 +51,26 @@ func main() {
 
         log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 } 
+
+func freq(topic string, docs []string) int {
+   var found int32
+
+   g := len(docs)
+   var wg sync.WaitGroup
+   wg.Add(g)
+
+   for _, doc := range docs {
+      go func(doc string) {
+         var lfound int32
+         defer func() {
+            atomic.AddInt32(&found, lFound)
+            wg.Done()
+         }()
+
+         file := fmt.Sprintf("%s.xml", doc[:8])
+         f, err := os.OpenFile(file, os.O_RDONLY, 0)
+         if err != nil {
+            log.Printf("Opening Document [%s] : ERROR : %v", doc, err)
+            return
+         }
+
