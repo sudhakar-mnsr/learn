@@ -31,18 +31,18 @@ type (
 )
 
 func main() {
-trace.Start(os.Stdout)
-defer trace.Stop()
-
-docs := make([]string, 4000)
-for i := range docs {
-   docs[i] = fmt.Sprintf("newsfeed-%.4d.xml", i)
-}
-
-topic := "president"
-n := freq(topic, docs)
-
-log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
+   trace.Start(os.Stdout)
+   defer trace.Stop()
+   
+   docs := make([]string, 4000)
+   for i := range docs {
+      docs[i] = fmt.Sprintf("newsfeed-%.4d.xml", i)
+   }
+   
+   topic := "president"
+   n := freq(topic, docs)
+   
+   log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
 
 func freq(topic string, docs[]string) int {
