@@ -1,13 +1,11 @@
 package main
 
 import (
-   "context"
    "encoding/xml"
    "fmt"
    "io/ioutil"
    "log"
    "os"
-   "runtime"
    "runtime/trace"
    "strings"
    "sync"
@@ -90,5 +88,5 @@ func freq(topic string, docs[]string) int {
       }(doc)
    }
    wg.Wait() 
-   return found
+   return int(found)
 }
