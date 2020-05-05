@@ -3,13 +3,11 @@
 package main
 
 import (
-	"context"
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
-	"runtime"
 	"runtime/trace"
 	"strings"
 	"sync"
@@ -61,7 +59,7 @@ func freq(topic string, docs []string) int {
 
    for _, doc := range docs {
       go func(doc string) {
-         var lfound int32
+         var lFound int32
          defer func() {
             atomic.AddInt32(&found, lFound)
             wg.Done()
