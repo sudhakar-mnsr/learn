@@ -77,3 +77,9 @@ for _, doc := range docs {
          return
       }
 
+      for _, item := range d.Channel.Items {
+         if strings.Contains(item.Title, topic) {
+            found++
+            continue
+         }
+         
