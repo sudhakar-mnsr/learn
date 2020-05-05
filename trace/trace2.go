@@ -79,14 +79,15 @@ for _, doc := range docs {
 
       for _, item := range d.Channel.Items {
          if strings.Contains(item.Title, topic) {
-            found++
+            atomic.AddInt32(&found, 1)
             continue
          }
          
          if strings.Contains(item.Description, topic) {
-            found++
+            atomic.AddInt32(&found, 1)
          }
       }
-   }
+   }(doc)
+   wg.Wait() 
    return found
 }
