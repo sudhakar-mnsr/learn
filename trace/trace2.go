@@ -83,3 +83,10 @@ for _, doc := range docs {
             continue
          }
          
+         if strings.Contains(item.Description, topic) {
+            found++
+         }
+      }
+   }
+   return found
+}
