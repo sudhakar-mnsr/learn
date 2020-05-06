@@ -84,3 +84,10 @@ func freqConcurrentSem(topic string, docs []string) int {
 					atomic.AddInt32(&found, lFound)
 					wg.Done()
 				}()
+
+				file := fmt.Sprintf("%s.xml", doc[:8])
+				f, err := os.OpenFile(file, os.O_RDONLY, 0)
+				if err != nil {
+					log.Printf("Opening Document [%s] : ERROR : %v", doc, err)
+					return
+				}
