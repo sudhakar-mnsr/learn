@@ -111,3 +111,11 @@ func freqConcurrentSem(topic string, docs []string) int {
 						lFound++
 						continue
 					}
+
+
+					if strings.Contains(item.Description, topic) {
+						lFound++
+					}
+				}
+			}
+			<-ch
