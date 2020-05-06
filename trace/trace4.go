@@ -74,3 +74,13 @@ func freqConcurrentSem(topic string, docs []string) int {
 	wg.Add(g)
 
 	ch := make(chan bool, runtime.GOMAXPROCS(0))
+
+	for _, doc := range docs {
+		go func(doc string) {
+			ch <- true
+			{
+				var lFound int32
+				defer func() {
+					atomic.AddInt32(&found, lFound)
+					wg.Done()
+				}()
