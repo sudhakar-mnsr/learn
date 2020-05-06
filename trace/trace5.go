@@ -55,3 +55,11 @@ func freqProcessors(topic string, docs []string) int {
 	wg.Add(g)
 
 	ch := make(chan string, g)
+
+	for i := 0; i < g; i++ {
+		go func() {
+			var lFound int32
+			defer func() {
+				atomic.AddInt32(&found, lFound)
+				wg.Done()
+			}()
