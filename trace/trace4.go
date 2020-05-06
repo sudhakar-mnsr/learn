@@ -65,3 +65,12 @@ func main() {
 
 	log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
+
+func freqConcurrentSem(topic string, docs []string) int {
+	var found int32
+
+	g := len(docs)
+	var wg sync.WaitGroup
+	wg.Add(g)
+
+	ch := make(chan bool, runtime.GOMAXPROCS(0))
