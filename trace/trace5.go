@@ -46,3 +46,12 @@ func main() {
 
 	log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
+
+func freqProcessors(topic string, docs []string) int {
+	var found int32
+
+	g := runtime.GOMAXPROCS(0)
+	var wg sync.WaitGroup
+	wg.Add(g)
+
+	ch := make(chan string, g)
