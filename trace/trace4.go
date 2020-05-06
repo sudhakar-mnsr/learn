@@ -119,3 +119,10 @@ func freqConcurrentSem(topic string, docs []string) int {
 				}
 			}
 			<-ch
+
+		}(doc)
+	}
+
+	wg.Wait()
+	return int(found)
+}
