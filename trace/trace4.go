@@ -32,24 +32,6 @@ type (
 	}
 )
 
-type (
-	item struct {
-		XMLName     xml.Name `xml:"item"`
-		Title       string   `xml:"title"`
-		Description string   `xml:"description"`
-	}
-
-	channel struct {
-		XMLName xml.Name `xml:"channel"`
-		Items   []item   `xml:"item"`
-	}
-
-	document struct {
-		XMLName xml.Name `xml:"rss"`
-		Channel channel  `xml:"channel"`
-	}
-)
-
 func main() {
 
         trace.Start(os.Stdout)
