@@ -48,7 +48,7 @@ func main() {
 	log.Printf("Searching %d files, found %s %d times.", len(docs), topic, n)
 }
 
-func freqConcurrentSem(topic string, docs []string) int {
+func freq(topic string, docs []string) int {
 	var found int32
 
 	g := len(docs)
