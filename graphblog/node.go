@@ -36,3 +36,10 @@ func (g graph) get(id string) *node {
 	g[id] = &n
 	return &n
 }
+
+func (g graph) addEdge(a, b string) {
+	an := g.get(a)
+	bn := g.get(b)
+	an.add(bn)
+	bn.add(an)
+}
