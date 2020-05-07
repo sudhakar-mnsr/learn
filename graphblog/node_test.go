@@ -25,3 +25,15 @@ func (e edges) build(g graph) {
 		g.addEdge(edge.a, edge.b)
 	}
 }
+
+// =============================================================================
+
+func TestDiameter(t *testing.T) {
+	tests := []struct {
+		name        string
+		edges       edges
+		expDiameter int
+	}{
+		{
+			name: "empty",
+		},
