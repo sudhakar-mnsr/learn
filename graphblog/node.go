@@ -11,3 +11,7 @@ type node struct {
 	id  string
 	adj graph
 }
+
+func (n *node) add(adjNode *node) {
+	n.adj[adjNode.id] = adjNode
+}
