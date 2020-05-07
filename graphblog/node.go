@@ -23,3 +23,8 @@ type graph map[string]*node
 func newGraph() graph {
 	return make(graph)
 }
+
+func (g graph) get(id string) *node {
+	if n, found := g[id]; found {
+		return n
+	}
