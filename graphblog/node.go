@@ -43,3 +43,13 @@ func (g graph) addEdge(a, b string) {
 	an.add(bn)
 	bn.add(an)
 }
+
+func (g graph) diameter() int {
+	var diameter int
+	for id := range g {
+		if df := g.longestShortestPath(id); df > diameter {
+			diameter = df
+		}
+	}
+	return diameter
+}
