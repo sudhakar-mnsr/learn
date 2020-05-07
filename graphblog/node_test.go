@@ -80,3 +80,16 @@ func TestDiameter(t *testing.T) {
 		})
 	}
 }
+
+// =============================================================================
+
+var diameter int
+
+func BenchmarkDiameter(b *testing.B) {
+	fmt.Println("Warning, this benchmark at 1s takes > 38s in its current form.")
+	g := newGraph()
+	f, err := os.Open("edges.txt")
+	if err != nil {
+		b.Fatal(err)
+	}
+	defer f.Close()
