@@ -48,3 +48,13 @@ func TestDiameter(t *testing.T) {
 			edges:       edges{{"a", "b"}, {"b", "c"}},
 			expDiameter: 2,
 		},
+		{
+			name:        "4inline",
+			edges:       edges{{"a", "b"}, {"b", "c"}, {"c", "d"}},
+			expDiameter: 3,
+		},
+		{
+			name:        "triangle",
+			edges:       edges{{"a", "b"}, {"b", "c"}, {"a", "c"}},
+			expDiameter: 1,
+		},
