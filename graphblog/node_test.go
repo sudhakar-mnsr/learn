@@ -93,3 +93,13 @@ func BenchmarkDiameter(b *testing.B) {
 		b.Fatal(err)
 	}
 	defer f.Close()
+	s := bufio.NewScanner(f)
+	for s.Scan() {
+		line := s.Text()
+		edge := strings.Fields(line)
+		if len(edge) != 2 {
+			b.Fatalf("expected 2 edges, got %d", len(edge))
+		}
+
+		g.addEdge(edge[0], edge[1])
+	}
