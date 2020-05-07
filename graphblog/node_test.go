@@ -69,3 +69,14 @@ func TestDiameter(t *testing.T) {
 			expDiameter: 2,
 		},
 	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			g := newGraph()
+			test.edges.build(g)
+			diameter := g.diameter()
+			if diameter != test.expDiameter {
+				t.Errorf("expected %d diameter, got %d", test.expDiameter, diameter)
+			}
+		})
+	}
+}
