@@ -66,3 +66,10 @@ func (g graph) longestShortestPath(startID string) int {
 	curNode := g.get(startID)
 	bfsData[curNode.id] = &bfsNode{parent: curNode, depth: 0}
 	l.PushBack(curNode)
+
+	for {
+		elt := l.Front()
+		if elt == nil {
+			break
+		}
+		curNode = l.Remove(elt).(*node)
