@@ -60,3 +60,9 @@ func (g graph) longestShortestPath(startID string) int {
 		depth  int
 	}
 	bfsData := make(map[string]*bfsNode, len(g))
+
+
+	l := list.New()
+	curNode := g.get(startID)
+	bfsData[curNode.id] = &bfsNode{parent: curNode, depth: 0}
+	l.PushBack(curNode)
