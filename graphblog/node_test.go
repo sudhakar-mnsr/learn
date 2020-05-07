@@ -37,3 +37,14 @@ func TestDiameter(t *testing.T) {
 		{
 			name: "empty",
 		},
+
+		{
+			name:        "1edge",
+			edges:       edges{{"a", "b"}},
+			expDiameter: 1,
+		},
+		{
+			name:        "3inline",
+			edges:       edges{{"a", "b"}, {"b", "c"}},
+			expDiameter: 2,
+		},
