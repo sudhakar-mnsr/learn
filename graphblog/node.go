@@ -53,3 +53,10 @@ func (g graph) diameter() int {
 	}
 	return diameter
 }
+
+func (g graph) longestShortestPath(startID string) int {
+	type bfsNode struct {
+		parent *node
+		depth  int
+	}
+	bfsData := make(map[string]*bfsNode, len(g))
