@@ -10,3 +10,18 @@ import (
 	"strings"
 	"testing"
 )
+
+type edge struct {
+	a string
+	b string
+}
+
+// =============================================================================
+
+type edges []edge
+
+func (e edges) build(g graph) {
+	for _, edge := range e {
+		g.addEdge(edge.a, edge.b)
+	}
+}
