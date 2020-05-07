@@ -103,3 +103,8 @@ func BenchmarkDiameter(b *testing.B) {
 
 		g.addEdge(edge[0], edge[1])
 	}
+
+	diameter = g.diameter()
+	if diameter != 82 {
+		b.Fatalf("expected 82 for diameter, got %d", diameter)
+	}
