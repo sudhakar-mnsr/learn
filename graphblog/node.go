@@ -15,3 +15,11 @@ type node struct {
 func (n *node) add(adjNode *node) {
 	n.adj[adjNode.id] = adjNode
 }
+
+// =============================================================================
+
+type graph map[string]*node
+
+func newGraph() graph {
+	return make(graph)
+}
