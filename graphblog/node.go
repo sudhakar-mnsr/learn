@@ -28,3 +28,11 @@ func (g graph) get(id string) *node {
 	if n, found := g[id]; found {
 		return n
 	}
+
+	n := node{
+		id:  id,
+		adj: make(graph),
+	}
+	g[id] = &n
+	return &n
+}
