@@ -73,3 +73,14 @@ func (g graph) longestShortestPath(startID string) int {
 			break
 		}
 		curNode = l.Remove(elt).(*node)
+
+		for id, m := range curNode.adj {
+			if bm := bfsData[id]; bm == nil || bm.parent == nil {
+				bfsData[id] = &bfsNode{parent: curNode, depth: bfsData[curNode.id].depth + 1}
+				l.PushBack(m)
+			}
+		}
+	}
+
+	return bfsData[curNode.id].depth
+}
