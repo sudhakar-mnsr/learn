@@ -171,3 +171,12 @@ func makePlot(xys plotter.XYs) error {
 	p.Title.Text = "Latencies (differenced from the unbuffered channel)"
 	p.X.Label.Text = "Buffer Length"
 	p.Y.Label.Text = "Latency"
+
+	// Add the prepared points to the plot.
+	if err = plotutil.AddLinePoints(p, "Latencies", xys); err != nil {
+		return err
+	}
+
+	// Save the plot to a PNG file.
+	return p.Save(10*vg.Inch, 5*vg.Inch, "latencies.png")
+}
