@@ -62,3 +62,10 @@ func TestLatencies(t *testing.T) {
 
 		// Perform a stream with specified buffer size.
 		since := stream(bufSize)
+
+		// Calculate how long this took and the percent
+		// of different from the unbuffered channel.
+		if bufSize == 0 {
+			first = since
+		}
+		dec := ((float64(first) - float64(since)) / float64(first)) * 100
