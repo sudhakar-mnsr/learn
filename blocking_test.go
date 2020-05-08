@@ -166,3 +166,8 @@ func makePlot(xys plotter.XYs) error {
 	if err != nil {
 		return err
 	}
+
+	// Label the new plot.
+	p.Title.Text = "Latencies (differenced from the unbuffered channel)"
+	p.X.Label.Text = "Buffer Length"
+	p.Y.Label.Text = "Latency"
