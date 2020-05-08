@@ -39,3 +39,12 @@ func init() {
 
 	fmt.Println("Bytes", len(data))
 }
+
+// TestLatency runs a single stream so we can look at
+// blocking profiles for different buffer sizes.
+func TestLatency(t *testing.T) {
+	bufSize := 100
+
+	fmt.Println("BufSize:", bufSize)
+	stream(bufSize)
+}
