@@ -156,3 +156,13 @@ func send(r io.Reader, ch chan int) {
 		ch <- int(buf[0])
 	}
 }
+
+// makePlot creates and saves a plot of the overall latencies
+// differenced from the unbuffered channel.
+func makePlot(xys plotter.XYs) error {
+
+	// Create a new plot.
+	p, err := plot.New()
+	if err != nil {
+		return err
+	}
