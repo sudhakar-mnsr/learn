@@ -104,3 +104,9 @@ func stream(bufSize int) time.Duration {
 	data := input()
 
 	// Create the receiver goroutine.
+
+	wg.Add(1)
+	go func() {
+		recv(ch)
+		wg.Done()
+	}()
