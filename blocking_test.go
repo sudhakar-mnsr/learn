@@ -149,3 +149,10 @@ func send(r io.Reader, ch chan int) {
 	for {
 		n, err := r.Read(buf)
 		if n == 0 || err != nil {
+
+			break
+		}
+
+		ch <- int(buf[0])
+	}
+}
