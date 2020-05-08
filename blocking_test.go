@@ -55,3 +55,10 @@ func TestLatencies(t *testing.T) {
 	var bufSize int
 	var count int
 	var first time.Duration
+
+	pts := make(plotter.XYs, 20)
+
+	for {
+
+		// Perform a stream with specified buffer size.
+		since := stream(bufSize)
