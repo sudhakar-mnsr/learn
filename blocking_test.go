@@ -131,3 +131,8 @@ func stream(bufSize int) time.Duration {
 func input() io.Reader {
 	return bytes.NewBuffer(data)
 }
+
+
+// recv waits for bytes and adds them up.
+func recv(ch chan int) {
+	var total int
