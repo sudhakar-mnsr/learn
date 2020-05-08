@@ -19,3 +19,13 @@ import (
 	"gonum.org/v1/plot/plotutil"
 	"gonum.org/v1/plot/vg"
 )
+
+// data represents a set of bytes to process.
+var data []byte
+
+// init creates a data for processing.
+func init() {
+	f, err := os.Open("data.bytes")
+	if err != nil {
+		log.Fatal(err)
+	}
