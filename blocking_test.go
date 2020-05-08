@@ -82,3 +82,7 @@ func TestLatencies(t *testing.T) {
 			bufSize++
 			continue
 		}
+		// Increment by 10 moving forward.
+		if bufSize == 100 {
+			break
+		}
