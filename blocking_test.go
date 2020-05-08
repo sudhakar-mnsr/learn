@@ -86,3 +86,8 @@ func TestLatencies(t *testing.T) {
 		if bufSize == 100 {
 			break
 		}
+	}
+
+	// Make the plot of latencies.
+	makePlot(pts)
+}
