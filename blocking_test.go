@@ -99,3 +99,8 @@ func stream(bufSize int) time.Duration {
 	// Create WaitGroup and channels.
 	var wg sync.WaitGroup
 	ch := make(chan int, bufSize)
+
+	// Capture the reader for the input data.
+	data := input()
+
+	// Create the receiver goroutine.
