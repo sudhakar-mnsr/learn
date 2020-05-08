@@ -141,3 +141,11 @@ func recv(ch chan int) {
 		total = total + v
 	}
 }
+
+// send reads the bytes and sends them through the channel.
+func send(r io.Reader, ch chan int) {
+	buf := make([]byte, 1)
+
+	for {
+		n, err := r.Read(buf)
+		if n == 0 || err != nil {
