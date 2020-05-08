@@ -136,3 +136,8 @@ func input() io.Reader {
 // recv waits for bytes and adds them up.
 func recv(ch chan int) {
 	var total int
+
+	for v := range ch {
+		total = total + v
+	}
+}
