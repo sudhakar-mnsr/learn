@@ -125,3 +125,9 @@ func stream(bufSize int) time.Duration {
 	// Calculate how long the send took.
 	return time.Since(st)
 }
+
+// input returns a reader that can be used to read a stream
+// of bytes.
+func input() io.Reader {
+	return bytes.NewBuffer(data)
+}
