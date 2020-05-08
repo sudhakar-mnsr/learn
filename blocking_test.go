@@ -69,3 +69,11 @@ func TestLatencies(t *testing.T) {
 			first = since
 		}
 		dec := ((float64(first) - float64(since)) / float64(first)) * 100
+
+		// Display the results.
+		fmt.Printf("BufSize: %d\t%v\t%.2f%%\n", bufSize, since, dec)
+
+		// Prepare the results for plotting.
+		pts[count].X = float64(bufSize)
+		pts[count].Y = dec
+		count++
