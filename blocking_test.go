@@ -110,3 +110,9 @@ func stream(bufSize int) time.Duration {
 		recv(ch)
 		wg.Done()
 	}()
+
+	// Start the clock.
+	st := time.Now()
+
+	// Send all the data to the receiving goroutine.
+	send(data, ch)
