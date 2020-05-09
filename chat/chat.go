@@ -193,3 +193,10 @@ func (r *Room) Close() error {
 	// Signal the chatroom processing goroutine to stop.
 	close(r.shutdown)
 	r.wg.Wait()
+
+	// Drop all existing connections.
+	for _, c := range r.clients {
+		c.drop()
+	}
+	return nil
+}
