@@ -74,3 +74,11 @@ func (c *client) write(m message) {
 	c.writer.WriteString(msg)
 	c.writer.Flush()
 }
+
+// drop closes the client connection and read goroutine.
+func (c *client) drop() {
+
+	// Close the connection.
+	c.conn.Close()
+	c.wg.Wait()
+}
