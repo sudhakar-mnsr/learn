@@ -82,3 +82,13 @@ func (c *client) drop() {
 	c.conn.Close()
 	c.wg.Wait()
 }
+
+// newClient create a new client for an incoming connection.
+func newClient(room *Room, conn net.Conn, name string) *client {
+	c := client{
+		name:   name,
+		room:   room,
+		reader: bufio.NewReader(conn),
+		writer: bufio.NewWriter(conn),
+		conn:   conn,
+	}
