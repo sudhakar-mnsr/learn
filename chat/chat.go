@@ -161,3 +161,10 @@ func (r *Room) start() {
 		}
 
 		log.Println("Chat room started: 6000")
+
+		for {
+			conn, err := r.listener.Accept()
+			if err != nil {
+
+				// Check if the error is temporary or not.
+				if e, is := err.(temporary); is {
