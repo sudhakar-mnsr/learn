@@ -183,3 +183,13 @@ func (r *Room) start() {
 		}
 	}()
 }
+
+// Close shutdown the chatroom and closes all connections.
+func (r *Room) Close() error {
+
+	// Don't accept anymore client connections.
+	r.listener.Close()
+
+	// Signal the chatroom processing goroutine to stop.
+	close(r.shutdown)
+	r.wg.Wait()
