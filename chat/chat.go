@@ -117,3 +117,12 @@ func (r *Room) sendGroupMessage(m message) {
 		}
 	}
 }
+
+// join takes a new connection and adds it to the room.
+func (r *Room) join(conn net.Conn) {
+	name := fmt.Sprintf("Conn: %d", len(r.clients))
+	log.Println("New client joining chat:", name)
+
+	c := newClient(r, conn, name)
+	r.clients = append(r.clients, c)
+}
