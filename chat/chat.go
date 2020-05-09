@@ -168,3 +168,9 @@ func (r *Room) start() {
 
 				// Check if the error is temporary or not.
 				if e, is := err.(temporary); is {
+					if !e.Temporary() {
+						log.Println("Temporary: Chat room shutting down")
+						r.wg.Done()
+						return
+					}
+				}
