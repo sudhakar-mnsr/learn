@@ -134,3 +134,8 @@ func (r *Room) start() {
 	// Chatroom processing goroutne.
 	go func() {
 		for {
+			select {
+			case message := <-r.outgoing:
+
+				// Sent message to the group.
+				r.sendGroupMessage(message)
