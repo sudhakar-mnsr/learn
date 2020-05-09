@@ -174,3 +174,12 @@ func (r *Room) start() {
 						return
 					}
 				}
+				log.Println("accept-routine", err)
+				continue
+			}
+
+			// Add this new connection to the room.
+			r.joining <- conn
+		}
+	}()
+}
