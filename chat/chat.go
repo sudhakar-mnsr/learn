@@ -53,3 +53,13 @@ func (c *client) read() {
 			c.wg.Done()
 			return
 		}
+
+		if err == io.EOF {
+			log.Println("EOF: Client leaving chat")
+			c.wg.Done()
+			return
+		}
+
+		log.Println("read-routine", err)
+	}
+}
