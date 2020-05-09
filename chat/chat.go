@@ -152,3 +152,12 @@ func (r *Room) start() {
 			}
 		}
 	}()
+
+	// Chatroom connection accept goroutine.
+	go func() {
+		var err error
+		if r.listener, err = net.Listen("tcp", ":6000"); err != nil {
+			log.Fatalln(err)
+		}
+
+		log.Println("Chat room started: 6000")
