@@ -108,3 +108,12 @@ type Room struct {
 	shutdown chan struct{}
 	wg       sync.WaitGroup
 }
+
+// sendGroupMessage sends a message to all clients in the room.
+func (r *Room) sendGroupMessage(m message) {
+	for _, c := range r.clients {
+		if c.conn != m.conn {
+			c.write(m)
+		}
+	}
+}
