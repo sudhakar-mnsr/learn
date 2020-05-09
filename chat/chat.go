@@ -126,3 +126,11 @@ func (r *Room) join(conn net.Conn) {
 	c := newClient(r, conn, name)
 	r.clients = append(r.clients, c)
 }
+
+// start turns the chatroom on.
+func (r *Room) start() {
+	r.wg.Add(2)
+
+	// Chatroom processing goroutne.
+	go func() {
+		for {
