@@ -92,3 +92,9 @@ func newClient(room *Room, conn net.Conn, name string) *client {
 		writer: bufio.NewWriter(conn),
 		conn:   conn,
 	}
+
+	c.wg.Add(1)
+	go c.read()
+
+	return &c
+}
