@@ -210,3 +210,9 @@ func New() *Room {
 		outgoing: make(chan message),
 		shutdown: make(chan struct{}),
 	}
+	// Start the chatroom.
+	chatRoom.start()
+
+	// Return a pointer back to the caller.
+	return &chatRoom
+}
