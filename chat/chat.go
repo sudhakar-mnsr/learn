@@ -200,3 +200,13 @@ func (r *Room) Close() error {
 	}
 	return nil
 }
+
+// New creates a new chatroom.
+func New() *Room {
+
+	// Create a Room value.
+	chatRoom := Room{
+		joining:  make(chan net.Conn),
+		outgoing: make(chan message),
+		shutdown: make(chan struct{}),
+	}
