@@ -98,3 +98,13 @@ func newClient(room *Room, conn net.Conn, name string) *client {
 
 	return &c
 }
+
+// Room contains a set of networked client connections.
+type Room struct {
+	listener net.Listener
+	clients  []*client
+	joining  chan net.Conn
+	outgoing chan message
+	shutdown chan struct{}
+	wg       sync.WaitGroup
+}
