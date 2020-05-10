@@ -82,3 +82,10 @@ func (p *Pool) Release(r io.Closer) {
 		r.Close()
 	}
 }
+
+// Close will shutdown the pool and close all existing resources.
+func (p *Pool) Close() error {
+
+	// Secure this operation with the Release operation.
+	p.mu.Lock()
+	defer p.mu.Unlock()
