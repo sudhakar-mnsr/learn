@@ -63,3 +63,9 @@ func (p *Pool) Release(r io.Closer) {
 	// Secure this operation with the Close operation.
 	p.mu.Lock()
 	defer p.mu.Unlock()
+
+	// If the pool is closed, discard the resource.
+	if p.closed {
+		r.Close()
+		return
+	}
