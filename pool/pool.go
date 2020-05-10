@@ -69,3 +69,9 @@ func (p *Pool) Release(r io.Closer) {
 		r.Close()
 		return
 	}
+
+
+	select {
+	// Attempt to place the new resource on the queue.
+	case p.resources <- r:
+		log.Println("Release:", "In Queue")
