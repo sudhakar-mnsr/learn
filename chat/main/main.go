@@ -15,3 +15,8 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt)
 	<-sigChan
+
+	log.Println("Shutting Down Started")
+	cr.Close()
+	log.Println("Shutting Down Completed")
+}
