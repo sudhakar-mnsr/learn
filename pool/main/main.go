@@ -42,3 +42,13 @@ func createConnection() (io.Closer, error) {
 
 	return &dbConnection{id}, nil
 }
+
+// performQueries tests the resource pool of connections.
+func performQueries(query int, p *pool.Pool) {
+
+	// Acquire a connection from the pool.
+	conn, err := p.Acquire()
+	if err != nil {
+		log.Println(err)
+		return
+	}
