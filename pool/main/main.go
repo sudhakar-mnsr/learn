@@ -60,3 +60,7 @@ func performQueries(query int, p *pool.Pool) {
 	time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
 	log.Printf("Query: QID[%d] CID[%d]\n", query, conn.(*dbConnection).ID)
 }
+
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(maxGoroutines)
