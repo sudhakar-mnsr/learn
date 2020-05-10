@@ -31,3 +31,9 @@ func New(size uint, f func() (io.Closer, error)) (*Pool, error) {
 	if size == 0 {
 		return nil, errors.New("Size value too small")
 	}
+
+	return &Pool{
+		factory:   f,
+		resources: make(chan io.Closer, size),
+	}, nil
+}
