@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/ardanlabs/gotraining/topics/go/concurrency/patterns/chat"
+	"github.com/sudhakarmnsr/learn/chat"
 )
 
 func main() {
