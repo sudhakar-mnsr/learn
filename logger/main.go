@@ -51,3 +51,13 @@ func main() {
 
 	var d device
 	l := log.New(&d, "prefix", 0)
+
+	// Generate goroutines, each writing to disk.
+	for i := 0; i < grs; i++ {
+		go func(id int) {
+			for {
+				l.Println(fmt.Sprintf("%d: log data", id))
+				time.Sleep(10 * time.Millisecond)
+			}
+		}(i)
+	}
