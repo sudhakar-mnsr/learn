@@ -61,3 +61,10 @@ func main() {
 			}
 		}(i)
 	}
+
+	// We want to control the simulated disk blocking. Capture
+	// interrupt signals to toggle device issues. Use <ctrl> z
+	// to kill the program.
+
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, os.Interrupt)
