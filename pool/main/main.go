@@ -78,3 +78,10 @@ func main() {
 		// Each goroutine needs its own copy of the query
 		// value else they will all be sharing the same query
 		// variable.
+
+		go func(q int) {
+			performQueries(q, p)
+			wg.Done()
+		}(query)
+	}
+
