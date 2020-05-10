@@ -97,3 +97,15 @@ func (p *Pool) Close() error {
 
 	// Set the pool as closed.
 	p.closed = true
+
+	// Close the channel before we drain the channel of its
+	// resources. If we don't do this, we will have a deadlock.
+	close(p.resources)
+
+	// Close the resources
+	for r := range p.resources {
+		r.Close()
+	}
+
+	return nil
+}
