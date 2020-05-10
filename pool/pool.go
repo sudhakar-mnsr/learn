@@ -75,3 +75,10 @@ func (p *Pool) Release(r io.Closer) {
 	// Attempt to place the new resource on the queue.
 	case p.resources <- r:
 		log.Println("Release:", "In Queue")
+
+	// If the queue is already at cap we close the resource.
+	default:
+		log.Println("Release:", "Closing")
+		r.Close()
+	}
+}
