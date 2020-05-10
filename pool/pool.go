@@ -89,3 +89,11 @@ func (p *Pool) Close() error {
 	// Secure this operation with the Release operation.
 	p.mu.Lock()
 	defer p.mu.Unlock()
+
+	// If the pool is already close, don't do anything.
+	if p.closed {
+		return ErrPoolClosed
+	}
+
+	// Set the pool as closed.
+	p.closed = true
