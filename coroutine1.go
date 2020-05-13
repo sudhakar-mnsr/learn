@@ -23,3 +23,8 @@ func main() {
 	fmt.Println("Start Goroutines")
 
 	// Create a goroutine from the lowercase function.
+
+	go func() {
+		lowercase()
+		wg.Done()
+	}()
