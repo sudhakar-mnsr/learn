@@ -31,3 +31,9 @@ func main() {
 		printHashes("A")
 		wg.Done()
 	}()
+
+	// Create the second goroutine and manage its lifecycle here.
+	go func() {
+		printHashes("B")
+		wg.Done()
+	}()
