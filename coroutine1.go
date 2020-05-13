@@ -7,3 +7,9 @@ import (
 	"runtime"
 	"sync"
 )
+
+func init() {
+
+	// Allocate one logical processor for the scheduler to use.
+	runtime.GOMAXPROCS(1)
+}
