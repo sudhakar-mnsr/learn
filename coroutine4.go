@@ -36,3 +36,10 @@ func main() {
 		// Tell main we are done.
 		wg.Done()
 	}()
+
+	// Declare an anonymous function and create a goroutine.
+	go func() {
+		// Count up from 0 to 100.
+		for count := 0; count <= 100; count++ {
+			fmt.Printf("[B:%d]\n", count)
+		}
