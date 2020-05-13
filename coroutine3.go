@@ -36,3 +36,10 @@ func main() {
 		// Tell main we are done.
 		wg.Done()
 	}()
+
+	// Declare an anonymous function and create a goroutine.
+	go func() {
+
+		// Display the alphabet three times.
+		for count := 0; count < 3; count++ {
+			for r := 'A'; r <= 'Z'; r++ {
