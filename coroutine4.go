@@ -43,3 +43,15 @@ func main() {
 		for count := 0; count <= 100; count++ {
 			fmt.Printf("[B:%d]\n", count)
 		}
+
+		// Tell main we are done.
+		wg.Done()
+	}()
+
+	// Wait for the goroutines to finish.
+	fmt.Println("Waiting To Finish")
+	wg.Wait()
+
+	// Display "Terminating Program".
+	fmt.Println("\nTerminating Program")
+}
