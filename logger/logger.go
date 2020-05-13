@@ -40,3 +40,9 @@ func New(w io.Writer, capacity int) *Logger {
 			// Simulate write to disk.
 			fmt.Fprintln(w, d)
 		}
+		// Mark that we are done and terminated.
+		l.wg.Done()
+	}()
+
+	return &l
+}
