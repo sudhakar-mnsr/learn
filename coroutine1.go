@@ -52,3 +52,9 @@ func lowercase() {
 		}
 	}
 }
+
+// uppercase displays the set of uppercase letters three times.
+func uppercase() {
+
+	// Display the alphabet three times
+	for count := 0; count < 3; count++ {
