@@ -43,3 +43,10 @@ func main() {
 		// Display the alphabet three times.
 		for count := 0; count < 3; count++ {
 			for r := 'A'; r <= 'Z'; r++ {
+				fmt.Printf("%c ", r)
+			}
+		}
+
+		// Tell main we are done.
+		wg.Done()
+	}()
