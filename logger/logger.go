@@ -54,3 +54,7 @@ func (l *Logger) Shutdown() {
 	// Close the channel which will cause the write goroutine
 	// to finish what is has in its buffer and terminate.
 	close(l.write)
+
+	// Wait for the write goroutine to terminate.
+	l.wg.Wait()
+}
