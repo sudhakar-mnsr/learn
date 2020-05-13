@@ -37,3 +37,6 @@ func New(w io.Writer, capacity int) *Logger {
 		// Range over the channel and write each data received to disk.
 		// Once the channel is close and flushed the loop will terminate.
 		for d := range l.write {
+			// Simulate write to disk.
+			fmt.Fprintln(w, d)
+		}
