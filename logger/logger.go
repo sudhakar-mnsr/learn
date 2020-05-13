@@ -46,3 +46,11 @@ func New(w io.Writer, capacity int) *Logger {
 
 	return &l
 }
+
+// Shutdown closes the logger and wait for the writer goroutine
+// to terminate.
+func (l *Logger) Shutdown() {
+
+	// Close the channel which will cause the write goroutine
+	// to finish what is has in its buffer and terminate.
+	close(l.write)
