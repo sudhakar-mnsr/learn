@@ -32,3 +32,7 @@ func main() {
 				fmt.Printf("%c ", r)
 			}
 		}
+
+		// Tell main we are done.
+		wg.Done()
+	}()
