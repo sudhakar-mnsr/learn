@@ -31,3 +31,9 @@ func New(w io.Writer, capacity int) *Logger {
 
 	// Create the write goroutine that performs the actual
 	// writes to disk.
+
+	go func() {
+
+		// Range over the channel and write each data received to disk.
+		// Once the channel is close and flushed the loop will terminate.
+		for d := range l.write {
