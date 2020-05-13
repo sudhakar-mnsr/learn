@@ -66,3 +66,9 @@ func (l *Logger) Write(data string) {
 	select {
 	case l.write <- data:
 		// The writing goroutine got it.
+
+	default:
+		// Drop the write.
+		fmt.Println("Dropping the write")
+	}
+}
