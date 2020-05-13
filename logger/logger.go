@@ -24,3 +24,10 @@ func New(w io.Writer, capacity int) *Logger {
 	l := Logger{
 		write: make(chan string, capacity), // Buffered channel if size > 0.
 	}
+
+
+	// Add one to the waitgroup to track the write goroutine.
+	l.wg.Add(1)
+
+	// Create the write goroutine that performs the actual
+	// writes to disk.
