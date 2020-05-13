@@ -58,3 +58,11 @@ func (l *Logger) Shutdown() {
 	// Wait for the write goroutine to terminate.
 	l.wg.Wait()
 }
+
+// Write is used to write the data to the log.
+func (l *Logger) Write(data string) {
+
+	// Perform the channel operations.
+	select {
+	case l.write <- data:
+		// The writing goroutine got it.
