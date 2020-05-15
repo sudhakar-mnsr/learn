@@ -50,3 +50,10 @@ func (h *Hash) Store(key string, value int) {
 	// This key does not exist, so add this new value.
 	h.buckets[idx] = append(bucket, entry{key, value})
 }
+
+// Retrieve extracts a value from the hash table based on the key.
+func (h *Hash) Retrieve(key string) (int, error) {
+
+	// For the specified key, identify what bucket in
+	// the slice we need to store the key/value inside of.
+	idx := h.hashKey(key)
