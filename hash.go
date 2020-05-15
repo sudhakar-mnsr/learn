@@ -13,3 +13,9 @@ type entry struct {
 	key   string
 	value int
 }
+
+// Hash is a simple Hash table implementation.
+type Hash struct {
+	buckets [][]entry
+	hash    maphash.Hash
+}
