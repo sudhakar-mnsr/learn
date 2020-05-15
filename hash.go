@@ -142,3 +142,6 @@ func (h *Hash) hashKey(key string) int {
 	// of our bucket length defined by the const numBuckets.
 	return int(n % numBuckets)
 }
+
+// removeEntry performs the physical act of removing an
+// entry from a bucket,
