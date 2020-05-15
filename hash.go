@@ -110,3 +110,8 @@ func (h *Hash) Len() int {
 	}
 	return sum
 }
+
+// Do calls fn on each key/value. If fn return false stops the iteration.
+func (h *Hash) Do(fn func(key string, value int) bool) {
+	for _, bucket := range h.buckets {
+		for _, entry := range bucket {
