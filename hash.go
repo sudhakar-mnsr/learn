@@ -121,3 +121,11 @@ func (h *Hash) Do(fn func(key string, value int) bool) {
 		}
 	}
 }
+
+// hashKey calculates the bucket index position to use
+// for the specified key.
+func (h *Hash) hashKey(key string) int {
+
+	// Reset the maphash to initial state so we'll get the same
+	// hash value for the same key.
+	h.hash.Reset()
