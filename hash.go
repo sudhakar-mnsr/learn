@@ -91,3 +91,12 @@ func (h *Hash) Delete(key string) error {
 
 			// Remove the entry based on its index position.
 			bucket = removeEntry(bucket, entryIdx)
+			// Replace the existing bucket for the new one.
+			h.buckets[bucketIdx] = bucket
+			return nil
+		}
+	}
+
+	// The key was not found so return the error.
+	return fmt.Errorf("%q not found", key)
+}
