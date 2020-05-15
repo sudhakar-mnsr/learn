@@ -42,3 +42,11 @@ func (h *Hash) Store(key string, value int) {
 		// Compare the keys and if there is a match replace the
 		// existing entry value for the new value.
 		if bucket[idx].key == key {
+			bucket[idx].value = value
+			return
+		}
+	}
+
+	// This key does not exist, so add this new value.
+	h.buckets[idx] = append(bucket, entry{key, value})
+}
