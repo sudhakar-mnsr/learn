@@ -36,3 +36,9 @@ func (h *Hash) Store(key string, value int) {
 
 	// Extract a copy of the bucket from the hash table.
 	bucket := h.buckets[idx]
+	// Iterate over the indexes for the specified bucket.
+	for idx := range bucket {
+
+		// Compare the keys and if there is a match replace the
+		// existing entry value for the new value.
+		if bucket[idx].key == key {
