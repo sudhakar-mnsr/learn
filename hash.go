@@ -57,3 +57,10 @@ func (h *Hash) Retrieve(key string) (int, error) {
 	// For the specified key, identify what bucket in
 	// the slice we need to store the key/value inside of.
 	idx := h.hashKey(key)
+
+	// Iterate over the entries for the specified bucket.
+	for _, entry := range h.buckets[idx] {
+
+		// Compare the keys and if there is a match return
+		// the value associated with the key.
+		if entry.key == key {
