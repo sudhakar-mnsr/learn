@@ -100,3 +100,9 @@ func (h *Hash) Delete(key string) error {
 	// The key was not found so return the error.
 	return fmt.Errorf("%q not found", key)
 }
+
+// Len return the number of elements in the hash. This function currently
+// uses a linear traversal but could be improved with meta-data.
+func (h *Hash) Len() int {
+	sum := 0
+	for _, bucket := range h.buckets {
