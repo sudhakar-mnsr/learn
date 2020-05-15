@@ -19,3 +19,10 @@ type Hash struct {
 	buckets [][]entry
 	hash    maphash.Hash
 }
+
+// New returns a new hash table.
+func New() *Hash {
+	return &Hash{
+		buckets: make([][]entry, numBuckets),
+	}
+}
