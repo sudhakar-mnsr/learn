@@ -26,3 +26,13 @@ func New() *Hash {
 		buckets: make([][]entry, numBuckets),
 	}
 }
+
+// Store adds a value in the hash table based on the key.
+func (h *Hash) Store(key string, value int) {
+
+	// For the specified key, identify what bucket in
+	// the slice we need to store the key/value inside of.
+	idx := h.hashKey(key)
+
+	// Extract a copy of the bucket from the hash table.
+	bucket := h.buckets[idx]
