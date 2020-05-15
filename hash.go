@@ -106,3 +106,7 @@ func (h *Hash) Delete(key string) error {
 func (h *Hash) Len() int {
 	sum := 0
 	for _, bucket := range h.buckets {
+		sum += len(bucket)
+	}
+	return sum
+}
