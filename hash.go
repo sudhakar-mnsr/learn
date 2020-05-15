@@ -71,3 +71,13 @@ func (h *Hash) Retrieve(key string) (int, error) {
 	// The key was not found so return the error.
 	return 0, fmt.Errorf("%q not found", key)
 }
+
+// Delete deletes an entry from the hash table.
+func (h *Hash) Delete(key string) error {
+
+	// For the specified key, identify what bucket in
+	// the slice we need to store the key/value inside of.
+	bucketIdx := h.hashKey(key)
+
+	// Extract a copy of the bucket from the hash table.
+	bucket := h.buckets[bucketIdx]
