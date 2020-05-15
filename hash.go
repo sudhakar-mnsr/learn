@@ -136,3 +136,9 @@ func (h *Hash) hashKey(key string) int {
 
 	// Ask the maphash for its current state which we will
 	// use to calculate the final bucket index.
+	n := h.hash.Sum64()
+
+	// Use the modulu operator to return a value in the range
+	// of our bucket length defined by the const numBuckets.
+	return int(n % numBuckets)
+}
