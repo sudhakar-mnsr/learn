@@ -115,3 +115,9 @@ func (h *Hash) Len() int {
 func (h *Hash) Do(fn func(key string, value int) bool) {
 	for _, bucket := range h.buckets {
 		for _, entry := range bucket {
+			if ok := fn(entry.key, entry.value); !ok {
+				return
+			}
+		}
+	}
+}
