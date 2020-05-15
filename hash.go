@@ -81,3 +81,13 @@ func (h *Hash) Delete(key string) error {
 
 	// Extract a copy of the bucket from the hash table.
 	bucket := h.buckets[bucketIdx]
+
+	// Iterate over the entries for the specified bucket.
+	for entryIdx, entry := range bucket {
+
+		// Compare the keys and if there is a match remove
+		// the entry from the bucket.
+		if entry.key == key {
+
+			// Remove the entry based on its index position.
+			bucket = removeEntry(bucket, entryIdx)
