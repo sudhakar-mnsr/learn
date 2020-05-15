@@ -64,3 +64,10 @@ func (h *Hash) Retrieve(key string) (int, error) {
 		// Compare the keys and if there is a match return
 		// the value associated with the key.
 		if entry.key == key {
+			return entry.value, nil
+		}
+	}
+
+	// The key was not found so return the error.
+	return 0, fmt.Errorf("%q not found", key)
+}
