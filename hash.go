@@ -173,3 +173,11 @@ func reduceAllocation(bucket []entry) []entry {
 	if cap(bucket) < 2*len(bucket) {
 		return bucket
 	}
+
+	// Free memory when the bucket shrinks a lot. If we don't do that,
+	// the underlying bucket array will stay in memory and will be in
+	// the biggest size the bucket ever was
+	newBucket := make([]entry, len(bucket))
+	copy(newBucket, bucket)
+	return newBucket
+}
