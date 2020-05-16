@@ -97,3 +97,9 @@ func TestHash(t *testing.T) {
 				t.Fatalf("\t%s\tTest %d:\tShould be able to see the value has been deleted.", failed, testID)
 			}
 			t.Logf("\t%s\tTest %d:\tShould be able to see the value has been deleted.", succeed, testID)
+
+			k3 := "key3"
+			if _, err = h.Retrieve(k3); err == nil {
+				t.Fatalf("\t%s\tTest %d:\tShould be able to see the key does not exist.", failed, testID)
+			}
+			t.Logf("\t%s\tTest %d:\tShould be able to see the key does not exist.", succeed, testID)
