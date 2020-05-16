@@ -42,3 +42,10 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+func TestHash(t *testing.T) {
+	t.Log("Given the need to test hash functionality.")
+	{
+		testID := 0
+		t.Logf("\tTest %d:\tWhen checking basic hashing operations", testID)
+		{
