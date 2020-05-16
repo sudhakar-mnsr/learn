@@ -92,3 +92,8 @@ func TestHash(t *testing.T) {
 				t.Fatalf("\t%s\tTest %d:\tShould be able to delete a value.", failed, testID)
 			}
 			t.Logf("\t%s\tTest %d:\tShould be able to delete a value.", succeed, testID)
+
+			if _, err := h.Retrieve(k1); err == nil {
+				t.Fatalf("\t%s\tTest %d:\tShould be able to see the value has been deleted.", failed, testID)
+			}
+			t.Logf("\t%s\tTest %d:\tShould be able to see the value has been deleted.", succeed, testID)
