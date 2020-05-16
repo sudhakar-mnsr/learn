@@ -158,3 +158,9 @@ func removeEntry(bucket []entry, idx int) []entry {
 	// an entry was removed. The length needs to be
 	// reduced by 1.
 	bucket = bucket[:len(bucket)-1]
+
+	// Look to see if the current allocation for the
+	// bucket can be reduced due to the amount of
+	// entries removed from this bucket.
+	return reduceAllocation(bucket)
+}
