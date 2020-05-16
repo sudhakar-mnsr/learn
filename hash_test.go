@@ -54,3 +54,10 @@ func TestHash(t *testing.T) {
 			k2, v2 := "key2", 2
 			h.Store(k1, v1)
 			h.Store(k2, v2)
+
+			if h.Len() != 2 {
+				t.Errorf("\t%s\tTest %d:\tShould have the correct number of entries.", failed, testID)
+				t.Fatalf("\t\tTest %d:\tGot %q, Expected %q", testID, h.Len(), 2)
+			}
+			t.Logf("\t%s\tTest %d:\tShould have the correct number of entries.", succeed, testID)
+
