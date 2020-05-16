@@ -49,3 +49,8 @@ func TestHash(t *testing.T) {
 		testID := 0
 		t.Logf("\tTest %d:\tWhen checking basic hashing operations", testID)
 		{
+			h := hash.New()
+			k1, v1 := "key1", 1
+			k2, v2 := "key2", 2
+			h.Store(k1, v1)
+			h.Store(k2, v2)
