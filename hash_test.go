@@ -103,3 +103,10 @@ func TestHash(t *testing.T) {
 				t.Fatalf("\t%s\tTest %d:\tShould be able to see the key does not exist.", failed, testID)
 			}
 			t.Logf("\t%s\tTest %d:\tShould be able to see the key does not exist.", succeed, testID)
+
+			count := 0
+			fn := func(key string, value int) bool {
+				count++
+				return true
+			}
+			h.Do(fn)
