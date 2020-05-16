@@ -164,3 +164,12 @@ func removeEntry(bucket []entry, idx int) []entry {
 	// entries removed from this bucket.
 	return reduceAllocation(bucket)
 }
+
+// reduceAllocation looks to see if memory can be freed to
+// when a bucket has lost a percent of entries.
+func reduceAllocation(bucket []entry) []entry {
+
+	// If the bucket if more than ½ full, do nothing.
+	if cap(bucket) < 2*len(bucket) {
+		return bucket
+	}
