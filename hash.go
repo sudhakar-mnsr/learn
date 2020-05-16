@@ -153,3 +153,8 @@ func removeEntry(bucket []entry, idx int) []entry {
 	// infront of the index and moving them behind the
 	// index specified.
 	copy(bucket[idx:], bucket[idx+1:])
+
+	// Set the proper length for the new slice since
+	// an entry was removed. The length needs to be
+	// reduced by 1.
+	bucket = bucket[:len(bucket)-1]
