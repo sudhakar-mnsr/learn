@@ -72,3 +72,12 @@ func TestHash(t *testing.T) {
 				t.Fatalf("\t\tTest %d:\tGot %q, Expected %q", testID, v, v1)
 			}
 			t.Logf("\t%s\tTest %d:\tShould have the correct value after retrieve.", succeed, testID)
+
+			v1b := 11
+			h.Store(k1, v1b)
+
+			v, err = h.Retrieve(k1)
+			if err != nil {
+				t.Fatalf("\t%s\tTest %d:\tShould be able to retrieve a value.", failed, testID)
+			}
+			t.Logf("\t%s\tTest %d:\tShould be able to retrieve a value.", succeed, testID)
