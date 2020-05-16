@@ -61,3 +61,8 @@ func TestHash(t *testing.T) {
 			}
 			t.Logf("\t%s\tTest %d:\tShould have the correct number of entries.", succeed, testID)
 
+			v, err := h.Retrieve(k1)
+			if err != nil {
+				t.Fatalf("\t%s\tTest %d:\tShould be able to retrieve a value.", failed, testID)
+			}
+			t.Logf("\t%s\tTest %d:\tShould be able to retrieve a value.", succeed, testID)
