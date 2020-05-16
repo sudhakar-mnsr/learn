@@ -182,10 +182,3 @@ func reduceAllocation(bucket []entry) []entry {
 	return newBucket
 }
 
-package hash_test
-
-import (
-	"testing"
-
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/hash"
-)
