@@ -110,3 +110,12 @@ func TestHash(t *testing.T) {
 				return true
 			}
 			h.Do(fn)
+			if count != h.Len() {
+				t.Errorf("\t%s\tTest %d:\tShould be able to run Do %d times.", failed, testID, count)
+				t.Fatalf("\t\tTest %d:\tGot %q, Expected %q", testID, v, v1)
+				t.Fatalf("Do ran %d times, expected %d", count, h.Len())
+			}
+			t.Logf("\t%s\tTest %d:\tShould be able to run Do %d times.", succeed, testID, count)
+		}
+	}
+}
