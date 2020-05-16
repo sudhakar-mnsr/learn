@@ -31,3 +31,11 @@
 	// Do calls fn on each key/value. If fn return false stops the iteration.
 	func (h *Hash) Do(fn func(key string, value int) bool)
 */
+
+package hash_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/hash"
+)
