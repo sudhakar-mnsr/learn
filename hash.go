@@ -145,3 +145,11 @@ func (h *Hash) hashKey(key string) int {
 
 // removeEntry performs the physical act of removing an
 // entry from a bucket,
+
+func removeEntry(bucket []entry, idx int) []entry {
+
+	// https://github.com/golang/go/wiki/SliceTricks
+	// Cut out the entry by taking all entries from
+	// infront of the index and moving them behind the
+	// index specified.
+	copy(bucket[idx:], bucket[idx+1:])
