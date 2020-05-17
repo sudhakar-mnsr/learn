@@ -29,3 +29,13 @@ func (l *List) Add(data string) *Node {
 		Data: data,
 		prev: l.last,
 	}
+
+	// Increment the count for the new node.
+	l.Count++
+
+	// If this is the first node, attach it.
+	if l.first == nil && l.last == nil {
+		l.first = &n
+		l.last = &n
+		return &n
+	}
