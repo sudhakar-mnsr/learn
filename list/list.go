@@ -5,3 +5,10 @@ import (
 	"fmt"
 	"strings"
 )
+
+// Node represents the data being stored.
+type Node struct {
+	Data string
+	next *Node
+	prev *Node
+}
