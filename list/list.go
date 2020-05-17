@@ -137,3 +137,10 @@ func (l *List) Remove(data string) (*Node, error) {
 
 	return n, nil
 }
+
+// Operate accepts a function that takes a node and calls
+// the specified function for every node found.
+func (l *List) Operate(f func(n *Node) error) error {
+	n := l.first
+	for n != nil {
+		if err := f(n); err != nil {
