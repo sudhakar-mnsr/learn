@@ -12,3 +12,10 @@ type Node struct {
 	next *Node
 	prev *Node
 }
+
+// List represents a list of nodes.
+type List struct {
+	Count int
+	first *Node
+	last  *Node
+}
