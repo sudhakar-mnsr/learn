@@ -48,3 +48,12 @@ func (l *List) Add(data string) *Node {
 	// nil <- Prev.[Node0].Next <-> Prev.[Node1].Next <-> Prev.[Node2].Next <-> Prev.[NEW].Next -> nil
 
 	// Fix the fact the Last pointer is not pointing to the true end of the list.
+
+	l.last = &n
+
+	//              First                                       Last                 Last
+	//                V                                           V  ----> MOVE ---->  V
+	// nil <- Prev.[Node0].Next <-> Prev.[Node1].Next <-> Prev.[Node2].Next <-> Prev.[NEW].Next -> nil
+
+	return &n
+}
