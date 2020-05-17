@@ -183,3 +183,13 @@ func (l *List) AddSort(data string) *Node {
 			n = n.next
 			continue
 		}
+
+		// Create the new node and place it before the
+		// current node.
+		new := Node{
+			Data: data,
+			next: n,
+			prev: n.prev,
+		}
+
+		l.Count++
