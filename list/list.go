@@ -163,3 +163,12 @@ func (l *List) OperateReverse(f func(n *Node) error) error {
 	}
 	return nil
 }
+
+// AddSort adds a node based on lexical ordering.
+func (l *List) AddSort(data string) *Node {
+
+	// If the list was empty add the data
+	// as the first node.
+	if l.first == nil {
+		return l.Add(data)
+	}
