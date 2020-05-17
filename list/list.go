@@ -95,3 +95,9 @@ func (l *List) AddFront(data string) *Node {
 
 	return &n
 }
+
+// Find traverses the list looking for the specified data.
+func (l *List) Find(data string) (*Node, error) {
+	n := l.first
+	for n != nil {
+		if n.Data == data {
