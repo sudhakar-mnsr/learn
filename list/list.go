@@ -120,3 +120,11 @@ func (l *List) FindReverse(data string) (*Node, error) {
 	}
 	return nil, fmt.Errorf("unable to locate %q in list", data)
 }
+
+// Remove traverses the list looking for the specified data
+// and if found, removes the node from the list.
+func (l *List) Remove(data string) (*Node, error) {
+	n, err := l.Find(data)
+	if err != nil {
+		return nil, err
+	}
