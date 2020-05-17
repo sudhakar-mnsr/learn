@@ -107,3 +107,10 @@ func (l *List) Find(data string) (*Node, error) {
 	}
 	return nil, fmt.Errorf("unable to locate %q in list", data)
 }
+
+// FindReverse traverses the list in the opposite direction
+// looking for the specified data.
+func (l *List) FindReverse(data string) (*Node, error) {
+	n := l.last
+	for n != nil {
+		if n.Data == data {
