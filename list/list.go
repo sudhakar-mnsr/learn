@@ -86,3 +86,12 @@ func (l *List) AddFront(data string) *Node {
 	// nil <- Prev.[NEW].Next <-> Prev.[Node2].Next <-> Prev.[Node1].Next <-> Prev.[Node0].Next -> nil
 
 	// Fix the fact the First pointer is not pointing to the true beginning of the list.
+
+	l.first = &n
+
+	//             First                First                                       Last
+	//               V  <----> MOVE <---- V                                           V
+	// nil <- Prev.[NEW].Next <-> Prev.[Node2].Next <-> Prev.[Node1].Next <-> Prev.[Node0].Next -> nil
+
+	return &n
+}
