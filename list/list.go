@@ -172,3 +172,14 @@ func (l *List) AddSort(data string) *Node {
 	if l.first == nil {
 		return l.Add(data)
 	}
+
+	// Traverse the list looking for placement.
+	n := l.first
+	for n != nil {
+
+		// If this data is greater than the current node,
+		// keep traversing until it is less than or equal.
+		if strings.Compare(data, n.Data) > 0 {
+			n = n.next
+			continue
+		}
