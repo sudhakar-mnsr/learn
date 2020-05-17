@@ -157,3 +157,9 @@ func (l *List) OperateReverse(f func(n *Node) error) error {
 	n := l.last
 	for n != nil {
 		if err := f(n); err != nil {
+			return err
+		}
+		n = n.prev
+	}
+	return nil
+}
