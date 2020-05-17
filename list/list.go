@@ -128,3 +128,12 @@ func (l *List) Remove(data string) (*Node, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// Detach the node by linking the previous node's next
+	// pointer to the node in front of the one being removed.
+	n.prev.next = n.next
+	n.next.prev = n.prev
+	l.Count--
+
+	return n, nil
+}
