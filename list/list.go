@@ -19,3 +19,13 @@ type List struct {
 	first *Node
 	last  *Node
 }
+
+// Add places a new node at the end of the list.
+func (l *List) Add(data string) *Node {
+
+	// When creating the new node, have the new node
+	// point to the last node in the list.
+	n := Node{
+		Data: data,
+		prev: l.last,
+	}
