@@ -101,3 +101,9 @@ func (l *List) Find(data string) (*Node, error) {
 	n := l.first
 	for n != nil {
 		if n.Data == data {
+			return n, nil
+		}
+		n = n.next
+	}
+	return nil, fmt.Errorf("unable to locate %q in list", data)
+}
