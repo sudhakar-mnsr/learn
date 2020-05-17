@@ -150,3 +150,10 @@ func (l *List) Operate(f func(n *Node) error) error {
 	}
 	return nil
 }
+
+// OperateReverse accepts a function that takes a node and
+// calls the specified function for every node found.
+func (l *List) OperateReverse(f func(n *Node) error) error {
+	n := l.last
+	for n != nil {
+		if err := f(n); err != nil {
