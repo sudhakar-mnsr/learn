@@ -57,3 +57,13 @@ func (l *List) Add(data string) *Node {
 
 	return &n
 }
+
+// AddFront places a new node at the front of the list.
+func (l *List) AddFront(data string) *Node {
+
+	// When creating the new node, have the new node
+	// point to the first node in the list.
+	n := Node{
+		Data: data,
+		next: l.first,
+	}
