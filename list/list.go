@@ -144,3 +144,9 @@ func (l *List) Operate(f func(n *Node) error) error {
 	n := l.first
 	for n != nil {
 		if err := f(n); err != nil {
+			return err
+		}
+		n = n.next
+	}
+	return nil
+}
