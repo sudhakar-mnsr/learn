@@ -26,3 +26,15 @@
 	// FindReverse traverses the list in the opposite direction
 	// looking for the specified data.
 	func (l *List) FindReverse(data string) (*Node, error)
+	// Remove traverses the list looking for the specified data
+	// and if found, removes the node from the list.
+	func (l *List) Remove(data string) (*Node, error)
+	// Operate accepts a function that takes a node and calls
+	// the specified function for every node found.
+	func (l *List) Operate(f func(n *Node) error) error
+	// OperateReverse accepts a function that takes a node and
+	// calls the specified function for every node found.
+	func (l *List) OperateReverse(f func(n *Node) error) error
+	// AddSort adds a node based on lexical ordering.
+	func (l *List) AddSort(data string) *Node
+*/
