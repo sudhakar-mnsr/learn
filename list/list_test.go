@@ -52,3 +52,11 @@ const succeed = "\u2713"
 const failed = "\u2717"
 
 // TestAdd validates the Add functionality.
+
+func TestAdd(t *testing.T) {
+	t.Log("Given the need to test Add functionality.")
+	{
+		const nodes = 5
+		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
+		{
+			var l list.List
