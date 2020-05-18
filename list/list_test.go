@@ -47,3 +47,8 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/list"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
+
+// TestAdd validates the Add functionality.
