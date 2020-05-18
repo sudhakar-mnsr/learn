@@ -38,3 +38,12 @@
 	// AddSort adds a node based on lexical ordering.
 	func (l *List) AddSort(data string) *Node
 */
+
+package list_test
+
+import (
+	"fmt"
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/list"
+)
