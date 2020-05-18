@@ -207,3 +207,14 @@ func (l *List) AddSort(data string) *Node {
 		if n.prev != nil {
 			n.prev.next = &new
 		}
+
+		// The current previous points must point back
+		// to this new node.
+		n.prev = &new
+
+		return n
+	}
+
+	// This must be the largest string, so add to the end.
+	return l.Add(data)
+}
