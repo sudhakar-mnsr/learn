@@ -199,3 +199,11 @@ func (l *List) AddSort(data string) *Node {
 		if l.first == n {
 			l.first = &new
 		}
+
+
+		// If the current node points to a previous node,
+		// then that previous nodes next must point to the
+		// new node.
+		if n.prev != nil {
+			n.prev.next = &new
+		}
