@@ -94,3 +94,11 @@ func TestAdd(t *testing.T) {
 		}
 	}
 }
+
+// TestAddFront validates the AddFront functionality.
+func TestAddFront(t *testing.T) {
+	t.Log("Given the need to test AddFront functionality.")
+	{
+		const nodes = 5
+		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
+		{
