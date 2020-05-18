@@ -15,3 +15,14 @@
 		first *Node
 		last  *Node
 	}
+
+
+	// Add places a new node at the end of the list.
+	func (l *List) Add(data string) *Node
+	// AddFront places a new node at the front of the list.
+	func (l *List) AddFront(data string) *Node
+	// Find traverses the list looking for the specified data.
+	func (l *List) Find(data string) (*Node, error)
+	// FindReverse traverses the list in the opposite direction
+	// looking for the specified data.
+	func (l *List) FindReverse(data string) (*Node, error)
