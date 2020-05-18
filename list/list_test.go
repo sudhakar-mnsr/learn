@@ -85,3 +85,12 @@ func TestAdd(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the list : %v", failed, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to operate on the list.", succeed)
+
+			if nodeData != orgNodeData {
+				t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in order.", failed, nodes)
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", nodeData, orgNodeData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in order.", succeed, nodes)
+		}
+	}
+}
