@@ -110,3 +110,10 @@ func TestAddFront(t *testing.T) {
 				orgNodeData += data
 				l.AddFront(data)
 			}
+
+
+			if l.Count != nodes {
+				t.Logf("\t%s\tTest 0:\tShould be able to add %d nodes.", failed, nodes)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", l.Count, nodes)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to add %d nodes.", succeed, nodes)
