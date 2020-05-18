@@ -193,3 +193,9 @@ func (l *List) AddSort(data string) *Node {
 		}
 
 		l.Count++
+
+		// If this node is now to be the first,
+		// fix the first pointer.
+		if l.first == n {
+			l.first = &new
+		}
