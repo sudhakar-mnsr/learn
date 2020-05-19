@@ -285,3 +285,12 @@ sortedNodeData := "applegrapekiwimangoplum"
 				t.Fatalf("\t%s\tTest 0:\tShould be able to operate reverse on the list : %v", failed, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to operate reverse on the list.", succeed)
+			sortedNodeData = "plummangokiwigrapeapple"
+			if sortedNodeData != nodeData {
+				t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in reverse sort order.", failed, len(orgNodeData))
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", nodeData, sortedNodeData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in reverse sort order.", succeed, len(orgNodeData))
+		}
+	}
+}
