@@ -230,3 +230,12 @@ func TestRemove(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", n.Data, data)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to remove %q.", succeed, data)
+
+			n, err = l.Find(data)
+			if err == nil {
+				t.Fatalf("\t%s\tTest 0:\tShould not be able to call Find without an error.", failed)
+			}
+			t.Logf("\t%s\tTest 0:\tShould not be able to call Find without an error.", succeed)
+		}
+	}
+}
