@@ -146,3 +146,11 @@ func TestFind(t *testing.T) {
 		const nodes = 5
 		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
 		{
+			var l list.List
+
+			var orgNodeData string
+			for i := 0; i < nodes; i++ {
+				data := fmt.Sprintf("Node%d", i)
+				orgNodeData = data + orgNodeData
+				l.AddFront(data)
+			}
