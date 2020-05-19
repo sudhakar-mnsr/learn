@@ -247,3 +247,8 @@ func TestAddSort(t *testing.T) {
 		orgNodeData := []string{"grape", "apple", "plum", "mango", "kiwi"}
 		t.Logf("\tTest 0:\tWhen adding %d nodes", len(orgNodeData))
 		{
+			var l list.List
+
+			for _, data := range orgNodeData {
+				l.AddSort(data)
+			}
