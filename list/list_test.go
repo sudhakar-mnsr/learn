@@ -275,3 +275,8 @@ sortedNodeData := "applegrapekiwimangoplum"
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in sort order.", succeed, len(orgNodeData))
 
+			nodeData = ""
+			f = func(n *list.Node) error {
+				nodeData += n.Data
+				return nil
+			}
