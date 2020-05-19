@@ -217,3 +217,10 @@ func TestRemove(t *testing.T) {
 				orgNodeData = data + orgNodeData
 				l.AddFront(data)
 			}
+
+			data := "Node3"
+			n, err := l.Remove(data)
+			if err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to call Remove with no error : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to call Remove with no error.", succeed)
