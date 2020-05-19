@@ -138,3 +138,11 @@ func TestAddFront(t *testing.T) {
 		}
 	}
 }
+
+// TestFind validates the Find functionality.
+func TestFind(t *testing.T) {
+	t.Log("Given the need to test Find functionality.")
+	{
+		const nodes = 5
+		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
+		{
