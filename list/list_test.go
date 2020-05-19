@@ -263,3 +263,7 @@ func TestAddSort(t *testing.T) {
 				nodeData += n.Data
 				return nil
 			}
+			if err := l.Operate(f); err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the list : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to operate on the list.", succeed)
