@@ -280,3 +280,8 @@ sortedNodeData := "applegrapekiwimangoplum"
 				nodeData += n.Data
 				return nil
 			}
+
+			if err := l.OperateReverse(f); err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to operate reverse on the list : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to operate reverse on the list.", succeed)
