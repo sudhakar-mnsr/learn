@@ -224,3 +224,9 @@ func TestRemove(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould be able to call Remove with no error : %v", failed, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to call Remove with no error.", succeed)
+
+			if n.Data != data {
+				t.Logf("\t%s\tTest 0:\tShould be able to remove %q : %v", failed, data, err)
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", n.Data, data)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to remove %q.", succeed, data)
