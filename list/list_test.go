@@ -169,3 +169,11 @@ func TestFind(t *testing.T) {
 		}
 	}
 }
+
+// TestFindReverse validates the FindReverse functionality.
+func TestFindReverse(t *testing.T) {
+	t.Log("Given the need to test FindReverse functionality.")
+	{
+		const nodes = 5
+		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
+		{
