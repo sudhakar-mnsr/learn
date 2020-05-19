@@ -252,3 +252,8 @@ func TestAddSort(t *testing.T) {
 			for _, data := range orgNodeData {
 				l.AddSort(data)
 			}
+			if l.Count != len(orgNodeData) {
+				t.Logf("\t%s\tTest 0:\tShould be able to add %d nodes.", failed, len(orgNodeData))
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", l.Count, len(orgNodeData))
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to add %d nodes.", succeed, len(orgNodeData))
