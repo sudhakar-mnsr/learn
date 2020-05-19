@@ -267,3 +267,11 @@ func TestAddSort(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the list : %v", failed, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to operate on the list.", succeed)
+
+sortedNodeData := "applegrapekiwimangoplum"
+			if sortedNodeData != nodeData {
+				t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in sort order.", failed, len(orgNodeData))
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", nodeData, sortedNodeData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d nodes in sort order.", succeed, len(orgNodeData))
+
