@@ -257,3 +257,9 @@ func TestAddSort(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", l.Count, len(orgNodeData))
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to add %d nodes.", succeed, len(orgNodeData))
+
+			var nodeData string
+			f := func(n *list.Node) error {
+				nodeData += n.Data
+				return nil
+			}
