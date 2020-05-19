@@ -154,3 +154,9 @@ func TestFind(t *testing.T) {
 				orgNodeData = data + orgNodeData
 				l.AddFront(data)
 			}
+			data := "Node3"
+			n, err := l.Find(data)
+			if err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to call Find with no error : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to call Find with no error.", succeed)
