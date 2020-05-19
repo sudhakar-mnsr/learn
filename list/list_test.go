@@ -239,3 +239,11 @@ func TestRemove(t *testing.T) {
 		}
 	}
 }
+
+// TestAddSort validates the AddSort functionality.
+func TestAddSort(t *testing.T) {
+	t.Log("Given the need to test AddSort functionality.")
+	{
+		orgNodeData := []string{"grape", "apple", "plum", "mango", "kiwi"}
+		t.Logf("\tTest 0:\tWhen adding %d nodes", len(orgNodeData))
+		{
