@@ -201,3 +201,11 @@ func TestFindReverse(t *testing.T) {
 		}
 	}
 }
+
+// TestRemove validates the Remove functionality.
+func TestRemove(t *testing.T) {
+	t.Log("Given the need to test Remove functionality.")
+	{
+		const nodes = 5
+		t.Logf("\tTest 0:\tWhen adding %d nodes", nodes)
+		{
