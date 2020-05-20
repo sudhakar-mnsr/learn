@@ -22,3 +22,12 @@ func String(str string) string {
 		r := runes[beg]
 		runes[beg] = runes[end]
 		runes[end] = r
+
+		// Move the indexes closer to each other
+		// working towards the middle of the collection.
+		beg = beg + 1
+		end = end - 1
+	}
+
+	return string(runes)
+}
