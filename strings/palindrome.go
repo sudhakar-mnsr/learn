@@ -9,3 +9,8 @@ func Is(input string) bool {
 	if input == "" || len(input) == 1 {
 		return true
 	}
+
+	// Create a reverse string from input string.
+	rev := reverse.String(input)
+
+	// Check if input and rev strings are equal.
