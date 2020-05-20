@@ -23,3 +23,9 @@ func TestReverseString(t *testing.T) {
 		input    string
 		expected string
 	}{
+		{"odd", "Hello World", "dlroW olleH"},
+		{"even", "go", "og"},
+		{"chinese", "汉字", "字汉"},
+
+		// {"tworunes", "é́́", "é́́"}, -- Need to get this to work.
+	}
