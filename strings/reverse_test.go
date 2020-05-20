@@ -29,3 +29,9 @@ func TestReverseString(t *testing.T) {
 
 		// {"tworunes", "é́́", "é́́"}, -- Need to get this to work.
 	}
+	t.Log("Given the need to test reverse string functionality.")
+	{
+		for testID, test := range tt {
+			tf := func(t *testing.T) {
+				t.Logf("\tTest %d:\tWhen checking the word %q.", testID, test.input)
+				{
