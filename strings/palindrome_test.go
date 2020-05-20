@@ -43,3 +43,8 @@ func TestIsPalindrome(t *testing.T) {
 							t.Fatalf("\t%s\tTest %d:\tShould have seen the string was a palindrome.", failed, testID)
 						}
 						t.Logf("\t%s\tTest %d:\tShould have seen the string was a palindrome.", succeed, testID)
+					case false:
+						if got {
+							t.Fatalf("\t%s\tTest %d:\tShould have seen the string was not a palindrome.", failed, testID)
+						}
+						t.Logf("\t%s\tTest %d:\tShould have seen the string was not a palindrome.", succeed, testID)
