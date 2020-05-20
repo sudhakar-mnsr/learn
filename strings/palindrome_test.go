@@ -5,3 +5,12 @@
 	// Is checks if a string is a Palindrome.
 	func Is(input string) bool
 */
+
+package palindrome_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/palindrome"
+)
+
