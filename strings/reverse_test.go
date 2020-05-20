@@ -5,3 +5,11 @@
 	// String takes the specified string and reverses it.
 	func String(str string) string
 */
+
+package reverse_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/reverse"
+)
