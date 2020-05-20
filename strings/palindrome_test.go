@@ -23,3 +23,10 @@ func TestIsPalindrome(t *testing.T) {
 		input   string
 		success bool
 	}{
+		{"empty", "", true},
+		{"one", "G", true},
+		{"odd", "bob", true},
+		{"even", "otto", true},
+		{"chinese", "汉字汉", true},
+		{"not", "test", false},
+	}
