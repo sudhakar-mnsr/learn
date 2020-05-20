@@ -36,3 +36,6 @@ func TestIsPalindrome(t *testing.T) {
 			tf := func(t *testing.T) {
 				t.Logf("\tTest %d:\tWhen checking the word %q.", testID, test.input)
 				{
+					got := palindrome.Is(test.input)
+					switch test.success {
+					case true:
