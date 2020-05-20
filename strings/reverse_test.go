@@ -13,3 +13,6 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/reverse"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
