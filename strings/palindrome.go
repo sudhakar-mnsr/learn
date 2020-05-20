@@ -14,3 +14,9 @@ func Is(input string) bool {
 	rev := reverse.String(input)
 
 	// Check if input and rev strings are equal.
+	if input == rev {
+		return true
+	}
+
+	return false
+}
