@@ -30,3 +30,9 @@ func TestIsPalindrome(t *testing.T) {
 		{"chinese", "汉字汉", true},
 		{"not", "test", false},
 	}
+	t.Log("Given the need to test palindrome functionality.")
+	{
+		for testID, test := range tt {
+			tf := func(t *testing.T) {
+				t.Logf("\tTest %d:\tWhen checking the word %q.", testID, test.input)
+				{
