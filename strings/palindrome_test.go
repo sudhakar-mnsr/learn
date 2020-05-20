@@ -39,3 +39,7 @@ func TestIsPalindrome(t *testing.T) {
 					got := palindrome.Is(test.input)
 					switch test.success {
 					case true:
+						if !got {
+							t.Fatalf("\t%s\tTest %d:\tShould have seen the string was a palindrome.", failed, testID)
+						}
+						t.Logf("\t%s\tTest %d:\tShould have seen the string was a palindrome.", succeed, testID)
