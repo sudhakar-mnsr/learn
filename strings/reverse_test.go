@@ -35,3 +35,8 @@ func TestReverseString(t *testing.T) {
 			tf := func(t *testing.T) {
 				t.Logf("\tTest %d:\tWhen checking the word %q.", testID, test.input)
 				{
+					got := reverse.String(test.input)
+					if got != test.expected {
+						t.Logf("\t%s\tTest %d:\tShould have gotten back the string reversed.", failed, testID)
+						t.Fatalf("\t\tTest %d:\tGot %q, Expected %q", testID, got, test.expected)
+					}
