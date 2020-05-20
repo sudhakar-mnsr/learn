@@ -16,3 +16,10 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+func TestReverseString(t *testing.T) {
+	tt := []struct {
+		name     string
+		input    string
+		expected string
+	}{
