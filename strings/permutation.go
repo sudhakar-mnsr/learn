@@ -19,3 +19,7 @@ func Is(str1, str2 string) bool {
 	if len(str1) != len(str2) {
 		return false
 	}
+
+	// Convert each string into a collection of runes.
+	s1 := []rune(str1)
+	s2 := []rune(str2)
