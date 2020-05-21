@@ -16,3 +16,11 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+func TestIsPermutation(t *testing.T) {
+	tt := []struct {
+		name    string
+		input   string
+		input2  string
+		success bool
+	}{
