@@ -1,6 +1,6 @@
 package palindrome
 
-import "github.com/sudhakarmnsr/learn/strings/reverse"
+import "github.com/sudhakar-mnsr/learn/strings/reverse"
 
 // Is checks if a string is a Palindrome.
 func Is(input string) bool {
