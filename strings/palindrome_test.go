@@ -11,7 +11,7 @@ package palindrome_test
 import (
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/palindrome"
+	"github.com/sudhakarmnsr/learn/strings/palindrome"
 )
 
 const succeed = "\u2713"
