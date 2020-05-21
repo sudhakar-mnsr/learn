@@ -11,7 +11,7 @@ package permutation_test
 import (
 	"testing"
 
-	"github.com/sudhakarmnsr/learn/strings/permutation"
+	"github.com/sudhakar-mnsr/learn/strings/permutation"
 )
 
 const succeed = "\u2713"

@@ -11,7 +11,7 @@ package reverse_test
 import (
 	"testing"
 
-	"github.com/sudhakarmnsr/learn/strings/reverse"
+	"github.com/sudhakar-mnsr/learn/strings/reverse"
 )
 
 const succeed = "\u2713"
