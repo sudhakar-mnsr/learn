@@ -27,3 +27,8 @@ func Is(str1, str2 string) bool {
 	// Sort each collection of runes.
 	sort.Sort(RuneSlice(s1))
 	sort.Sort(RuneSlice(s2))
+
+	// Convert the collection of runes back to a string
+	// and compare.
+	return string(s1) == string(s2)
+}
