@@ -35,3 +35,7 @@ func TestIsPermutation(t *testing.T) {
 			tf := func(t *testing.T) {
 				t.Logf("\tTest %d:\tWhen checking the words %q and %q.", testID, test.input, test.input2)
 				{
+					got := permutation.Is(test.input, test.input2)
+					switch test.success {
+					case true:
+
