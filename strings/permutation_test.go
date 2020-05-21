@@ -38,4 +38,7 @@ func TestIsPermutation(t *testing.T) {
 					got := permutation.Is(test.input, test.input2)
 					switch test.success {
 					case true:
-
+						if !got {
+							t.Fatalf("\t%s\tTest %d:\tShould have seen the string was a permutation.", failed, testID)
+						}
+						t.Logf("\t%s\tTest %d:\tShould have seen the string was a permutation.", succeed, testID)
