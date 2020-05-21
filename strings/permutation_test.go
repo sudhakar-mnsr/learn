@@ -5,3 +5,11 @@
 	// Is check if two strings are permutations.
 	func Is(str1, str2 string) bool
 */
+
+package permutation_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/permutation"
+)
