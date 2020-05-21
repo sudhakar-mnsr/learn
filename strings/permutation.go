@@ -23,3 +23,7 @@ func Is(str1, str2 string) bool {
 	// Convert each string into a collection of runes.
 	s1 := []rune(str1)
 	s2 := []rune(str2)
+
+	// Sort each collection of runes.
+	sort.Sort(RuneSlice(s1))
+	sort.Sort(RuneSlice(s2))
