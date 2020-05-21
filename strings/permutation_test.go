@@ -11,7 +11,7 @@ package permutation_test
 import (
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/strings/permutation"
+	"github.com/sudhakarmnsr/learn/strings/permutation"
 )
 
 const succeed = "\u2713"
