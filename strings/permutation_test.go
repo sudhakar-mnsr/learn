@@ -24,3 +24,8 @@ func TestIsPermutation(t *testing.T) {
 		input2  string
 		success bool
 	}{
+		{"empty", "", "", true},
+		{"reverse", "god", "dog", true},
+		{"diffsize", "god", "do", false},
+		{"binary", "1001", "0110", true},
+	}
