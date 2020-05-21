@@ -47,3 +47,10 @@ func TestIsPermutation(t *testing.T) {
 							t.Fatalf("\t%s\tTest %d:\tShould have seen the string was not a permutation.", failed, testID)
 						}
 						t.Logf("\t%s\tTest %d:\tShould have seen the string was not a permutation.", succeed, testID)
+					}
+				}
+			}
+			t.Run(test.name, tf)
+		}
+	}
+}
