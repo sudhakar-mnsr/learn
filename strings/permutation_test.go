@@ -29,3 +29,9 @@ func TestIsPermutation(t *testing.T) {
 		{"diffsize", "god", "do", false},
 		{"binary", "1001", "0110", true},
 	}
+	t.Log("Given the need to test permutation functionality.")
+	{
+		for testID, test := range tt {
+			tf := func(t *testing.T) {
+				t.Logf("\tTest %d:\tWhen checking the words %q and %q.", testID, test.input, test.input2)
+				{
