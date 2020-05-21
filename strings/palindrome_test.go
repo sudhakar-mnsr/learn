@@ -11,7 +11,7 @@ package palindrome_test
 import (
 	"testing"
 
-	"github.com/sudhakarmnsr/learn/strings/palindrome"
+	"github.com/sudhakar-mnsr/learn/strings/palindrome"
 )
 
 const succeed = "\u2713"
