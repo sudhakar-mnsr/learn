@@ -23,3 +23,10 @@ func New(cap int) (*Queue, error) {
 	if cap <= 0 {
 		return nil, errors.New("invalid capacity")
 	}
+	q := Queue{
+		front: 0,
+		end:   0,
+		data:  make([]*Data, cap),
+	}
+	return &q, nil
+}
