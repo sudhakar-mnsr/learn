@@ -44,3 +44,12 @@ func (q *Queue) Enqueue(data *Data) error {
 		q.front == len(q.data) && q.end == 0 {
 		return errors.New("queue at capacity")
 	}
+
+	switch {
+	case q.front == len(q.data):
+
+		// If we are at the end of the capacity, then
+		// circle back to the beginning of the capacity by
+		// moving the front pointer to the beginning.
+		q.front = 0
+		q.data[q.front] = data
