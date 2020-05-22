@@ -60,3 +60,7 @@ func (q *Queue) Enqueue(data *Data) error {
 		q.data[q.front] = data
 		q.front++
 	}
+	q.Count++
+
+	return nil
+}
