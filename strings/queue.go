@@ -107,3 +107,7 @@ func (q *Queue) Operate(f func(d *Data) error) error {
 		if end == q.front {
 			break
 		}
+
+		if end == len(q.data) {
+			end = 0
+		}
