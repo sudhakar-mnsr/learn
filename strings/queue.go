@@ -98,3 +98,12 @@ func (q *Queue) Dequeue() (*Data, error) {
 
 	return data, nil
 }
+
+// Operate accepts a function that takes data and calls
+// the specified function for every piece of data found.
+func (q *Queue) Operate(f func(d *Data) error) error {
+	end := q.end
+	for {
+		if end == q.front {
+			break
+		}
