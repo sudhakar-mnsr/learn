@@ -80,3 +80,9 @@ func (q *Queue) Dequeue() (*Data, error) {
 	var data *Data
 	switch {
 	case q.end == len(q.data):
+
+		// If we are at the end of the capacity, then
+		// circle back to the beginning of the capacity by
+		// moving the end pointer to the beginning.
+		q.end = 0
+		data = q.data[q.end]
