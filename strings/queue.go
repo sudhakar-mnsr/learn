@@ -72,3 +72,7 @@ func (q *Queue) Dequeue() (*Data, error) {
 	// queue is empty
 	//  EF - (Empty)
 	// [  ][ ][ ]
+
+	if q.front == q.end {
+		return nil, errors.New("queue is empty")
+	}
