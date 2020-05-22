@@ -115,3 +115,7 @@ func (q *Queue) Operate(f func(d *Data) error) error {
 		if err := f(q.data[end]); err != nil {
 			return err
 		}
+		end++
+	}
+	return nil
+}
