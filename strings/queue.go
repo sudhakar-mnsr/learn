@@ -17,3 +17,9 @@ type Queue struct {
 	front int
 	end   int
 }
+
+// New returns a queue with a set capacity.
+func New(cap int) (*Queue, error) {
+	if cap <= 0 {
+		return nil, errors.New("invalid capacity")
+	}
