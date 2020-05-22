@@ -93,3 +93,8 @@ func (q *Queue) Dequeue() (*Data, error) {
 		data = q.data[q.end]
 		q.end++
 	}
+
+	q.Count--
+
+	return data, nil
+}
