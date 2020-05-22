@@ -40,3 +40,7 @@ func (q *Queue) Enqueue(data *Data) error {
 	// is at the beginning of the capacity, the queue is full.
 	//  F  E  - Enqueue (Full) |  E        F - Enqueue (Full)
 	// [A][B][C]               | [A][B][C]
+	if q.front+1 == q.end ||
+		q.front == len(q.data) && q.end == 0 {
+		return errors.New("queue at capacity")
+	}
