@@ -53,3 +53,10 @@ func (q *Queue) Enqueue(data *Data) error {
 		// moving the front pointer to the beginning.
 		q.front = 0
 		q.data[q.front] = data
+	default:
+
+		// Add the data to the current front position
+		// and then move the front pointer.
+		q.data[q.front] = data
+		q.front++
+	}
