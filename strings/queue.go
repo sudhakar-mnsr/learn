@@ -76,3 +76,7 @@ func (q *Queue) Dequeue() (*Data, error) {
 	if q.front == q.end {
 		return nil, errors.New("queue is empty")
 	}
+
+	var data *Data
+	switch {
+	case q.end == len(q.data):
