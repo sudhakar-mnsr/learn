@@ -64,3 +64,11 @@ func (q *Queue) Enqueue(data *Data) error {
 
 	return nil
 }
+
+// Dequeue removes data into the queue if data exists.
+func (q *Queue) Dequeue() (*Data, error) {
+
+	// If the front and end are the same, the
+	// queue is empty
+	//  EF - (Empty)
+	// [  ][ ][ ]
