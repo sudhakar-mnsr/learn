@@ -5,3 +5,8 @@ import (
 	"errors"
 )
 
+// Data represents what is being stored on the queue.
+type Data struct {
+	Name string
+}
+
