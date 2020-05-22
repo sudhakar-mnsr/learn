@@ -86,3 +86,10 @@ func (q *Queue) Dequeue() (*Data, error) {
 		// moving the end pointer to the beginning.
 		q.end = 0
 		data = q.data[q.end]
+	default:
+
+		// Remove the data from the current end position
+		// and then move the end pointer.
+		data = q.data[q.end]
+		q.end++
+	}
