@@ -30,3 +30,13 @@ func New(cap int) (*Queue, error) {
 	}
 	return &q, nil
 }
+
+// Enqueue inserts data into the queue if there
+// is available capacity.
+func (q *Queue) Enqueue(data *Data) error {
+
+	// If the front of the queue is right behind the end or
+	// if the front is at the end of the capacity and the end
+	// is at the beginning of the capacity, the queue is full.
+	//  F  E  - Enqueue (Full) |  E        F - Enqueue (Full)
+	// [A][B][C]               | [A][B][C]
