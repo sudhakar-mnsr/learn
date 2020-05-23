@@ -46,3 +46,9 @@ func TestNew(t *testing.T) {
 	{
 		t.Logf("\tTest 0:\tWhen creating a new queue with invalid capacity.")
 		{
+			var cap int
+			_, err := queue.New(cap)
+			if err == nil {
+				t.Fatalf("\t%s\tTest 0:\tShould not be able to create a queue for %d items : %v", failed, cap, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould not be able to create a queue for %d items.", succeed, cap)
