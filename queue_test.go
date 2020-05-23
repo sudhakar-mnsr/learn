@@ -63,3 +63,11 @@ func TestNew(t *testing.T) {
 		}
 	}
 }
+
+// TestEnqueue validates the Enqueue functionality.
+func TestEnqueue(t *testing.T) {
+	t.Log("Given the need to test Enqueue functionality.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen enqueuing %d items", items)
+		{
