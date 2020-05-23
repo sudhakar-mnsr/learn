@@ -39,3 +39,10 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+// TestNew validates the New functionality.
+func TestNew(t *testing.T) {
+	t.Log("Given the need to test New functionality.")
+	{
+		t.Logf("\tTest 0:\tWhen creating a new queue with invalid capacity.")
+		{
