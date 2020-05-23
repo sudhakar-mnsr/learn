@@ -225,3 +225,8 @@ func TestDequeueEmpty(t *testing.T) {
 		const items = 5
 		t.Logf("\tTest 0:\tWhen enqueuing %d items", items)
 		{
+			q, err := queue.New(items)
+			if err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to create a queue for %d items : %v", failed, items, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to create a queue for %d items.", succeed, items)
