@@ -202,3 +202,9 @@ func TestEnqueueFull(t *testing.T) {
 				}
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to enqueue %d items back in the queue.", succeed, items-1)
+
+			if q.Count != items {
+				t.Logf("\t%s\tTest 0:\tShould be able to see queue is full.", failed)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", q.Count, items)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to see queue is full.", succeed)
