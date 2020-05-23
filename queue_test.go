@@ -148,3 +148,12 @@ func TestDequeue(t *testing.T) {
 				}
 				data += d.Name
 			}
+
+			if data != orgData {
+				t.Logf("\t%s\tTest 0:\tShould be able to dequeue over %d items in FIFO order.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", data, orgData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to dequeue over %d items in FIFO order.", succeed, items)
+		}
+	}
+}
