@@ -195,3 +195,10 @@ func TestEnqueueFull(t *testing.T) {
 				}
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to dequeue %d items from the queue.", succeed, items-1)
+
+			for i := 0; i < items-1; i++ {
+				if err := q.Enqueue(&queue.Data{Name: "test"}); err != nil {
+					t.Fatalf("\t%s\tTest 0:\tShould be able to enqueue item %d back in the queue : %v", failed, i+1, err)
+				}
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to enqueue %d items back in the queue.", succeed, items-1)
