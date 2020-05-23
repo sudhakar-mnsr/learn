@@ -243,3 +243,10 @@ func TestDequeueEmpty(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", q.Count, items)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to see queue is full.", succeed)
+
+			for i := 0; i < items-1; i++ {
+				if _, err := q.Dequeue(); err != nil {
+					t.Fatalf("\t%s\tTest 0:\tShould be able to dequeue item %d from the queue : %v", failed, i+1, err)
+				}
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to dequeue %d items from the queue.", succeed, items-1)
