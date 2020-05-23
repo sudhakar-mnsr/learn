@@ -27,3 +27,12 @@
 	// the specified function for every piece of data found.
 	func (q *Queue) Operate(f func(d *Data) error) error
 */
+
+package queue_test
+
+import (
+	"fmt"
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/queue"
+)
