@@ -256,3 +256,7 @@ func TestDequeueEmpty(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", q.Count, 1)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to see queue has 1 item.", succeed)
+			if err := q.Enqueue(&queue.Data{Name: "test"}); err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to enqueue another item in the queue.", failed)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to enqueue another item in the queue.", succeed)
