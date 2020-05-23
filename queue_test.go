@@ -91,3 +91,9 @@ func TestEnqueue(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", q.Count, items)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to enqueue %d items.", succeed, items)
+
+			var data string
+			f := func(d *queue.Data) error {
+				data += d.Name
+				return nil
+			}
