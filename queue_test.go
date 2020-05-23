@@ -124,3 +124,12 @@ func TestDequeue(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould be able to create a queue for %d items : %v", failed, items, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to create a queue for %d items.", succeed, items)
+
+			var orgData string
+			for i := 0; i < items; i++ {
+				name := fmt.Sprintf("Name%d", i)
+				orgData += name
+				if err := q.Enqueue(&queue.Data{Name: name}); err != nil {
+					t.Fatalf("\t%s\tTest 0:\tShould be able to enqueue item %d in the queue : %v", failed, i+1, err)
+				}
+			}
