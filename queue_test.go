@@ -97,3 +97,8 @@ func TestEnqueue(t *testing.T) {
 				data += d.Name
 				return nil
 			}
+
+			if err := q.Operate(f); err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the queue : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to operate on the queue.", succeed)
