@@ -133,3 +133,9 @@ func TestDequeue(t *testing.T) {
 					t.Fatalf("\t%s\tTest 0:\tShould be able to enqueue item %d in the queue : %v", failed, i+1, err)
 				}
 			}
+
+			if q.Count != items {
+				t.Logf("\t%s\tTest 0:\tShould be able to enqueue %d items.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", q.Count, items)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to enqueue %d items.", succeed, items)
