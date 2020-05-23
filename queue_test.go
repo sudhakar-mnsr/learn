@@ -52,3 +52,6 @@ func TestNew(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould not be able to create a queue for %d items : %v", failed, cap, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould not be able to create a queue for %d items.", succeed, cap)
+
+			cap = -1
+			_, err = queue.New(cap)
