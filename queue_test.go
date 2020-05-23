@@ -217,3 +217,11 @@ func TestEnqueueFull(t *testing.T) {
 		}
 	}
 }
+
+// TestDequeueEmpty validates the Dequeue functionality when empty.
+func TestDequeueEmpty(t *testing.T) {
+	t.Log("Given the need to test Dequeue functionality for being empty.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen enqueuing %d items", items)
+		{
