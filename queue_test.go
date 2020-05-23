@@ -157,3 +157,11 @@ func TestDequeue(t *testing.T) {
 		}
 	}
 }
+
+// TestEnqueueFull validates the Enqueue functionality when full.
+func TestEnqueueFull(t *testing.T) {
+	t.Log("Given the need to test Enqueue functionality for being full.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen enqueuing %d items", items)
+		{
