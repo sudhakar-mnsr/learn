@@ -111,3 +111,11 @@ func TestEnqueue(t *testing.T) {
 		}
 	}
 }
+
+// TestDequeue validates the Dequeue functionality.
+func TestDequeue(t *testing.T) {
+	t.Log("Given the need to test Dequeue functionality.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen dequeuing %d items", items)
+		{
