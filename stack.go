@@ -26,3 +26,8 @@ func Make(cap int) *Stack {
 func (s *Stack) Count() int {
 	return len(s.data)
 }
+
+// Push adds data into the top of the stack.
+func (s *Stack) Push(data *Data) {
+	s.data = append(s.data, data)
+}
