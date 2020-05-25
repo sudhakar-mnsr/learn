@@ -21,3 +21,8 @@ func Make(cap int) *Stack {
 		data: make([]*Data, 0, cap),
 	}
 }
+
+// Count returns the number of items in the stack.
+func (s *Stack) Count() int {
+	return len(s.data)
+}
