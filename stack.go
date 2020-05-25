@@ -43,3 +43,9 @@ func (s *Stack) Pop() (*Data, error) {
 
 	// Copy the data from that index position.
 	data := s.data[idx]
+
+	// Remove the top level index from the slice.
+	s.data = s.data[:idx]
+
+	return data, nil
+}
