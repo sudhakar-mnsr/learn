@@ -7,3 +7,8 @@ import "errors"
 type Data struct {
 	Name string
 }
+
+// Stack represents a stack of data.
+type Stack struct {
+	data []*Data
+}
