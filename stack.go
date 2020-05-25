@@ -31,3 +31,9 @@ func (s *Stack) Count() int {
 func (s *Stack) Push(data *Data) {
 	s.data = append(s.data, data)
 }
+
+// Pop removes data from the top of the stack.
+func (s *Stack) Pop() (*Data, error) {
+	if len(s.data) == 0 {
+		return nil, errors.New("stack empty")
+	}
