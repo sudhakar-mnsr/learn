@@ -37,3 +37,9 @@ func (s *Stack) Pop() (*Data, error) {
 	if len(s.data) == 0 {
 		return nil, errors.New("stack empty")
 	}
+
+	// Calculate the top level index.
+	idx := len(s.data) - 1
+
+	// Copy the data from that index position.
+	data := s.data[idx]
