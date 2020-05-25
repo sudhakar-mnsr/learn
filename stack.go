@@ -68,3 +68,9 @@ func (s *Stack) Peek(level int) (*Data, error) {
 // It traverses from the top down through the stack.
 func (s *Stack) Operate(f func(data *Data) error) error {
 	for i := len(s.data) - 1; i > -1; i-- {
+		if err := f(s.data[i]); err != nil {
+			return err
+		}
+	}
+	return nil
+}
