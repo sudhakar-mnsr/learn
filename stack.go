@@ -62,3 +62,9 @@ func (s *Stack) Peek(level int) (*Data, error) {
 	idx := (len(s.data) - 1) - level
 	return s.data[idx], nil
 }
+
+// Operate accepts a function that takes data and calls
+// the specified function for every piece of data found.
+// It traverses from the top down through the stack.
+func (s *Stack) Operate(f func(data *Data) error) error {
+	for i := len(s.data) - 1; i > -1; i-- {
