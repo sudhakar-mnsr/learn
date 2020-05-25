@@ -49,3 +49,12 @@ func (s *Stack) Pop() (*Data, error) {
 
 	return data, nil
 }
+
+
+// Peek provides the data stored on the stack based
+// on the level from the bottom. A value of 0 would
+// return the top piece of data.
+func (s *Stack) Peek(level int) (*Data, error) {
+	if level < 0 || level > (len(s.data)-1) {
+		return nil, errors.New("invalid level position")
+	}
