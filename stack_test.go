@@ -15,3 +15,10 @@
 	// capacity for efficiency. Otherwise a stack can be
 	// used in its zero value state.
 	func Make(cap int) *Stack
+
+	// Count returns the number of items in the stack.
+	func (s *Stack) Count() int
+	// Push adds data into the top of the stack.
+	func (s *Stack) Push(data *Data)
+	// Pop removes data from the top of the stack.
+	func (s *Stack) Pop() (*Data, error)
