@@ -44,3 +44,11 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+// TestPush validates the Push functionality.
+func TestPush(t *testing.T) {
+	t.Log("Given the need to test Push functionality.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen pushing %d items", items)
+		{
