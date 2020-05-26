@@ -41,3 +41,6 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/stack"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
