@@ -71,3 +71,8 @@ func TestPush(t *testing.T) {
 				data += d.Name
 				return nil
 			}
+
+			if err := s.Operate(f); err != nil {
+				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the stack : %v", failed, err)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to operate on the stack.", succeed)
