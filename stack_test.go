@@ -32,3 +32,12 @@
 	// It traverses from the top down through the stack.
 	func (s *Stack) Operate(f func(data *Data) error) error
 */
+
+package stack_test
+
+import (
+	"fmt"
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/stack"
+)
