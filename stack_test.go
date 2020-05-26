@@ -52,3 +52,11 @@ func TestPush(t *testing.T) {
 		const items = 5
 		t.Logf("\tTest 0:\tWhen pushing %d items", items)
 		{
+			var s stack.Stack
+
+			var orgData string
+			for i := 0; i < items; i++ {
+				name := fmt.Sprintf("Name%d", i)
+				orgData = name + orgData
+				s.Push(&stack.Data{Name: name})
+			}
