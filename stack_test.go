@@ -65,3 +65,9 @@ func TestPush(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", s.Count(), items)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to push %d items.", succeed, items)
+
+			var data string
+			f := func(d *stack.Data) error {
+				data += d.Name
+				return nil
+			}
