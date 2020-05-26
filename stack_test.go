@@ -76,3 +76,12 @@ func TestPush(t *testing.T) {
 				t.Fatalf("\t%s\tTest 0:\tShould be able to operate on the stack : %v", failed, err)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to operate on the stack.", succeed)
+
+			if data != orgData {
+				t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d items in FILO order.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", data, orgData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to traverse over %d items in FILO order.", succeed, items)
+		}
+	}
+}
