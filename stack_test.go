@@ -22,3 +22,13 @@
 	func (s *Stack) Push(data *Data)
 	// Pop removes data from the top of the stack.
 	func (s *Stack) Pop() (*Data, error)
+
+	// Peek provides the data stored on the stack based
+	// on the level from the bottom. A value of 0 would
+	// return the top piece of data.
+	func (s *Stack) Peek(level int) (*Data, error)
+	// Operate accepts a function that takes data and calls
+	// the specified function for every piece of data found.
+	// It traverses from the top down through the stack.
+	func (s *Stack) Operate(f func(data *Data) error) error
+*/
