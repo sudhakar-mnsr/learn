@@ -85,3 +85,11 @@ func TestPush(t *testing.T) {
 		}
 	}
 }
+
+// TestPop validates the Pop functionality.
+func TestPop(t *testing.T) {
+	t.Log("Given the need to test Pop functionality.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen popping %d items", items)
+		{
