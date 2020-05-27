@@ -135,3 +135,11 @@ func TestPop(t *testing.T) {
 		}
 	}
 }
+
+// TestPeek validates the Peek functionality.
+func TestPeek(t *testing.T) {
+	t.Log("Given the need to test Peek functionality.")
+	{
+		const items = 5
+		t.Logf("\tTest 0:\tWhen peeking %d items", items)
+		{
