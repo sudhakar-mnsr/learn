@@ -155,3 +155,9 @@ func TestPeek(t *testing.T) {
 				orgData = name + orgData
 				s.Push(&stack.Data{Name: name})
 			}
+
+			if s.Count() != items {
+				t.Logf("\t%s\tTest 0:\tShould be able to push %d items.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", s.Count(), items)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to push %d items.", succeed, items)
