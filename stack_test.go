@@ -143,3 +143,8 @@ func TestPeek(t *testing.T) {
 		const items = 5
 		t.Logf("\tTest 0:\tWhen peeking %d items", items)
 		{
+			s := stack.Make(5)
+
+			if _, err := s.Peek(0); err == nil {
+				t.Fatalf("\t%s\tTest 0:\tShould not be able to peek an empty stack : %s", failed, err)
+			}
