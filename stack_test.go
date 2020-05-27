@@ -120,3 +120,9 @@ func TestPop(t *testing.T) {
 				}
 				popData += data.Name
 			}
+
+			if s.Count() != 0 {
+				t.Logf("\t%s\tTest 0:\tShould be able to pop all %d items.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected 0.", s.Count())
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to pop all %d items.", succeed, items)
