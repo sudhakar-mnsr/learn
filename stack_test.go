@@ -126,3 +126,12 @@ func TestPop(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected 0.", s.Count())
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to pop all %d items.", succeed, items)
+
+			if popData != orgData {
+				t.Logf("\t%s\tTest 0:\tShould be able to pop %d items in FILO order.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %s, Expected %s.", popData, orgData)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to pop %d items in FILO order.", succeed, items)
+		}
+	}
+}
