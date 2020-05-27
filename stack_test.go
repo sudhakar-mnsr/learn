@@ -98,3 +98,10 @@ func TestPop(t *testing.T) {
 			if _, err := s.Pop(); err == nil {
 				t.Fatalf("\t%s\tTest 0:\tShould not be able to pop an empty stack : %v", failed, err)
 			}
+
+			var orgData string
+			for i := 0; i < items; i++ {
+				name := fmt.Sprintf("Name%d", i)
+				orgData = name + orgData
+				s.Push(&stack.Data{Name: name})
+			}
