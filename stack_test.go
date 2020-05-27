@@ -170,3 +170,9 @@ func TestPeek(t *testing.T) {
 				}
 				popData += data.Name
 			}
+
+			if s.Count() != items {
+				t.Logf("\t%s\tTest 0:\tShould be able to pop all %d items.", failed, items)
+				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", s.Count(), items)
+			}
+			t.Logf("\t%s\tTest 0:\tShould be able to pop all %d items.", succeed, items)
