@@ -93,3 +93,8 @@ func TestPop(t *testing.T) {
 		const items = 5
 		t.Logf("\tTest 0:\tWhen popping %d items", items)
 		{
+			var s stack.Stack
+
+			if _, err := s.Pop(); err == nil {
+				t.Fatalf("\t%s\tTest 0:\tShould not be able to pop an empty stack : %v", failed, err)
+			}
