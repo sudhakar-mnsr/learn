@@ -111,3 +111,12 @@ func TestPop(t *testing.T) {
 				t.Fatalf("\t\tTest 0:\tGot %d, Expected %d.", s.Count(), items)
 			}
 			t.Logf("\t%s\tTest 0:\tShould be able to push %d items.", succeed, items)
+
+			var popData string
+			for i := 0; i < items; i++ {
+				data, err := s.Pop()
+				if err != nil {
+					t.Logf("\t%s\tTest 0:\tShould be able to pop an item.", failed)
+				}
+				popData += data.Name
+			}
