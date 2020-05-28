@@ -17,3 +17,11 @@ import (
 
 const succeed = "\u2713"
 const failed = "\u2717"
+
+func TestMax(t *testing.T) {
+	tt := []struct {
+		name     string
+		input    []int
+		expected int
+		success  bool
+	}{
