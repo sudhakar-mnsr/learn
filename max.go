@@ -13,4 +13,9 @@ func Max(n []int) (int, error) {
 	// integer at index 0.
 	if len(n) == 1 {
 		return n[0], nil
-	}
+        }
+
+	// Save the first value as current max and then loop over
+	// the slice of integers looking for a larger number.
+	max := n[0]
+	for _, num := range n[1:] {
