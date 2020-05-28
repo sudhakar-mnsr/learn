@@ -19,3 +19,11 @@ func Max(n []int) (int, error) {
 	// the slice of integers looking for a larger number.
 	max := n[0]
 	for _, num := range n[1:] {
+		// If num is greater than max, assign max to num.
+		if num > max {
+			max = num
+		}
+	}
+
+	return max, nil
+}
