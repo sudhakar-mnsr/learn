@@ -6,3 +6,11 @@
 	func Max(n []int) (int, error)
 */
 
+
+package max_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/max"
+)
