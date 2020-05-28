@@ -14,3 +14,6 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/max"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
