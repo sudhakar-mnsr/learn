@@ -57,3 +57,9 @@ func TestMax(t *testing.T) {
 						t.Fatalf("\t\tTest %d:\tGot %v, Expected %v", testID, got, test.expected)
 					}
 					t.Logf("\t%s\tTest %d:\tShould have gotten back the right max value.", succeed, testID)
+				}
+			}
+			t.Run(test.name, tf)
+		}
+	}
+}
