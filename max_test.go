@@ -31,3 +31,9 @@ func TestMax(t *testing.T) {
 		{"even", []int{10, 30}, 30, true},
 		{"odd", []int{10, 50, 30}, 50, true},
 	}
+	t.Log("Given the need to test Max functionality.")
+	{
+		for testID, test := range tt {
+			tf := func(t *testing.T) {
+				t.Logf("\tTest %d:\tWhen checking the %q state.", testID, test.name)
+				{
