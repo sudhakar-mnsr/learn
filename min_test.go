@@ -43,3 +43,9 @@ func TestMax(t *testing.T) {
 							t.Fatalf("\t%s\tTest %d:\tShould be able to run Min without an error : %v", failed, testID, err)
 						}
 						t.Logf("\t%s\tTest %d:\tShould be able to run Min without an error.", succeed, testID)
+					case false:
+						if err == nil {
+							t.Fatalf("\t%s\tTest %d:\tShould have seen an error for Min.", failed, testID)
+						}
+						t.Logf("\t%s\tTest %d:\tShould have seen an error for Min.", succeed, testID)
+					}
