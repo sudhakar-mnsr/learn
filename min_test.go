@@ -24,3 +24,9 @@ func TestMax(t *testing.T) {
 		expected int
 		success  bool
 	}{
+		{"empty", []int{}, 0, false},
+		{"nil", nil, 0, false},
+		{"one", []int{10}, 10, true},
+		{"even", []int{20, 30, 10, 50}, 10, true},
+		{"odd", []int{30, 50, 10}, 10, true},
+	}
