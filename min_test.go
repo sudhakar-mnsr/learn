@@ -36,4 +36,10 @@ func TestMax(t *testing.T) {
 			tf := func(t *testing.T) {
 				t.Logf("\tTest %d:\tWhen checking the %q state.", testID, test.name)
 				{
-				
+					got, err := min.Min(test.input)
+					switch test.success {
+					case true:
+						if err != nil {
+							t.Fatalf("\t%s\tTest %d:\tShould be able to run Min without an error : %v", failed, testID, err)
+						}
+						t.Logf("\t%s\tTest %d:\tShould be able to run Min without an error.", succeed, testID)
