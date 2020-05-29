@@ -20,3 +20,12 @@ func Min(n []int) (int, error) {
 	// the slice of integers looking for a smaller number.
 	min := n[0]
 	for _, num := range n[1:] {
+
+		// If num is less than min. Assign min to num.
+		if num < min {
+			min = num
+		}
+	}
+
+	return min, nil
+}
