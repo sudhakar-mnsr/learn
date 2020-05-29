@@ -15,3 +15,8 @@ func Min(n []int) (int, error) {
 	if len(n) == 1 {
 		return n[0], nil
 	}
+
+	// Save the first value as current min and then loop over
+	// the slice of integers looking for a smaller number.
+	min := n[0]
+	for _, num := range n[1:] {
