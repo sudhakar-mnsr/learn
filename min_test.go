@@ -5,3 +5,11 @@
 	// Min returns the minimum integer in the slice.
 	func Min(n []int) (int, error)
 */
+
+package min_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/min"
+)
