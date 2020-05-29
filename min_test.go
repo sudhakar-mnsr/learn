@@ -49,3 +49,8 @@ func TestMax(t *testing.T) {
 						}
 						t.Logf("\t%s\tTest %d:\tShould have seen an error for Min.", succeed, testID)
 					}
+					if got != test.expected {
+						t.Logf("\t%s\tTest %d:\tShould have gotten back the right min value.", failed, testID)
+						t.Fatalf("\t\tTest %d:\tGot %v, Expected %v", testID, got, test.expected)
+					}
+					t.Logf("\t%s\tTest %d:\tShould have gotten back the right min value.", succeed, testID)
