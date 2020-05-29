@@ -13,3 +13,6 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/min"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
