@@ -70,3 +70,8 @@ func sweep(numbers []int, currentPass int) bool {
 	idxNext := idx + 1
 	n := len(numbers)
 	var swap bool
+
+	for idxNext < (n - currentPass) {
+		a := numbers[idx]
+		b := numbers[idxNext]
+		if a > b {
