@@ -19,3 +19,7 @@ func main() {
 	bubbleSortConcurrent(runtime.GOMAXPROCS(0), numbers)
 	fmt.Println("Concurrent:", numbers)
 }
+
+func generateList(totalNumbers int) []int {
+	numbers := make([]int, totalNumbers)
+	for i := 0; i < totalNumbers; i++ {
