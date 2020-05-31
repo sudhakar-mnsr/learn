@@ -75,3 +75,12 @@ func sweep(numbers []int, currentPass int) bool {
 		a := numbers[idx]
 		b := numbers[idxNext]
 		if a > b {
+			numbers[idx] = b
+			numbers[idxNext] = a
+			swap = true
+		}
+		idx++
+		idxNext = idx + 1
+	}
+	return swap
+}
