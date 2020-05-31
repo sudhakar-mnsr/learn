@@ -31,3 +31,8 @@ func generateList(totalNumbers int) []int {
 func bubbleSort(numbers []int) {
 	n := len(numbers)
 	for i := 0; i < n; i++ {
+		if !sweep(numbers, i) {
+			return
+		}
+	}
+}
