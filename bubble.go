@@ -41,3 +41,6 @@ func bubbleSortConcurrent(goroutines int, numbers []int) {
 	totalNumbers := len(numbers)
 	lastGoroutine := goroutines - 1
 	stride := totalNumbers / goroutines
+
+	var wg sync.WaitGroup
+	wg.Add(goroutines)
