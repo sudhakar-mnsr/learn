@@ -49,3 +49,10 @@ func bubbleSortConcurrent(goroutines int, numbers []int) {
 		go func(g int) {
 			start := g * stride
 			end := start + stride
+
+			if g == lastGoroutine {
+				end = totalNumbers
+			}
+
+			bubbleSort(numbers[start:end])
+			wg.Done()
