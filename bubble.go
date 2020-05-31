@@ -64,3 +64,9 @@ func bubbleSortConcurrent(goroutines int, numbers []int) {
 	// Not done yet, we need to sort all over again.
 	bubbleSort(numbers)
 }
+
+func sweep(numbers []int, currentPass int) bool {
+	var idx int
+	idxNext := idx + 1
+	n := len(numbers)
+	var swap bool
