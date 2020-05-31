@@ -56,3 +56,11 @@ func bubbleSortConcurrent(goroutines int, numbers []int) {
 
 			bubbleSort(numbers[start:end])
 			wg.Done()
+		}(g)
+	}
+
+	wg.Wait()
+
+	// Not done yet, we need to sort all over again.
+	bubbleSort(numbers)
+}
