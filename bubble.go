@@ -27,3 +27,7 @@ func generateList(totalNumbers int) []int {
 	}
 	return numbers
 }
+
+func bubbleSort(numbers []int) {
+	n := len(numbers)
+	for i := 0; i < n; i++ {
