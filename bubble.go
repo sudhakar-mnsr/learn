@@ -13,3 +13,9 @@ func main() {
 	fmt.Println("Before:", numbers)
 	bubbleSort(numbers)
 	fmt.Println("Sequential:", numbers)
+
+	numbers = generateList(1e2)
+	fmt.Println("Before:", numbers)
+	bubbleSortConcurrent(runtime.GOMAXPROCS(0), numbers)
+	fmt.Println("Concurrent:", numbers)
+}
