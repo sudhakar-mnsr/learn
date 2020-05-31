@@ -8,3 +8,8 @@ import (
 	"sync"
 )
 
+func main() {
+	numbers := generateList(1e2)
+	fmt.Println("Before:", numbers)
+	bubbleSort(numbers)
+	fmt.Println("Sequential:", numbers)
