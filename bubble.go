@@ -23,3 +23,7 @@ func main() {
 func generateList(totalNumbers int) []int {
 	numbers := make([]int, totalNumbers)
 	for i := 0; i < totalNumbers; i++ {
+		numbers[i] = rand.Intn(totalNumbers)
+	}
+	return numbers
+}
