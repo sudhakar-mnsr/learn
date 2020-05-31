@@ -44,3 +44,8 @@ func bubbleSortConcurrent(goroutines int, numbers []int) {
 
 	var wg sync.WaitGroup
 	wg.Add(goroutines)
+
+	for g := 0; g < goroutines; g++ {
+		go func(g int) {
+			start := g * stride
+			end := start + stride
