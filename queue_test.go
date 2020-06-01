@@ -34,7 +34,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/queue"
+	"github.com/sudhakar-mnsr/learn/queue"
 )
 
 const succeed = "\u2713"
