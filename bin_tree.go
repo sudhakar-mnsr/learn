@@ -31,3 +31,11 @@ func (n *Node) insert(value int) {
 			return
 		}
 		n.left.insert(value)
+	case value > n.value:
+		if n.right == nil {
+			n.right = &Node{value: value}
+			return
+		}
+		n.right.insert(value)
+	}
+}
