@@ -14,3 +14,10 @@ func (t *Tree) Insert(value int) {
 
 	t.root.insert(value)
 }
+
+// Node represents a value in the tree.
+type Node struct {
+	value int
+	left  *Node
+	right *Node
+}
