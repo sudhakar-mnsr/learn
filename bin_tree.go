@@ -39,3 +39,8 @@ func (n *Node) insert(value int) {
 		n.right.insert(value)
 	}
 }
+
+func main() {
+	values := []int{40, 5, 10, 80, 62, 2, 45, 12, 23, 77, 3, 2}
+
+	var t Tree
