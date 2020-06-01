@@ -12,7 +12,7 @@ package max_test
 import (
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/max"
+	"github.com/sudhakar-mnsr/learn/max"
 )
 
 const succeed = "\u2713"
