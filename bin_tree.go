@@ -27,3 +27,7 @@ func (n *Node) insert(value int) {
 	switch {
 	case value <= n.value:
 		if n.left == nil {
+			n.left = &Node{value: value}
+			return
+		}
+		n.left.insert(value)
