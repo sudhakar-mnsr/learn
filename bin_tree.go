@@ -9,3 +9,8 @@ type Tree struct {
 func (t *Tree) Insert(value int) {
 	if t.root == nil {
 		t.root = &Node{value: value}
+		return
+	}
+
+	t.root.insert(value)
+}
