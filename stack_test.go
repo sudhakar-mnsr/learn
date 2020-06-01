@@ -39,7 +39,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/stack"
+	"github.com/sudhakar-mnsr/learn/stack"
 )
 
 const succeed = "\u2713"
