@@ -11,7 +11,7 @@ package min_test
 import (
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/slices/min"
+	"github.com/sudhakar-mnsr/learn/min"
 )
 
 const succeed = "\u2713"
