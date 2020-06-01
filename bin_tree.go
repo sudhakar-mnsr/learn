@@ -21,3 +21,9 @@ type Node struct {
 	left  *Node
 	right *Node
 }
+
+// insert adds the value into the tree.
+func (n *Node) insert(value int) {
+	switch {
+	case value <= n.value:
+		if n.left == nil {
