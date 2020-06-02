@@ -27,3 +27,10 @@ func PrettyPrint(t *Tree) {
 
 	// Capture the positional data to use.
 	data := generateData(levels)
+
+	// Set the edge of the top of the tree.
+	for sp := 0; sp < data[0].edge; sp++ {
+		fmt.Print(" ")
+	}
+	fmt.Printf("%02d", values[0])
+	fmt.Print("\n")
