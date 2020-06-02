@@ -42,3 +42,12 @@ func PrettyPrint(t *Tree) {
 		for sp := 0; sp < data[i].edge; sp++ {
 			fmt.Print(" ")
 		}
+
+		// Draw the hashes for this row.
+		dataHashIdx := dataIdx
+		for h := 0; h < data[i].draw; h++ {
+			if values[dataHashIdx] != maxInt {
+				fmt.Printf("/")
+			} else {
+				fmt.Printf(" ")
+			}
