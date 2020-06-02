@@ -51,3 +51,8 @@ func PrettyPrint(t *Tree) {
 			} else {
 				fmt.Printf(" ")
 			}
+			for sp := 0; sp < data[i].padding; sp++ {
+				fmt.Print(" ")
+			}
+			if values[dataHashIdx+1] != maxInt {
+				fmt.Printf("\\")
