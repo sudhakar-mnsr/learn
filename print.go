@@ -68,3 +68,8 @@ func PrettyPrint(t *Tree) {
 			}
 		}
 		fmt.Print("\n")
+
+		// Set the edge of the next row.
+		for sp := 0; sp < data[i+1].edge; sp++ {
+			fmt.Print(" ")
+		}
