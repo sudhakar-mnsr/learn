@@ -73,3 +73,11 @@ func PrettyPrint(t *Tree) {
 		for sp := 0; sp < data[i+1].edge; sp++ {
 			fmt.Print(" ")
 		}
+
+		// Draw the numbers for this row.
+		for n := 0; n < data[i+1].draw; n++ {
+			if values[dataIdx] != maxInt {
+				fmt.Printf("%02d", values[dataIdx])
+			} else {
+				fmt.Printf("  ")
+			}
