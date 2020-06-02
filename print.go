@@ -34,3 +34,11 @@ func PrettyPrint(t *Tree) {
 	}
 	fmt.Printf("%02d", values[0])
 	fmt.Print("\n")
+
+	dataIdx := 1
+	for i := 1; i < len(data); i = i + 2 {
+
+		// Set the edge of this row.
+		for sp := 0; sp < data[i].edge; sp++ {
+			fmt.Print(" ")
+		}
