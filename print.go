@@ -81,3 +81,10 @@ func PrettyPrint(t *Tree) {
 			} else {
 				fmt.Printf("  ")
 			}
+
+			for sp := 0; sp < data[i+1].padding; sp++ {
+				fmt.Print(" ")
+			}
+			if values[dataIdx+1] != maxInt {
+				fmt.Printf("%02d", values[dataIdx+1])
+			} else {
