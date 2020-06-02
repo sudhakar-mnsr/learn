@@ -60,3 +60,11 @@ func PrettyPrint(t *Tree) {
 				fmt.Printf(" ")
 			}
 			dataHashIdx += 2
+
+			if data[i].gaps != 0 && data[i].gaps > h {
+				for sp := 0; sp < data[i].gapPad; sp++ {
+					fmt.Print(" ")
+				}
+			}
+		}
+		fmt.Print("\n")
