@@ -19,3 +19,11 @@ func PrettyPrint(t *Tree) {
 	for {
 		pow := math.Pow(2, float64(levels))
 		if maxIdx < int(pow) {
+                   break
+		}
+		levels++
+	}
+	levels--
+
+	// Capture the positional data to use.
+	data := generateData(levels)
