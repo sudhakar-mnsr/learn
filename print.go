@@ -94,3 +94,11 @@ func PrettyPrint(t *Tree) {
 
 			if data[i+1].gaps != 0 && data[i+1].gaps > n {
 				for sp := 0; sp < data[i+1].gapPad; sp++ {
+				}
+			}
+		}
+		fmt.Print("\n")
+	}
+
+	fmt.Print("\n")
+}
