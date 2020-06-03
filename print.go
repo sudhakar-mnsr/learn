@@ -212,3 +212,13 @@ func generateData(level int) []pos {
 		if i > 0 {
 			data[i-1].gaps = data[i].gaps
 		}
+		// Generate gap padding information.
+		if i > 2 {
+			data[i-1].gapPad = int(math.Pow(2, float64(gapPad)))
+			data[i].gapPad = data[i-1].gapPad - 2
+		}
+		gapPad++
+	}
+
+	return data
+}
