@@ -158,3 +158,12 @@ func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
 
 	return maxIdx
 }
+
+// pos provides positional data for printing a tree.
+type pos struct {
+	edge    int
+	draw    int
+	padding int
+	gaps    int
+	gapPad  int
+}
