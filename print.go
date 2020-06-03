@@ -113,3 +113,11 @@ const maxInt = int(^uint(0) >> 1)
 //     /  \    /  \
 //    02  25  65  98
 // values{0:40, 1:05, 2:80, 3:02, 4:25, 5:65, 6:98}
+
+func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
+
+	// We need to keep track of the highest index position used
+	// to help calculate tree depth.
+	if idx > maxIdx {
+		maxIdx = idx
+	}
