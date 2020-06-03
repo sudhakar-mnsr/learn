@@ -167,3 +167,13 @@ type pos struct {
 	gaps    int
 	gapPad  int
 }
+
+// generateData generates all the positional data needed to display
+// nodes at different levels.
+func generateData(level int) []pos {
+	totalData := (level * 2) - 1
+	data := make([]pos, totalData)
+	edge := 1
+	draw := level - 2
+	padding := 0
+	gapPad := 2
