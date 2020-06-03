@@ -192,3 +192,9 @@ func generateData(level int) []pos {
 			data[i].draw = int(math.Pow(2, float64(draw)))
 			data[i-1].draw = data[i].draw
 		} else {
+			data[i].draw = 1
+			if i > 0 {
+				data[i-1].draw = 1
+			}
+		}
+		draw--
