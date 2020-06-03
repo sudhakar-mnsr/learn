@@ -128,3 +128,14 @@ func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
 		values[idx] = maxInt
 		return maxIdx
 	}
+
+	// Save the value of this node in the map at the
+	// calculated index position.
+	values[idx] = n.value
+
+	// Check if there are still nodes to check down the left
+	// branch. When we move down the tree, the next index doubles.
+	if n.left != nil {
+		nextidx := 2*idx + 1
+		maxIdx = buildIndexMap(values, nextidx, maxIdx, n.left)
+	}
