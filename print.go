@@ -102,3 +102,14 @@ func PrettyPrint(t *Tree) {
 
 	fmt.Print("\n")
 }
+
+const maxInt = int(^uint(0) >> 1)
+
+// buildIndex traverses the tree and generates a map of index positions
+// for each node in the tree for printing.
+//          40
+//       /      \
+//      05      80
+//     /  \    /  \
+//    02  25  65  98
+// values{0:40, 1:05, 2:80, 3:02, 4:25, 5:65, 6:98}
