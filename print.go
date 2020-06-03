@@ -177,3 +177,12 @@ func generateData(level int) []pos {
 	draw := level - 2
 	padding := 0
 	gapPad := 2
+
+	for i := totalData - 1; i >= 0; i = i - 2 {
+
+		// Generate starting edge positions.
+		data[i].edge = int(math.Pow(2, float64(edge)))
+		if i > 0 {
+			data[i-1].edge = data[i].edge + 1
+		}
+		edge++
