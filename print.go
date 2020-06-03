@@ -149,3 +149,12 @@ func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
 	// So they are ignored in the printing of the map.
 	if idx == 0 {
 		for i := 0; i < maxIdx; i++ {
+
+			if _, ok := values[i]; !ok {
+				values[i] = maxInt
+			}
+		}
+	}
+
+	return maxIdx
+}
