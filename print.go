@@ -198,3 +198,10 @@ func generateData(level int) []pos {
 			}
 		}
 		draw--
+
+		// Generate padding information.
+		padding += data[i].edge
+		data[i].padding = padding
+		if i > 0 {
+			data[i-1].padding = padding
+		}
