@@ -121,3 +121,10 @@ func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
 	if idx > maxIdx {
 		maxIdx = idx
 	}
+
+	// We have reached the end of a branch. Use the maxInt to mark
+	// no value in that position.
+	if n == nil {
+		values[idx] = maxInt
+		return maxIdx
+	}
