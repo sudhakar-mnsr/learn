@@ -205,3 +205,10 @@ func generateData(level int) []pos {
 		if i > 0 {
 			data[i-1].padding = padding
 		}
+
+
+		// Generate gaps information.
+		data[i].gaps = data[i].draw - 1
+		if i > 0 {
+			data[i-1].gaps = data[i].gaps
+		}
