@@ -186,3 +186,9 @@ func generateData(level int) []pos {
 			data[i-1].edge = data[i].edge + 1
 		}
 		edge++
+
+		// Generate draw information.
+		if draw > 0 {
+			data[i].draw = int(math.Pow(2, float64(draw)))
+			data[i-1].draw = data[i].draw
+		} else {
