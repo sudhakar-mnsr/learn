@@ -144,3 +144,8 @@ func buildIndexMap(values map[int]int, idx int, maxIdx int, n *Node) int {
 	// branch. When we move down the tree, the next index doubles.
 	nextidx := 2*idx + 2
 	maxIdx = buildIndexMap(values, nextidx, maxIdx, n.right)
+
+	// We need to set missing indexes in the map to maxInt.
+	// So they are ignored in the printing of the map.
+	if idx == 0 {
+		for i := 0; i < maxIdx; i++ {
