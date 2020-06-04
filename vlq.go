@@ -26,3 +26,9 @@ func DecodeVarint(input []byte) (uint32, error) {
 
 			// Calculate based on only those 1 bits that were rotated.
 			// Convert the bitPos to base 10.
+
+			if n >= lastBitSet {
+				switch {
+				case bitPos == 0:
+					d++
+				default:
