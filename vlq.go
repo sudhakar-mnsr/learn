@@ -71,3 +71,10 @@ func EncodeVarint(n uint32) []byte {
 			if n >= lastBitSet {
 				switch {
 				case checkBit == 0:
+                                        d++
+				default:
+					base10 := math.Pow(2, float64(checkBit))
+					d += uint8(base10)
+				}
+			}
+		}
