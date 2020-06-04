@@ -92,3 +92,10 @@ func EncodeVarint(n uint32) []byte {
 	for bytePos, b := range encoded {
 		if b == eightBitSet {
 			continue
+                }
+		encoded = encoded[bytePos:]
+		break
+	}
+
+	return encoded
+}
