@@ -58,3 +58,10 @@ func EncodeVarint(n uint32) []byte {
 		var d uint8
 
 		// Process the next 7 bits.
+
+		for checkBit := 0; checkBit < 7; checkBit++ {
+
+			// Rotate the last bit off and move it to the back.
+			// Before: 0000 0000 0000 0001
+			// After:  1000 0000 0000 0000
+			n = bits.RotateLeft32(n, -1)
