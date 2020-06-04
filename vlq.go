@@ -12,3 +12,10 @@ func DecodeVarint(input []byte) (uint32, error) {
 
 	var d uint32
 	var bitPos int
+
+	for i := len(input) - 1; i >= 0; i-- {
+		n := uint8(input[i])
+
+		// Process the first 7 bits and ignore the 8th.
+		for checkBit := 0; checkBit < 7; checkBit++ {
+
