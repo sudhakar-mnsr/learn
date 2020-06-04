@@ -78,3 +78,12 @@ func EncodeVarint(n uint32) []byte {
 				}
 			}
 		}
+
+		// These values need the 8th bit to be set as 1.
+		if bytePos < 3 {
+			d += eightBitSet
+		}
+
+		// Store the value in reserve order.
+		encoded[bytePos] = d
+	}
