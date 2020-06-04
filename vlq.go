@@ -51,3 +51,10 @@ func EncodeVarint(n uint32) []byte {
 	const maxBytes = 4
 	const eightBitSet = 0x80      // 1000 0000
 	const lastBitSet = 0x80000000 // 1000 0000 0000 0000
+
+	encoded := make([]byte, maxBytes)
+
+	for bytePos := maxBytes - 1; bytePos >= 0; bytePos-- {
+		var d uint8
+
+		// Process the next 7 bits.
