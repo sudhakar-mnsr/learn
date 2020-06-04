@@ -44,3 +44,10 @@ func DecodeVarint(input []byte) (uint32, error) {
 
 	return d, nil
 }
+
+// EncodeVarint takes a 32 bit integer and encodes it into
+// a variable length VLQ based integer.
+func EncodeVarint(n uint32) []byte {
+	const maxBytes = 4
+	const eightBitSet = 0x80      // 1000 0000
+	const lastBitSet = 0x80000000 // 1000 0000 0000 0000
