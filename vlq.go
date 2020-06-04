@@ -65,3 +65,9 @@ func EncodeVarint(n uint32) []byte {
 			// Before: 0000 0000 0000 0001
 			// After:  1000 0000 0000 0000
 			n = bits.RotateLeft32(n, -1)
+
+			// Calculate based on only those 1 bits that were
+			// rotated. Convert the bit position to base 10.
+			if n >= lastBitSet {
+				switch {
+				case checkBit == 0:
