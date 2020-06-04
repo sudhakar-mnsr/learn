@@ -87,3 +87,8 @@ func EncodeVarint(n uint32) []byte {
 		// Store the value in reserve order.
 		encoded[bytePos] = d
 	}
+	// Remove leading zero values by finding values that only
+	// have their eight bit set.
+	for bytePos, b := range encoded {
+		if b == eightBitSet {
+			continue
