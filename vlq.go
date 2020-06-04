@@ -19,3 +19,10 @@ func DecodeVarint(input []byte) (uint32, error) {
 		// Process the first 7 bits and ignore the 8th.
 		for checkBit := 0; checkBit < 7; checkBit++ {
 
+			// Rotate the last bit off and move it to the back.
+			// Before: 0000 0001
+			// After:  1000 0000
+			n = bits.RotateLeft8(n, -1)
+
+			// Calculate based on only those 1 bits that were rotated.
+			// Convert the bitPos to base 10.
