@@ -32,3 +32,7 @@ func DecodeVarint(input []byte) (uint32, error) {
 				case bitPos == 0:
 					d++
 				default:
+					base10 := math.Pow(2, float64(bitPos))
+					d += uint32(base10)
+				}
+			}
