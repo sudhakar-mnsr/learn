@@ -36,3 +36,11 @@ func DecodeVarint(input []byte) (uint32, error) {
 					d += uint32(base10)
 				}
 			}
+
+			// Move the bit position.
+			bitPos++
+		}
+	}
+
+	return d, nil
+}
