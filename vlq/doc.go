@@ -43,6 +43,7 @@ to mark continuation of bytes. See the example below.
 	IntBin: 00000000 00000000 01000000 00000000
 	VLQHex: 0x81 0x80 0x00
 	VLQBin: 00000000 10000001 10000000 00000000
+
 https://blogs.infosupport.com/a-primer-on-vlq/
 
 Lets say I want to represent the number 3435 in VLQ. 3435 in
@@ -51,3 +52,9 @@ chop it up from the end in 7-bit blocks.
 Septet	7	6	5	4	3	2	1
 #1		1	1	0	1	0	1	1
 #2		0	0	1	1	0	1	0
+
+Now we prepend all but the last with a 1-bit to indicate that an octet
+follows and prepend a 0-bit to the last, signalling the final octet.
+Octet	8	7	6	5	4	3	2	1
+#1		0	1	1	0	1	0	1	1
+#2		1	0	0	1	1	0	1	0
