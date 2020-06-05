@@ -44,3 +44,10 @@ to mark continuation of bytes. See the example below.
 	VLQHex: 0x81 0x80 0x00
 	VLQBin: 00000000 10000001 10000000 00000000
 https://blogs.infosupport.com/a-primer-on-vlq/
+
+Lets say I want to represent the number 3435 in VLQ. 3435 in
+binary is 110101101011. We can not fit this in a byte. So we will
+chop it up from the end in 7-bit blocks.
+Septet	7	6	5	4	3	2	1
+#1		1	1	0	1	0	1	1
+#2		0	0	1	1	0	1	0
