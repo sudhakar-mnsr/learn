@@ -16,3 +16,9 @@ import (
 	"bytes"
 	"testing"
 )
+
+func TestEncodeDecodeVarint(t *testing.T) {
+	testCases := []struct {
+		input  []byte
+		output uint32
+	}{
