@@ -26,3 +26,14 @@ length quantities that they translate to:
 00200000          81 80 80 00
 08000000          C0 80 80 00
 0FFFFFFF          FF FF FF 7F
+
+
+Resources:
+https://en.wikipedia.org/wiki/Variable-length_quantity
+A variable-length quantity (VLQ) is a universal code that uses an arbitrary
+number of binary octets (eight-bit bytes) to represent an arbitrarily large
+integer. It was defined for use in the standard MIDI file format[1] to save
+additional space for a resource constrained system, and is also used in the
+later Extensible Music Format (XMF). A VLQ is essentially a base-128
+representation of an unsigned integer with the addition of the eighth bit
+to mark continuation of bytes. See the example below.
