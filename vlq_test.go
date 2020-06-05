@@ -34,3 +34,8 @@ func TestEncodeDecodeVarint(t *testing.T) {
 		9:  {[]byte{0x82, 0x00}, 256},
 		10: {[]byte{0x81, 0x10}, 144},
 	}
+	for i, tc := range testCases {
+		t.Logf("test case %d - %#v\n", i, tc.input)
+		if o, _ := DecodeVarint(tc.input); o != tc.output {
+			t.Fatalf("expected %d\ngot\n%d\n", tc.output, o)
+		}
