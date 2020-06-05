@@ -9,3 +9,10 @@
 	// a variable length VLQ based integer.
 	func EncodeVarint(n uint32) []byte
 */
+
+package vlq
+
+import (
+	"bytes"
+	"testing"
+)
