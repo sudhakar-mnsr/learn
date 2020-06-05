@@ -37,3 +37,10 @@ additional space for a resource constrained system, and is also used in the
 later Extensible Music Format (XMF). A VLQ is essentially a base-128
 representation of an unsigned integer with the addition of the eighth bit
 to mark continuation of bytes. See the example below.
+
+	Int:    16384
+	IntHex: 0x00004000
+	IntBin: 00000000 00000000 01000000 00000000
+	VLQHex: 0x81 0x80 0x00
+	VLQBin: 00000000 10000001 10000000 00000000
+https://blogs.infosupport.com/a-primer-on-vlq/
