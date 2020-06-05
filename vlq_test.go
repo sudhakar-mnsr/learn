@@ -39,3 +39,8 @@ func TestEncodeDecodeVarint(t *testing.T) {
 		if o, _ := DecodeVarint(tc.input); o != tc.output {
 			t.Fatalf("expected %d\ngot\n%d\n", tc.output, o)
 		}
+		if encoded := EncodeVarint(tc.output); bytes.Compare(encoded, tc.input) != 0 {
+			t.Fatalf("%d - expected %#v\ngot\n%#v\n", tc.output, tc.input, encoded)
+		}
+	}
+}
