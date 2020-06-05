@@ -22,3 +22,8 @@ func TestEncodeDecodeVarint(t *testing.T) {
 		input  []byte
 		output uint32
 	}{
+		0:  {[]byte{0x7F}, 127},
+		1:  {[]byte{0x81, 0x00}, 128},
+		2:  {[]byte{0xC0, 0x00}, 8192},
+		3:  {[]byte{0xFF, 0x7F}, 16383},
+		4:  {[]byte{0x81, 0x80, 0x00}, 16384},
