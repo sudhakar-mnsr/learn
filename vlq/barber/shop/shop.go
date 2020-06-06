@@ -54,3 +54,7 @@ func Open(maxChairs int) *Shop {
 
 	// Get the barber working.
 	s.wgClose.Add(1)
+	go func() {
+		defer s.wgClose.Done()
+		for cust := range s.chairs {
+			fmt.Printf("Barber servicing customer %q\n", cust.name)
