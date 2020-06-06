@@ -34,3 +34,13 @@ var (
 type customer struct {
 	name string
 }
+
+// Shop represents the barber's shop which contains chairs for customers
+// that customers can occupy and the barber can service. The shop can
+// be closed for business.
+type Shop struct {
+	open    int32          // Determines if the shop is open for business.
+	chairs  chan customer  // The set of chairs in the shop.
+	wgClose sync.WaitGroup // Provides support for closing the shop.
+	wgEnter sync.WaitGroup // Tracks customers entering the shop.
+}
