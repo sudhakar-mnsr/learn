@@ -22,3 +22,10 @@ import (
 	"time"
 )
 
+var (
+	// ErrShopClosed is returned when the shop is closed.
+	ErrShopClosed = errors.New("shop closed")
+
+	// ErrNoChair is returned when all the chairs are occupied.
+	ErrNoChair = errors.New("no chair available")
+)
