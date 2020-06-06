@@ -65,3 +65,10 @@ func Open(maxChairs int) *Shop {
 
 	return &s
 }
+
+// Close prevents any new customers from entering the shop and waits for
+// the barber to finish all existing customers.
+func (s *Shop) Close() {
+
+	// Mark the shop closed.
+	atomic.StoreInt32(&s.open, 0)
