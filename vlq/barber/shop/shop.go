@@ -29,3 +29,8 @@ var (
 	// ErrNoChair is returned when all the chairs are occupied.
 	ErrNoChair = errors.New("no chair available")
 )
+
+// customer represents a customer to be serviced.
+type customer struct {
+	name string
+}
