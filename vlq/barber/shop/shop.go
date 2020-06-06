@@ -44,3 +44,13 @@ type Shop struct {
 	wgClose sync.WaitGroup // Provides support for closing the shop.
 	wgEnter sync.WaitGroup // Tracks customers entering the shop.
 }
+
+// Open creates a new shop for business and gets the barber working.
+func Open(maxChairs int) *Shop {
+	s := Shop{
+		chairs: make(chan customer, maxChairs),
+	}
+	atomic.StoreInt32(&s.open, 1)
+
+	// Get the barber working.
+	s.wgClose.Add(1)
