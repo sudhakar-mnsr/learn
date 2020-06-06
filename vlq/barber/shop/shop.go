@@ -10,3 +10,15 @@
 //
 // Task: Change EnterCustomer so a customer can wait for a specified amount
 // of time for a chair to open up.
+
+package shop
+
+import (
+	"errors"
+	"fmt"
+	"math/rand"
+	"sync"
+	"sync/atomic"
+	"time"
+)
+
