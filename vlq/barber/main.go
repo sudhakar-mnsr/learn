@@ -25,3 +25,10 @@ func main() {
 			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
 			name := fmt.Sprintf("cust-%d", atomic.AddInt64(&id, 1))
 			if err := s.EnterCustomer(name); err != nil {
+				fmt.Printf("Customer %q told %q\n", name, err)
+				if err == shop.ErrShopClosed {
+					break
+				}
+			}
+		}
+	}()
