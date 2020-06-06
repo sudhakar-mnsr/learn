@@ -20,3 +20,8 @@ func main() {
 	// Create a goroutine than is constantly, but inconsistently, generating
 	// customers who are entering the shop.
 	go func() {
+		var id int64
+		for {
+			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+			name := fmt.Sprintf("cust-%d", atomic.AddInt64(&id, 1))
+			if err := s.EnterCustomer(name); err != nil {
