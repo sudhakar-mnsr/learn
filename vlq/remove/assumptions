@@ -1,0 +1,68 @@
+1. Build Single 2016 Web Server configured for InSync
+2. Create AMI from the configured server
+3. Provision six web servers across two AZs
+4. Configure Load Balancing
+5. Deploy Production Code Base using Octopus and manual installs
+6. Execute Isolated Testing
+a. Clone Webservers into the Isolated network zone.
+b. Execute Isolated Testing against Wave 1 Applications
+c. Delete servers
+7. Execute Cutover
+a. Validate latest code base is deployed to web servers
+b. Shut down application and server in NetSource
+c. Change DNS entries to point production traffic to AWS IP Addresses
+d. Update Kemp Load balancer to direct old VIPs to AWS for 3rd party VPNs
+e. Execute Production Testing
+=============================================================
+
+To build the new servers, a Windows 2016 server EC2 instance will be provisioned with the latest update of the 4.7 version of .NET framework installed. ATI prerequisite software will be installed according to the ATI InSync web server build steps, and security settings will be configured. After initial setup, the server will be converted into an Amazon Machine Image (AMI). The AMI will be used to provision six servers, in two different AZs, and connected to Octopus for software deployment.
+The InSync production code base will be deployed to the new InSync web servers in AWS using the existing Octopus Deployment processes in place at ATI. ATI will manually install software packages which cannot be deployed through Octopus in the same manner they are installed today.
+==================================================================
+1. Create EC2 instance with specific OS requirements. (e.g 2016 windows server for Insync)
+2. Install dependencies as per requirements of application (.NET framework 4.7 for Insync)
+3. Deploy the application (e.g Insync and its components)
+4. Create AMI from configured server
+5. Provision six web servers across two AZs
+6. Execute Isolated Testing in staging environment along with other replicated servers
+7. After requred validations promote to production subnet
+8. Switch application in DNS to point to AWS IP address
+9. Update Kemp Load balancer to direct old VIPs to AWS for 3rd party VPNs
+
+==============================================================
+To build the new servers, a Windows 2016 server EC2 instance will be provisioned with the latest update of the 4.7 version of .NET framework installed. ATI prerequisite software will be installed according to the ATI InSync web server build steps, and security settings will be configured. After initial setup, the server will be converted into an Amazon Machine Image (AMI). The AMI will be used to provision six servers, in two different AZs, and connected to Octopus for software deployment.
+
+===================================================================
+1. Create EC2 instance with specific OS requirements. (e.g 2016 windows server for Insync)
+2. Install dependencies as per requirements of application (.NET framework 4.7 for Insync)
+3. ATI prerequisite software is installed and configure security settings
+4. Deploy the application and configure(e.g Insync and its components)
+4. Create AMI from configured server
+5. Provision six web servers across two AZs
+6. Execute Isolated Testing in staging environment along with other replicated servers
+7. After requred validations promote to production subnet
+8. Switch application in DNS to point to AWS IP address
+9. Update Kemp Load balancer to direct old VIPs to AWS for 3rd party VPNs
+=============================================================
+Regular Maintanence 
+Available for any build issues and new deployments
+Devlop new jobs or modify existing jobs accomodating new requests
+Monitor Versioning/branching and artifacts
+Changes to users, setup access, policies to run jobs
+Test the Jobs (rollbacks, database versioning, etc)
+Fill in gaps for automation by developing scripts
+=============================================================
+Three servers will be created in AWS, leveraging an Amazon Machine Image (AMI) based on Windows 2016. Once these servers are created, ATI operations will log into the servers, join them into the ATI.Private domain, ATIAWSCloud site, and promote them to Domain controllers. In order to maintain compatibility with all domain controllers in the on-premises environment, these domain controllers will be configured to run with 2008 compatibility. DCDiag and connection testing is also performed.
+
+Four servers will then be created with the same AMI. Two of the servers wil be configured by ATI operations for ADFS and remaining for ADFS proxying.
+
+Office 365 provides different options to support user authentication with identities that come from AD. One common way to do this is to use Azure AD Connect and AD FS together with your AD directory. In this model, you use Azure AD Connect to synchronize user names from AD into Azure AD so that Office 365 can use those identities. To complete this solution, you use AD FS to enable Office 365 to authenticate the identities against your AD directory. 
+
+======================================================================
+Continuous Replication
+CloudEndure Disaster Recovery continually replicates any changes you make to your source machines into the staging area. This enables sub-second Recovery Point Objectives (RPOs). During a disaster or drill, click a button in the CloudEndure User Console to launch fully operational workloads according to your predefined networking and machine properties.
+Orchestration and Machine Conversion
+CloudEndure Disaster Recovery performs automated orchestration and machine conversion so that your source machines will boot and run natively on AWS. These automated processes are executed on all launched machines in parallel and within minutes, irrespective of machine size or storage usage. This enables Recovery Time Objectives (RTOs) of minutes.
+Failover
+If disaster strikes, click a button in the CloudEndure Console to launch an automated failover. CloudEndure Disaster Recovery will spin up the most up-to-date version of your machines. For cases of data corruptions, accidental system changes, or ransomware, you can instruct CloudEndure Disaster Recovery to spin up your source machines at previous consistent points in time by selecting your preferred time in the CloudEndure Console.
+Failback
+Once a disaster is over, CloudEndure Disaster Recovery uses automated machine conversion and orchestration technology to perform a rapid failback of up-to-date workloads into your source environment. Replication of the data back to your source environment occurs without disrupting normal business operations.
