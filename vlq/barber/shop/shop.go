@@ -58,3 +58,10 @@ func Open(maxChairs int) *Shop {
 		defer s.wgClose.Done()
 		for cust := range s.chairs {
 			fmt.Printf("Barber servicing customer %q\n", cust.name)
+			time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
+			fmt.Printf("Barber finished  customer %q\n", cust.name)
+		}
+	}()
+
+	return &s
+}
