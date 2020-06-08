@@ -75,3 +75,8 @@ func ConcurrentBounded(text []string) map[rune]int {
 			if g == lastGoroutine {
 				end = totalNumbers
 			}
+
+			for _, words := range text[start:end] {
+				for _, r := range words {
+					lm[r]++
+				}
