@@ -53,3 +53,7 @@ func ConcurrentBounded(text []string) map[rune]int {
 	totalNumbers := len(text)
 	lastGoroutine := goroutines - 1
 	stride := totalNumbers / goroutines
+
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+	wg.Add(goroutines)
