@@ -62,3 +62,10 @@ func ConcurrentBounded(text []string) map[rune]int {
 		go func(g int) {
 			lm := make(map[rune]int)
 			defer func() {
+				mu.Lock()
+				defer mu.Unlock()
+				for k, v := range lm {
+					m[k] = m[k] + v
+				}
+				wg.Done()
+			}()
