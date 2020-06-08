@@ -28,3 +28,8 @@ func ConcurrentUnlimited(text []string) map[rune]int {
 			for _, r := range words {
 				lm[r]++
 			}
+			ch <- lm
+		}(words)
+	}
+
+	all := make(map[rune]int)
