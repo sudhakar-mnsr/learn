@@ -11,3 +11,9 @@ import (
 func Sequential(text []string) map[rune]int {
 	m := make(map[rune]int)
 	for _, words := range text {
+		for _, r := range words {
+			m[r]++
+		}
+	}
+	return m
+}
