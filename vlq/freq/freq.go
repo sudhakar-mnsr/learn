@@ -6,3 +6,8 @@ import (
 	"runtime"
 	"sync"
 )
+
+// Sequential uses a sequential algorithm.
+func Sequential(text []string) map[rune]int {
+	m := make(map[rune]int)
+	for _, words := range text {
