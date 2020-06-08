@@ -94,3 +94,10 @@ func (s *Shop) EnterCustomer(name string) error {
 		defer s.wgEnter.Done()
 		select {
 		case s.chairs <- customer{name: name}:
+		default:
+			fmt.Printf("No chair for customer %q\n", name)
+		}
+	}()
+
+	return nil
+}
