@@ -43,3 +43,8 @@ func ConcurrentUnlimited(text []string) map[rune]int {
 
 	return all
 }
+
+// ConcurrentBounded uses a concurrent algorithm based on a bounded
+// fan out and no channels.
+func ConcurrentBounded(text []string) map[rune]int {
+	m := make(map[rune]int)
