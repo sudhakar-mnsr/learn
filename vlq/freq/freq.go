@@ -48,3 +48,8 @@ func ConcurrentUnlimited(text []string) map[rune]int {
 // fan out and no channels.
 func ConcurrentBounded(text []string) map[rune]int {
 	m := make(map[rune]int)
+
+	goroutines := runtime.GOMAXPROCS(0)
+	totalNumbers := len(text)
+	lastGoroutine := goroutines - 1
+	stride := totalNumbers / goroutines
