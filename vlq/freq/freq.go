@@ -80,3 +80,10 @@ func ConcurrentBounded(text []string) map[rune]int {
 				for _, r := range words {
 					lm[r]++
 				}
+			}
+		}(g)
+	}
+
+	wg.Wait()
+	return m
+}
