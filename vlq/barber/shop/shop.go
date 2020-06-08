@@ -88,3 +88,9 @@ func (s *Shop) EnterCustomer(name string) error {
 	if atomic.LoadInt32(&s.open) == 0 {
 		return ErrShopClosed
 	}
+
+	s.wgEnter.Add(1)
+	go func() {
+		defer s.wgEnter.Done()
+		select {
+		case s.chairs <- customer{name: name}:
