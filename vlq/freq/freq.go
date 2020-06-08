@@ -57,3 +57,8 @@ func ConcurrentBounded(text []string) map[rune]int {
 	var mu sync.Mutex
 	var wg sync.WaitGroup
 	wg.Add(goroutines)
+
+	for g := 0; g < goroutines; g++ {
+		go func(g int) {
+			lm := make(map[rune]int)
+			defer func() {
