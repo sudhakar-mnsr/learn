@@ -23,3 +23,8 @@ func Sequential(text []string) map[rune]int {
 func ConcurrentUnlimited(text []string) map[rune]int {
 	ch := make(chan map[rune]int, len(text))
 	for _, words := range text {
+		go func(words string) {
+			lm := make(map[rune]int)
+			for _, r := range words {
+				lm[r]++
+			}
