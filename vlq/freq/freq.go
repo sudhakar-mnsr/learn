@@ -69,3 +69,9 @@ func ConcurrentBounded(text []string) map[rune]int {
 				}
 				wg.Done()
 			}()
+
+			start := g * stride
+			end := start + stride
+			if g == lastGoroutine {
+				end = totalNumbers
+			}
