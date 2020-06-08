@@ -33,3 +33,13 @@ func ConcurrentUnlimited(text []string) map[rune]int {
 	}
 
 	all := make(map[rune]int)
+
+	for range text {
+		lm := <-ch
+		for r, c := range lm {
+			all[r] += c
+		}
+	}
+
+	return all
+}
