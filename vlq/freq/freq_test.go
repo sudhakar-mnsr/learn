@@ -67,3 +67,9 @@ func BenchmarkSequential(b *testing.B) {
 		m = freq.Sequential(inp)
 	}
 }
+
+func BenchmarkConcurrentBounded(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		m = freq.ConcurrentBounded(inp)
+	}
+}
