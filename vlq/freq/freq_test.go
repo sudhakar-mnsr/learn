@@ -11,3 +11,10 @@
 	// ConcurrentBounded uses a concurrent algorithm based on a bounded
 	// fan out and no channels.
 	func ConcurrentBounded(text []string) map[rune]int
+
+	// ConcurrentBoundedChannel uses a concurrent algorithm based on a bounded
+	// fan out using a channel.
+	func ConcurrentBoundedChannel(text []string) map[rune]int
+*/
+
+package freq_test
