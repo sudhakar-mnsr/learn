@@ -59,3 +59,11 @@ var out = map[rune]int{
 	'o': 11, 'm': 5, '\n': 2, 'x': 1, 'y': 8, 'S': 3, 'K': 1, 'k': 1, 'n': 10,
 	't': 8, 'a': 8, 'M': 1,
 }
+
+var m map[rune]int
+
+func BenchmarkSequential(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		m = freq.Sequential(inp)
+	}
+}
