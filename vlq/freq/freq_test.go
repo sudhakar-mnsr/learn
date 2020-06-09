@@ -26,3 +26,10 @@ import (
 )
 
 // go test -run none -bench . -benchtime 3s
+
+const succeed = "\u2713"
+const failed = "\u2717"
+
+func init() {
+	inp = buildText()
+}
