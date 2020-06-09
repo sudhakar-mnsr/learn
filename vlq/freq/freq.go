@@ -87,3 +87,12 @@ func ConcurrentBounded(text []string) map[rune]int {
 	wg.Wait()
 	return m
 }
+
+// ConcurrentBoundedChannel uses a concurrent algorithm based on a bounded
+// fan out using a channel.
+func ConcurrentBoundedChannel(text []string) map[rune]int {
+	m := make(map[rune]int)
+
+	g := runtime.GOMAXPROCS(0)
+	var wg sync.WaitGroup
+	wg.Add(g)
