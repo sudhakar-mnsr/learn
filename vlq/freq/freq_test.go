@@ -18,3 +18,11 @@
 */
 
 package freq_test
+
+import (
+	"testing"
+
+	"github.com/ardanlabs/gotraining/topics/go/algorithms/fun/freq"
+)
+
+// go test -run none -bench . -benchtime 3s
