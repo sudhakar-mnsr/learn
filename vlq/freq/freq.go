@@ -96,3 +96,11 @@ func ConcurrentBoundedChannel(text []string) map[rune]int {
 	g := runtime.GOMAXPROCS(0)
 	var wg sync.WaitGroup
 	wg.Add(g)
+
+	var mu sync.Mutex
+	ch := make(chan string, len(text))
+
+	for i := 0; i < g; i++ {
+		go func() {
+			lm := make(map[rune]int)
+			defer func() {
