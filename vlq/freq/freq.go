@@ -120,3 +120,13 @@ func ConcurrentBoundedChannel(text []string) map[rune]int {
 			}
 		}()
 	}
+
+
+	for _, words := range text {
+		ch <- words
+	}
+	close(ch)
+
+	wg.Wait()
+	return m
+}
