@@ -4,3 +4,10 @@
 	package freq
 	// Sequential uses a sequential algorithm.
 	func Sequential(text []string) map[rune]int
+
+	// ConcurrentUnlimited uses a concurrent algorithm based on an
+	// unlimited fan out pattern.
+	func ConcurrentUnlimited(text []string) map[rune]int
+	// ConcurrentBounded uses a concurrent algorithm based on a bounded
+	// fan out and no channels.
+	func ConcurrentBounded(text []string) map[rune]int
