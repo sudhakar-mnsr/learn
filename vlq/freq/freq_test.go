@@ -45,3 +45,9 @@ func buildText() []string {
 	}
 	return s
 }
+
+var sentence = `The quick brown fox jumps over the lazy dog Stay hungry. Stay
+foolish Keep going. Be all in Boldness be my friend Screw it, let’s do it My
+life is my message Leave no stone unturned Dream big. Pray bigger`
+
+var inp []string
