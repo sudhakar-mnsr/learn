@@ -98,3 +98,8 @@ func TestCount(t *testing.T) {
 			{"ConcurrentBoundedChannel", freq.ConcurrentBoundedChannel},
 			{"ConcurrentUnlimited", freq.ConcurrentUnlimited},
 		}
+
+		for i, tt := range tests {
+			t.Logf("\tTest %d:\tWhen running %q", i, tt.name)
+			{
+				f := tt.count(inp)
