@@ -107,3 +107,10 @@ func TestCount(t *testing.T) {
 					t.Logf("\t%s\tShould get back the same number of runes.", failed)
 				}
 				t.Logf("\t%s\tShould get back the same number of runes.", succeed)
+
+				for r, c := range f {
+					if c2, ok := out[r]; !ok || c != c2 {
+						t.Logf("\t%s\tShould see ranging over result matches the output.", failed)
+						t.Fatalf("\t\tRune: %c  Got %d, Expected %d.", r, c, c2)
+					}
+				}
