@@ -45,7 +45,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/data/list"
+	"github.com/sudhakar-mnsr/learn/list"
 )
 
 const succeed = "\u2713"
