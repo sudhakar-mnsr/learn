@@ -93,3 +93,8 @@ func TestCount(t *testing.T) {
 			name  string
 			count func(text []string) map[rune]int
 		}{
+			{"Sequential", freq.Sequential},
+			{"ConcurrentBounded", freq.ConcurrentBounded},
+			{"ConcurrentBoundedChannel", freq.ConcurrentBoundedChannel},
+			{"ConcurrentUnlimited", freq.ConcurrentUnlimited},
+		}
