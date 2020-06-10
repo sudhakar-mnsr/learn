@@ -10,7 +10,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ardanlabs/gotraining/topics/go/algorithms/fun/barber/shop"
+	"github.com/sudhakar-mnsr/learn/barber"
 )
 
 func main() {
