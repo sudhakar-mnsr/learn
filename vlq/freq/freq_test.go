@@ -79,3 +79,9 @@ func BenchmarkConcurrentBoundedChannel(b *testing.B) {
 		m = freq.ConcurrentBoundedChannel(inp)
 	}
 }
+
+func BenchmarkConcurrentUnlimited(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		m = freq.ConcurrentUnlimited(inp)
+	}
+}
