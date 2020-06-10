@@ -118,3 +118,11 @@ func TestCount(t *testing.T) {
 				for r, c := range out {
 					if c2, ok := f[r]; !ok || c != c2 {
 						t.Logf("\t%s\tShould see ranging over output matches the result.", failed)
+						t.Fatalf("\t\tRune: %c  Got %d, Expected %d.", r, c, c2)
+					}
+				}
+				t.Logf("\t%s\tShould see ranging over output matches the result.", succeed)
+			}
+		}
+	}
+}
