@@ -103,3 +103,7 @@ func TestCount(t *testing.T) {
 			t.Logf("\tTest %d:\tWhen running %q", i, tt.name)
 			{
 				f := tt.count(inp)
+				if len(f) != len(out) {
+					t.Logf("\t%s\tShould get back the same number of runes.", failed)
+				}
+				t.Logf("\t%s\tShould get back the same number of runes.", succeed)
