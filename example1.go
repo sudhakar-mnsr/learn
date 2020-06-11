@@ -62,3 +62,11 @@ func (l *devlist) Dequeue() developer {
 type sysadmin struct {
 	name string
 }
+
+// Declare a method named administrate for the sysadmin type, implementing the
+// administrator interface. administrate should print out the name of the
+// sysadmin, as well as the system they are administering.
+func (s *sysadmin) administrate(system string) {
+	fmt.Println(s.name, "is administering", system)
+}
+
