@@ -48,3 +48,10 @@ type devlist struct {
 func (l *devlist) Enqueue(d developer) {
 	l.list = append(l.list, d)
 }
+
+// Dequeue removes a developer from the devlist.
+func (l *devlist) Dequeue() developer {
+	d := l.list[0]
+	l.list = l.list[1:]
+	return d
+}
