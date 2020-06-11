@@ -42,3 +42,9 @@ func (l *adminlist) Dequeue() administrator {
 type devlist struct {
 	list []developer
 }
+
+
+// Enqueue adds a developer to the devlist.
+func (l *devlist) Enqueue(d developer) {
+	l.list = append(l.list, d)
+}
