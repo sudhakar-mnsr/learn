@@ -74,3 +74,10 @@ func (s *sysadmin) administrate(system string) {
 type programmer struct {
 	name string
 }
+
+// Declare a method named develop for the programmer type, implementing the
+// developer interface. develop should print out the name of the
+// programmer, as well as the system they are coding.
+func (p *programmer) develop(system string) {
+	fmt.Println(p.name, "is developing", system)
+}
