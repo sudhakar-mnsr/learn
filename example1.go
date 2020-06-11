@@ -70,3 +70,7 @@ func (s *sysadmin) administrate(system string) {
 	fmt.Println(s.name, "is administering", system)
 }
 
+// Declare a concrete type named programmer with a name field of type string.
+type programmer struct {
+	name string
+}
