@@ -11,3 +11,8 @@ import "fmt"
 type administrator interface {
 	administrate(system string)
 }
+
+// developer represents a person or other entity capable of writing software.
+type developer interface {
+	develop(system string)
+}
