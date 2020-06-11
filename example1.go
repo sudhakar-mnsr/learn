@@ -24,3 +24,7 @@ type adminlist struct {
 	list []administrator
 }
 
+// Enqueue adds an administrator to the adminlist.
+func (l *adminlist) Enqueue(a administrator) {
+	l.list = append(l.list, a)
+}
