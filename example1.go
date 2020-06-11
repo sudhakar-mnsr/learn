@@ -55,3 +55,10 @@ func (l *devlist) Dequeue() developer {
 	l.list = l.list[1:]
 	return d
 }
+
+// =============================================================================
+
+// Declare a concrete type named sysadmin with a name field of type string.
+type sysadmin struct {
+	name string
+}
