@@ -81,3 +81,10 @@ type programmer struct {
 func (p *programmer) develop(system string) {
 	fmt.Println(p.name, "is developing", system)
 }
+
+// Declare a concrete type named company. Declare it as the composition of
+// the administrator and developer interface types.
+type company struct {
+	administrator
+	developer
+}
