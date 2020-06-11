@@ -28,3 +28,11 @@ type adminlist struct {
 func (l *adminlist) Enqueue(a administrator) {
 	l.list = append(l.list, a)
 }
+
+// Dequeue removes an administrator from the adminlist.
+func (l *adminlist) Dequeue() administrator {
+	a := l.list[0]
+	l.list = l.list[1:]
+	return a
+}
+
