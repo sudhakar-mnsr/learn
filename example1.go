@@ -5,3 +5,9 @@ package main
 
 // Add import(s).
 import "fmt"
+
+// administrator represents a person or other entity capable of administering
+// hardware and software infrastructure.
+type administrator interface {
+	administrate(system string)
+}
