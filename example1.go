@@ -36,3 +36,9 @@ func (l *adminlist) Dequeue() administrator {
 	return a
 }
 
+// =============================================================================
+
+// devlist represents a group of developers.
+type devlist struct {
+	list []developer
+}
