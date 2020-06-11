@@ -16,3 +16,11 @@ type administrator interface {
 type developer interface {
 	develop(system string)
 }
+
+// =============================================================================
+
+// adminlist represents a group of administrators.
+type adminlist struct {
+	list []administrator
+}
+
