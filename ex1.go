@@ -33,3 +33,10 @@ func main() {
 		uppercase()
 		wg.Done()
 	}()
+	// Wait for the goroutines to finish.
+	fmt.Println("Waiting To Finish")
+	wg.Wait()
+
+	fmt.Println("\nTerminating Program")
+}
+
