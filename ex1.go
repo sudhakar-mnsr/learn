@@ -40,3 +40,13 @@ func main() {
 	fmt.Println("\nTerminating Program")
 }
 
+// lowercase displays the set of lowercase letters three times.
+func lowercase() {
+
+	// Display the alphabet three times
+	for count := 0; count < 3; count++ {
+		for r := 'a'; r <= 'z'; r++ {
+			fmt.Printf("%c ", r)
+		}
+	}
+}
