@@ -1,0 +1,80 @@
+Objective:
+[Kayal]
+Hope is covered outside of the document as I don’t see them inline
+[Sudhakar]
+Yes
+
+Strategy:
+[Kayal]
+Can we have a current state deployment diagram compared with future state here so as to prove the statement? Also the changes for example instead of Kemp load balancers, ALB – the selection rationale
+
+[Sudhakar]
+We can present one diagram which they have however they have storage switches, Cisco ASR1001-x devices, Nexus switches in their network which are not needed in our migration. If we keep this diagram side by side to our arch it may appear they dont match by hardware configuration. However this is not true.
+
+Here Iam refering to functionality point of view, Iam not refering mapping their devices, (e.g. ALB is choosen as it is first class citizen in AWS for load balancing) (I have not compared Kemp loadbalancer to ALB before suggesting).
+
+Target Architecture
+[Kayal]
+Add the target architecture diagram here and then talk about the selection rationale
+
+[Sudhakar] Done
+
+3.1.1
+[Kayal]
+Rephrase pls
+[Sudhakar]
+Done. Changed to ' Application/server VM's will be launched in two availability zones'
+
+[Kayal]
+Use Launch templates instead of launch configuration
+
+[Sudhakar] launch configuration usage is correct with Auto Scaling groups. Can you clarify on why you felt launch templates is correct.
+
+[Kayal]
+Instead of detailing what is auto scaling which anyway is available in AWS docs, can we explain the number of templates we are supposed to write and the recommended threshold values of those spikes?
+[Sudhakar] The information about threshold values are not known to us. This may be computed after some testing in production. However to fill the gap I have written with generic words.
+
+3.1.2
+[Kayal]
+If top priority, keep it at the front, should we call it out explicitly?
+[Sudhakar]
+We followed the same order amazon mentioned in its ref doc. If it looks odd it can be removed.
+
+[Kayal]
+Can we add few examples here? Like how the policy documents are to be created – bucket policy, etc…
+[Sudhakar]
+
+
+[Kayal]
+Explain the inboud and outbound rules recommendation for the applications. If not known at this point of time, call it out in assumptions
+[Sudhakar]
+
+How many subnets in an availability zone recommended?
+
+Which iAM? Are we saying Role - ?
+
+Wrong, use iam Role
+
+Why do we need to call this out? As in AD, they should have this maintenance in place. 
+
+What encryption methodology is recommended and Why/
+
+How the keys are persevered and who is responsible for rotating them? Can we call it out with example?
+
+Come up with example actions/ resources which are to be traced
+
+Can we say how they are to be imported?
+
+Please explain with more details considering the database, application server etc..
+
+Usage of cloud Front? Are they globally available? Pls check
+The components are lying outside are to be mentioned in different diagram like IAM and cloud directory – how the federation works etc..?
+Usage of API GW? – please check if is lift and shift should we require any API customizations/ lambda etc..?
+
+
+8 Disaster Recovery
+[Kayal]
+Piolet light
+[Sudhakar] Corrected
+
+
