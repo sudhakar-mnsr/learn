@@ -54,8 +54,16 @@ func printHashes(prefix string) {
 	// print each has from 1 to 10. Change this to 50000 and
 	// see how the scheduler behaves.
 	for i := 1; i <= 50000; i++ {
+
 		// Convert i to a string.
 		num := strconv.Itoa(i)
 
 		// Calculate hash for string num.
 		sum := sha1.Sum([]byte(num))
+
+		// Print prefix: 5-digit-number: hex encoded hash
+		fmt.Printf("%s: %05d: %x\n", prefix, i, sum)
+	}
+
+	fmt.Println("Completed", prefix)
+}
