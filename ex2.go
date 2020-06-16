@@ -45,3 +45,12 @@ func main() {
 
 	fmt.Println("Terminating Program")
 }
+
+
+// printHashes calculates the sha1 hash for a range of
+// numbers and prints each in hex encoding.
+func printHashes(prefix string) {
+
+	// print each has from 1 to 10. Change this to 50000 and
+	// see how the scheduler behaves.
+	for i := 1; i <= 50000; i++ 
