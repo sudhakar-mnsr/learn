@@ -21,3 +21,8 @@ func main() {
 	// Add a count of two, one for each goroutine.
 	var wg sync.WaitGroup
 	wg.Add(2)
+
+	fmt.Println("Start Goroutines")
+
+	// Declare an anonymous function and create a goroutine.
+	go func() {
