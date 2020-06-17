@@ -26,3 +26,8 @@ func main() {
 
 		// Tell main we are done.
 	}
+
+	// Declare an anonymous function and create a goroutine.
+	{
+		// Declare a loop that counts up from 0 to 100 and
+		// display each value.
