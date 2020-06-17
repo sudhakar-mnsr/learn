@@ -31,3 +31,11 @@ func main() {
 	{
 		// Declare a loop that counts up from 0 to 100 and
 		// display each value.
+
+		// Tell main we are done.
+	}
+
+	// Wait for the goroutines to finish.
+
+	// Display "Terminating Program".
+}
