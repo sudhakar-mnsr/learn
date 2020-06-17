@@ -1,1 +1,47 @@
-abce
+Recovery activities will include:
+IT Service recovery
+Network Services:
+Virtual Private Clouds (VPC) / Network Subnets – Base Networking has been staged and is ready to receive applications.
+Palo Alto Firewalls – Firewalls have been setup with rules necessary to support ingress and egress traffic.
+BGP routing – Routing has been established to allow both data replication and user access required for accessing applications.
+Recovery Process:
+Changing External DNS entries supporting ADFS and SFTP.
+Opening firewall access to allow inbound communication.
+
+Authentication Services:
+Authentication services provide capabilities to allow users to access applications and data. ATI currently provides these services through the use of Microsoft Active Directory and Active Directory Federation Services. 2 sets of ADFS servers(for SSO with 3rd party SAAS providers), 3 Domain controllers (for user authentication to the ATI applications) have been pre-staged in the AWS environment, including proper networking rules and load balancers. Data replication for these services use Microsoft native replication technologies. Changes made in production will be automatically replicated to AWS. 
+Recovery Process:
+Promoting the AWS domain controller to act as the Primary Domain Controller for the ATI environment, by seizing FSMO roles.
+Opening external networking for the ADFS proxy servers and changing external DNS to point to the AWS external IP address for ADFS services.
+File Services:
+DFS shares and files are replicated to the DR site using Microsoft’s DFS-R function. SFTP server is replicated in its entirety using the CloudEndure replication utility. These servers in AWS are in sync to current production environment.
+Recovery process:
+Modifying DFS shares to allow Read\Write Access, making the AWS DFS environment act as a primary write space.
+Executing the failover process for the SFTP server, in the CloudEndure portal
+Opening external networking for the SFTP server and changing external DNS to point to the AWS external IP address for SFTP.
+
+Application Recovery
+Database services (Touchstone and Insync)
+The production environment uses 3 SQL clusters, 2 SQL servers DB-ODSDW-PROD and DB-TOUCHSTONE-PROD, 2 SQL servers for B-CORPODS-PROD and DB-ADHOC-PROD, 2 SQL instances for DB-DW-PROD are configured with SQL AlwaysON and are deployed across 2 availability zones. SQL data is replicated to offline databases, using differential backups and log shipping. Backups and logs will be applied as received to meet recover point targets.
+Applying the latest available transactions to the offline databases.
+Bringing the databases online
+Updating internal DNS entries, to redirect Database aliases to the AWS servers.
+Initiating SQL Jobs.
+Performing validation activities.
+
+Touchstone & InSync:
+Code changes to the Touchstone/InSync application servers are manually deployed to the AWS staged servers, following deployment to production servers in Netsource. Hence no further steps needed to get latest code for these applications.
+The System Integration server and Credentialing Database server is replicated in its entirety using the CloudEndure replication utility. Changes made to the server, in production, are replicated to the DR site in near real time.
+Recovery Process:
+Executing the Cloud Endure failover process for the System Integration server(Touchstone) and Credentialing Database server(InSync).
+Updating internal DNS entries, related to the Touchstone/InSync applications, to reference the load balancer pre-staged in AWS.
+Starting application services on the Touchstone/InSync application servers
+Starting all services and scheduled tasks on the Standalone web\application server
+Performing validation activities.
+
+SSIS, SSRS, Alteryx, Tableau, Great Plains, BI360, 
+All the above database servers are replicated in their entirety using the CloudEndure replication utility. Changes made to these servers, in production, are replicated to the AWS environment in near real time.
+Recovery Process:
+Executing the Cloud Endure failover process for the database servers.
+Updating internal DNS entries, as related to the DR IP address reservation.
+=========================================================================================================================================
