@@ -33,3 +33,10 @@ func main() {
 				fmt.Printf("%c ", r)
 			}
 		}
+
+		// Tell main we are done.
+		wg.Done()
+	}()
+
+	// Declare an anonymous function and create a goroutine.
+	go func() {
