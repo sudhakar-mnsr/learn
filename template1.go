@@ -14,3 +14,15 @@ func init() {
 	// Allocate one logical processor for the scheduler to use.
 	runtime.GOMAXPROCS(1)
 }
+
+func main() {
+
+	// Declare a wait group and set the count to two.
+
+	// Declare an anonymous function and create a goroutine.
+	{
+		// Declare a loop that counts down from 100 to 0 and
+		// display each value.
+
+		// Tell main we are done.
+	}
