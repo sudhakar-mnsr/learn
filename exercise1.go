@@ -17,3 +17,11 @@ func init() {
 	// Allocate one logical processor for the scheduler to use.
 	runtime.GOMAXPROCS(1)
 }
+
+func main() {
+
+	// Declare a wait group and set the count to two.
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	fmt.Println("Start Goroutines")
