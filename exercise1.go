@@ -25,3 +25,10 @@ func main() {
 	wg.Add(2)
 
 	fmt.Println("Start Goroutines")
+
+	// Declare an anonymous function and create a goroutine.
+	go func() {
+		// Count down from 100 to 0.
+		for count := 100; count >= 0; count-- {
+			fmt.Printf("[A:%d]\n", count)
+		}
