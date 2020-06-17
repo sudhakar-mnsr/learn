@@ -5,3 +5,12 @@
 //
 // Run the program in parallel.
 package 
+
+// Add imports.
+import "runtime"
+
+func init() {
+
+	// Allocate one logical processor for the scheduler to use.
+	runtime.GOMAXPROCS(1)
+}
