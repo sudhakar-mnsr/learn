@@ -4,7 +4,7 @@
 // and don't let main return until the goroutines complete.
 //
 // Run the program in parallel.
-package 
+package main
 
 // Add imports.
 import "runtime"
