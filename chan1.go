@@ -38,3 +38,11 @@ func main() {
 	// Wait for the program to finish.
 	wg.Wait()
 }
+
+// goroutine simulates sharing a value.
+func goroutine(name string, share chan int) {
+	for {
+
+		// Wait to receive a value.
+		value, ok := <-share
+		if !ok {
