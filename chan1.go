@@ -26,3 +26,8 @@ func main() {
 		goroutine("Bill", share)
 		wg.Done()
 	}()
+
+	go func() {
+		goroutine("Joan", share)
+		wg.Done()
+	}()
