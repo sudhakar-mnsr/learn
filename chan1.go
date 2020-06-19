@@ -21,3 +21,8 @@ func main() {
 	wg.Add(2)
 
 	// Launch two goroutines.
+
+	go func() {
+		goroutine("Bill", share)
+		wg.Done()
+	}()
