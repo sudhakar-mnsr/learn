@@ -46,3 +46,9 @@ func goroutine(name string, share chan int) {
 		// Wait to receive a value.
 		value, ok := <-share
 		if !ok {
+			// If the channel was closed, return.
+			fmt.Printf("Goroutine %s Down\n", name)
+			return
+		}
+
+		// Display the value.
