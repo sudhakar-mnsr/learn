@@ -57,3 +57,7 @@ func goroutine(name string, share chan int) {
 
 		// Terminate when the value is 10.
 		if value == 10 {
+			close(share)
+			fmt.Printf("Goroutine %s Down\n", name)
+			return
+		}
