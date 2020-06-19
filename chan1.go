@@ -16,3 +16,8 @@ func main() {
 
 	// Create the WaitGroup and add a count
 	// of two, one for each goroutine.
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	// Launch two goroutines.
