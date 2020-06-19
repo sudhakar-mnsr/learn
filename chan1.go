@@ -61,3 +61,9 @@ func goroutine(name string, share chan int) {
 			fmt.Printf("Goroutine %s Down\n", name)
 			return
 		}
+
+		// Increment the value and send it
+		// over the channel.
+		share <- (value + 1)
+	}
+}
