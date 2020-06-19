@@ -8,3 +8,11 @@ import (
 	"fmt"
 	"sync"
 )
+
+func main() {
+
+	// Create an unbuffered channel.
+	share := make(chan int)
+
+	// Create the WaitGroup and add a count
+	// of two, one for each goroutine.
