@@ -31,3 +31,10 @@ func main() {
 		goroutine("Joan", share)
 		wg.Done()
 	}()
+
+	// Start the sharing.
+	share <- 1
+
+	// Wait for the program to finish.
+	wg.Wait()
+}
