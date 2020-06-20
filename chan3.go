@@ -17,3 +17,8 @@ const (
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
+
+func main() {
+
+	// Create the channel for sharing results.
+	values := make(chan int)
