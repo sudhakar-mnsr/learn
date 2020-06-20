@@ -27,3 +27,12 @@ func main() {
 	values := make(chan int, goroutines)
 
 	// Iterate and launch each goroutine
+
+	for gr := 0; gr < goroutines; gr++ {
+
+		// Create an anonymous function for each goroutine that
+		// generates a random number and sends it on the channel.
+		go func() {
+			values <- rand.Intn(1000)
+		}()
+	}
