@@ -43,3 +43,7 @@ func main() {
 
 	// Iterate receiving each value until they are all received.
 	// Store them in a slice of ints.
+
+	var nums []int
+	for wait > 0 {
+		nums = append(nums, <-values)
