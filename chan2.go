@@ -47,3 +47,9 @@ func main() {
 	var nums []int
 	for wait > 0 {
 		nums = append(nums, <-values)
+		wait--
+	}
+
+	// Print the values in our slice.
+	fmt.Println(nums)
+}
