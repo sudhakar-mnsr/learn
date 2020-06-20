@@ -36,3 +36,10 @@ func main() {
 			values <- rand.Intn(1000)
 		}()
 	}
+
+	// Create a variable to be used to track received messages.
+	// Set the value to the number of goroutines created.
+	wait := goroutines
+
+	// Iterate receiving each value until they are all received.
+	// Store them in a slice of ints.
