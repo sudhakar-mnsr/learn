@@ -19,3 +19,11 @@ const (
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
+
+func main() {
+
+	// Create the buffer channel with a buffer for
+	// each goroutine to be created.
+	values := make(chan int, goroutines)
+
+	// Iterate and launch each goroutine
