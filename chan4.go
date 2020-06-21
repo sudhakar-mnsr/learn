@@ -71,3 +71,10 @@ func main() {
 			break
 		}
 	}
+
+	// Send the shutdown signal by closing the channel.
+	fmt.Println("Receiver sending shutdown signal")
+	close(shutdown)
+
+	// Wait for the Goroutines to finish.
+	wg.Wait()
