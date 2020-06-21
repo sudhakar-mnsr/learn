@@ -48,3 +48,10 @@ func main() {
 			values <- n
 		}()
 	}
+
+	// Create a goroutine that waits for the other goroutines to finish then
+	// closes the channel.
+	go func() {
+		wg.Wait()
+		close(values)
+	}()
