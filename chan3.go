@@ -62,3 +62,9 @@ func main() {
 	for n := range values {
 		nums = append(nums, n)
 	}
+
+
+	// Print the values in our slice.
+	fmt.Printf("Result count: %d\n", len(nums))
+	fmt.Println(nums)
+}
