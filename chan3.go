@@ -41,3 +41,10 @@ func main() {
 
 			// Return early if the number is divisible by 2. n%2 == 0
 			if n%2 == 0 {
+				return
+			}
+
+			// Send the odd values through the channel.
+			values <- n
+		}()
+	}
