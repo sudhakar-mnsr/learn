@@ -9,3 +9,11 @@ import (
 	"runtime"
 	"sync"
 )
+
+func main() {
+
+	// Create the channel for sharing results.
+	values := make(chan int)
+
+	// Create a channel "shutdown" to tell goroutines when to terminate.
+	shutdown := make(chan struct{})
