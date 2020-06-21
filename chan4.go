@@ -50,3 +50,14 @@ func main() {
 			}
 		}(i)
 	}
+
+
+	// Create a slice to hold the random numbers.
+	var nums []int
+	for i := range values {
+
+		// continue the loop if the value was even.
+		if i%2 == 0 {
+			fmt.Println("Discarding", i)
+			continue
+		}
