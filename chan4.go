@@ -31,3 +31,9 @@ func main() {
 
 			// Start an infinite loop.
 			for {
+
+				// Generate a random number up to 1000.
+				n := rand.Intn(1000)
+
+				// Use a select to either send the number or receive the shutdown signal.
+				select {
