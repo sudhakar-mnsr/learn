@@ -24,3 +24,10 @@ func main() {
 	// Create a sync.WaitGroup to monitor the Goroutine pool. Add the count.
 	var wg sync.WaitGroup
 	wg.Add(poolSize)
+
+	// Create a fixed size pool of goroutines to generate random numbers.
+	for i := 0; i < poolSize; i++ {
+		go func(id int) {
+
+			// Start an infinite loop.
+			for {
