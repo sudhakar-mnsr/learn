@@ -55,3 +55,10 @@ func main() {
 		wg.Wait()
 		close(values)
 	}()
+
+	// Receive from the channel until it is closed.
+	// Store values in a slice of ints.
+	var nums []int
+	for n := range values {
+		nums = append(nums, n)
+	}
