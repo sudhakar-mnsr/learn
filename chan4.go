@@ -61,3 +61,13 @@ func main() {
 			fmt.Println("Discarding", i)
 			continue
 		}
+
+		// Store the odd number.
+		fmt.Println("Keeping", i)
+		nums = append(nums, i)
+
+		// break the loop once we have 100 results.
+		if len(nums) == 100 {
+			break
+		}
+	}
