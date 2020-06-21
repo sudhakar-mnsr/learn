@@ -29,3 +29,8 @@ func main() {
 
 	// Iterate and launch each goroutine.
 	for gr := 0; gr < goroutines; gr++ {
+		// Create an anonymous function for each goroutine.
+		go func() {
+
+			// Ensure the waitgroup is decremented when this function returns.
+			defer wg.Done()
