@@ -78,3 +78,8 @@ func main() {
 
 	// Wait for the Goroutines to finish.
 	wg.Wait()
+
+	// Print the values in our slice.
+	fmt.Printf("Result count: %d\n", len(nums))
+	fmt.Println(nums)
+}
