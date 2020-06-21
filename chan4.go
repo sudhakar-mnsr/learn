@@ -43,3 +43,10 @@ func main() {
 
 				// In another case receive from the shutdown channel.
 				case <-shutdown:
+					fmt.Printf("Worker %d shutting down\n", id)
+					wg.Done()
+					return
+				}
+			}
+		}(i)
+	}
