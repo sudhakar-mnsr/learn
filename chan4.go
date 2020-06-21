@@ -37,3 +37,9 @@ func main() {
 
 				// Use a select to either send the number or receive the shutdown signal.
 				select {
+				// In one case send the random number.
+				case values <- n:
+					fmt.Printf("Worker %d sent %d\n", id, n)
+
+				// In another case receive from the shutdown channel.
+				case <-shutdown:
