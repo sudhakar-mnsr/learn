@@ -29,8 +29,15 @@ func main() {
 
 	// Iterate and launch each goroutine.
 	for gr := 0; gr < goroutines; gr++ {
+
 		// Create an anonymous function for each goroutine.
 		go func() {
 
 			// Ensure the waitgroup is decremented when this function returns.
 			defer wg.Done()
+
+			// Generate a random number up to 1000.
+			n := rand.Intn(1000)
+
+			// Return early if the number is divisible by 2. n%2 == 0
+			if n%2 == 0 {
