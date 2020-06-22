@@ -27,3 +27,11 @@ func main() {
 	// wg is used to manage concurrency.
 	var wg sync.WaitGroup
 	wg.Add(grs)
+
+	// Create three goroutines to generate random numbers.
+	for i := 0; i < grs; i++ {
+		go func() {
+			random(10)
+			wg.Done()
+		}()
+	}
