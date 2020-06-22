@@ -18,3 +18,12 @@ var mutex sync.Mutex
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
+
+// main is the entry point for the application.
+func main() {
+	// Number of goroutines to use.
+	const grs = 3
+
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
+	wg.Add(grs)
