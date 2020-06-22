@@ -50,3 +50,12 @@ func random(amount int) {
 	// Generate as many random numbers as specified.
 	for i := 0; i < amount; i++ {
 		n := rand.Intn(100)
+
+		// Protect this append to keep access safe.
+		mutex.Lock()
+		{
+			numbers = append(numbers, n)
+		}
+		mutex.Unlock()
+	}
+}
