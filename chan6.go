@@ -7,3 +7,9 @@ import (
 	"sync"
 	"time"
 )
+
+// numbers maintains a set of random numbers.
+var numbers []int
+
+// mutex will help protect the slice.
+var mutex sync.Mutex
