@@ -32,3 +32,13 @@ func main() {
 			wg.Done()
 		}()
 	}
+
+
+	// Wait for all the goroutines to finish.
+	wg.Wait()
+
+	// Display the set of random numbers.
+	for i, number := range numbers {
+		fmt.Println(i, number)
+	}
+}
