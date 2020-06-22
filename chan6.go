@@ -44,3 +44,9 @@ func main() {
 		fmt.Println(i, number)
 	}
 }
+
+// random generates random numbers and stores them into a slice.
+func random(amount int) {
+	// Generate as many random numbers as specified.
+	for i := 0; i < amount; i++ {
+		n := rand.Intn(100)
