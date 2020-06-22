@@ -15,3 +15,12 @@ var numbers []int
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
+
+func main() {
+
+	// Number of goroutines to use.
+	const grs = 3
+
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
+	wg.Add(grs)
