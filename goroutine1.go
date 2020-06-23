@@ -28,3 +28,9 @@ func main() {
 		lowercase()
 		wg.Done()
 	}()
+
+	// Create a goroutine from the uppercase function.
+	go func() {
+		uppercase()
+		wg.Done()
+	}()
