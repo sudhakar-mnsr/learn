@@ -20,3 +20,11 @@ func main() {
 	// wg is used to manage concurrency.
 	var wg sync.WaitGroup
 	wg.Add(2)
+
+	fmt.Println("Start Goroutines")
+
+	// Create a goroutine from the lowercase function.
+	go func() {
+		lowercase()
+		wg.Done()
+	}()
