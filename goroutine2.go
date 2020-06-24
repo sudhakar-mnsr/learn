@@ -54,3 +54,8 @@ func printHashes(prefix string) {
 
 		// Convert i to a string.
 		num := strconv.Itoa(i)
+
+
+		// Calculate hash for string num.
+		sum := sha1.Sum([]byte(num))
+
