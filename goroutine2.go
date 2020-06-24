@@ -23,3 +23,9 @@ func main() {
 	wg.Add(2)
 
 	fmt.Println("Create Goroutines")
+
+	// Create the first goroutine and manage its lifecycle here.
+	go func() {
+		printHashes("A")
+		wg.Done()
+	}()
