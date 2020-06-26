@@ -21,3 +21,10 @@ func (d *device) Write(p []byte) (n int, err error) {
 
 	// Simulate disk problems.
 	for d.isProblem() {
+
+		time.Sleep(time.Second)
+	}
+
+	fmt.Print(string(p))
+	return len(p), nil
+}
