@@ -42,3 +42,9 @@ func (d *device) flipProblem() {
 	defer d.mu.Unlock()
 	d.problem = !d.problem
 }
+
+
+func main() {
+
+	// Number of goroutines that will be writing logs.
+	const grs = 10
