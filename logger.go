@@ -9,3 +9,9 @@ import (
 	"sync"
 	"time"
 )
+
+// device allows us to mock a device we write logs to.
+type device struct {
+	mu      sync.RWMutex
+	problem bool
+}
