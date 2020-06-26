@@ -35,3 +35,10 @@ func (d *device) isProblem() bool {
 	defer d.mu.RUnlock()
 	return d.problem
 }
+
+// flipProblem reverses the problem flag to the opposite value.
+func (d *device) flipProblem() {
+	d.mu.Lock()
+	defer d.mu.Unlock()
+	d.problem = !d.problem
+}
