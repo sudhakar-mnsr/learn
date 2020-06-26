@@ -28,3 +28,10 @@ func (d *device) Write(p []byte) (n int, err error) {
 	fmt.Print(string(p))
 	return len(p), nil
 }
+
+// isProblem checks in a safe way if there is a problem.
+func (d *device) isProblem() bool {
+	d.mu.RLock()
+	defer d.mu.RUnlock()
+	return d.problem
+}
