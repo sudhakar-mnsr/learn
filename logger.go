@@ -48,3 +48,9 @@ func main() {
 
 	// Number of goroutines that will be writing logs.
 	const grs = 10
+
+	// Create a logger value with a buffer of capacity
+	// for each goroutine that will be logging.
+	var d device
+	l := log.New(&d, "prefix", 0)
+
