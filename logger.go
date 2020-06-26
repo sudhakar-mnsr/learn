@@ -58,3 +58,8 @@ func main() {
 	for i := 0; i < grs; i++ {
 		go func(id int) {
 			for {
+				l.Println(fmt.Sprintf("%d: log data", id))
+				time.Sleep(10 * time.Millisecond)
+			}
+		}(i)
+	}
