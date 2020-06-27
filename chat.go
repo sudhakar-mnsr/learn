@@ -47,3 +47,9 @@ func (c *client) read() {
 			}
 			continue
 		}
+
+		if e, is := err.(temporary); is && !e.Temporary() {
+			log.Println("Temporary: Client leaving chat")
+			c.wg.Done()
+			return
+		}
