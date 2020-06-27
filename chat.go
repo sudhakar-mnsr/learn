@@ -31,3 +31,10 @@ type client struct {
 	wg     sync.WaitGroup
 	conn   net.Conn
 }
+
+// read waits for message and sends it to the chatroom for processing.
+func (c *client) read() {
+	for {
+
+		// Wait for a message to arrive.
+		line, err := c.reader.ReadString('\n')
