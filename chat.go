@@ -38,3 +38,12 @@ func (c *client) read() {
 
 		// Wait for a message to arrive.
 		line, err := c.reader.ReadString('\n')
+
+
+		if err == nil {
+			c.room.outgoing <- message{
+				data: line,
+				conn: c.conn,
+			}
+			continue
+		}
