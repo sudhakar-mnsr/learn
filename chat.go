@@ -59,3 +59,7 @@ func (c *client) read() {
 			c.wg.Done()
 			return
 		}
+
+		log.Println("read-routine", err)
+	}
+}
