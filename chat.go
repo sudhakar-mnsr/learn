@@ -15,3 +15,9 @@ import (
 type temporary interface {
 	Temporary() bool
 }
+
+// message is the data received and sent to users in the chatroom.
+type message struct {
+	data string
+	conn net.Conn
+}
