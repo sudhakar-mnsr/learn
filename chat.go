@@ -62,4 +62,11 @@ func (c *client) read() {
 
 		log.Println("read-routine", err)
 	}
+
 }
+
+// write is a goroutine to handle processing outgoing
+// messages to this client.
+func (c *client) write(m message) {
+	msg := fmt.Sprintf("%s %s", c.name, m.data)
+	log.Printf(msg)
