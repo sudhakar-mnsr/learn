@@ -70,3 +70,7 @@ func (c *client) read() {
 func (c *client) write(m message) {
 	msg := fmt.Sprintf("%s %s", c.name, m.data)
 	log.Printf(msg)
+
+	c.writer.WriteString(msg)
+	c.writer.Flush()
+}
