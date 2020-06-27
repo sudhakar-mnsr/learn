@@ -21,3 +21,13 @@ type message struct {
 	data string
 	conn net.Conn
 }
+
+// client represents a single connection in the room.
+type client struct {
+	name   string
+	room   *Room
+	reader *bufio.Reader
+	writer *bufio.Writer
+	wg     sync.WaitGroup
+	conn   net.Conn
+}
