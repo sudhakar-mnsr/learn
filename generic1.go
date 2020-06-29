@@ -51,3 +51,7 @@ func retry(type T)(ctx context.Context, retryInterval time.Duration, worker Work
 		if ctx.Err() != nil {
 			return zero, errors.New("error")
 		}
+
+		if retry == nil {
+			retry = time.NewTimer(retryInterval)
+		}
