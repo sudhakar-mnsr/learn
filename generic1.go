@@ -60,3 +60,9 @@ func retry(type T)(ctx context.Context, retryInterval time.Duration, worker Work
 		case <-ctx.Done():
 			retry.Stop()
 			return zero, errors.New("error")
+
+		case <-retry.C:
+			retry.Reset(retryInterval)
+		}
+	}
+}
