@@ -66,3 +66,10 @@ func retry(type T)(ctx context.Context, retryInterval time.Duration, worker Work
 		}
 	}
 }
+
+// =============================================================================
+
+type user struct {
+	name  string
+	email string
+}
