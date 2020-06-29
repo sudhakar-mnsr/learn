@@ -30,3 +30,11 @@ func main() {
 	v3, err := retry(*user)(context.Background(), time.Second, worker3)
 	fmt.Println(v3, err)
 }
+
+// =============================================================================
+
+type Worker(type T) func(ctx context.Context) (T, error)
+
+func retry(type T)(ctx context.Context, retryInterval time.Duration, worker Worker(T)) (T, error) {
+	var zero T 
+	var retry *time.Timer
