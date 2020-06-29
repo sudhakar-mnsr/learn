@@ -38,3 +38,7 @@ type Worker(type T) func(ctx context.Context) (T, error)
 func retry(type T)(ctx context.Context, retryInterval time.Duration, worker Worker(T)) (T, error) {
 	var zero T 
 	var retry *time.Timer
+
+	if ctx.Err() != nil {
+		return zero, errors.New("error")
+	}
