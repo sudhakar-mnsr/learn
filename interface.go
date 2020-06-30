@@ -53,3 +53,8 @@ func retry(ctx context.Context, retryInterval time.Duration, worker Worker) (int
 		if retry == nil {
 			retry = time.NewTimer(retryInterval)
 		}
+
+		select {
+		case <-ctx.Done():
+			retry.Stop()
+			return nil, errors.New("error")
