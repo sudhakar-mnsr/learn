@@ -21,3 +21,11 @@ func main() {
 	}
 	v2, err := retry(context.Background(), time.Second, worker2)
 	fmt.Println(v2.(int), err)
+
+	worker3 := func(ctx context.Context) (interface{}, error) {
+		time.Sleep(time.Millisecond)
+		return &user{"bill", "b@email.com"}, nil
+	}
+	v3, err := retry(context.Background(), time.Second, worker3)
+	fmt.Println(v3.(*user), err)
+}
