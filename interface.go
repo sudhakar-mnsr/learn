@@ -40,3 +40,12 @@ func retry(ctx context.Context, retryInterval time.Duration, worker Worker) (int
 	if ctx.Err() != nil {
 		return nil, errors.New("error")
 	}
+
+	for {
+		if value, err := worker(ctx); err == nil {
+			return value, nil
+		}
+
+		if ctx.Err() != nil {
+			return nil, errors.New("error")
+		}
