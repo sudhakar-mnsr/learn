@@ -34,3 +34,7 @@ func stringifyUsers(users []user) []string {
 func stringifyCustomers(customers []customer) []string {
 	ret := make([]string, 0, len(customers))
 	for _, customer := range customers {
+		ret = append(ret, customer.String())
+	}
+	return ret
+}
