@@ -30,3 +30,7 @@ func stringifyUsers(users []user) []string {
 	}
 	return ret
 }
+
+func stringifyCustomers(customers []customer) []string {
+	ret := make([]string, 0, len(customers))
+	for _, customer := range customers {
