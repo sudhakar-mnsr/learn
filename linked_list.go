@@ -14,3 +14,11 @@ func main() {
 	}
 	l.operate(f)
 }
+
+// =============================================================================
+
+type node struct {
+	Data string
+	next *node
+	prev *node
+}
