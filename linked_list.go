@@ -47,3 +47,10 @@ func (l *list) add(data string) *node {
 	l.last = &n
 	return &n
 }
+
+// =============================================================================
+
+type op func(n *node) error
+
+func (l *list) operate(f op) error {
+	n := l.first
