@@ -50,3 +50,10 @@ func (l *list(T)) add(data T) *node(T) {
 	return &n
 }
 
+// =============================================================================
+
+type op(type T scalarOnly) func(n *node(T)) error
+
+func (l *list(T)) operate(f op(T)) error {
+	n := l.first
+	for n != nil {
