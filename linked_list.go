@@ -54,3 +54,7 @@ type op func(n *node) error
 
 func (l *list) operate(f op) error {
 	n := l.first
+	for n != nil {
+		if err := f(n); err != nil {
+			return err
+		}
