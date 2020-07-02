@@ -22,3 +22,10 @@ type node struct {
 	next *node
 	prev *node
 }
+
+
+type list struct {
+	Count int
+	first *node
+	last  *node
+}
