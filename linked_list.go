@@ -29,3 +29,10 @@ type list struct {
 	first *node
 	last  *node
 }
+
+func (l *list) add(data string) *node {
+	n := node{
+		Data: data,
+		prev: l.last,
+	}
+	l.Count++
