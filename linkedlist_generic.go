@@ -44,3 +44,9 @@ func (l *list(T)) add(data T) *node(T) {
 		l.last = &n
 		return &n
 	}
+
+	l.last.next = &n
+	l.last = &n
+	return &n
+}
+
