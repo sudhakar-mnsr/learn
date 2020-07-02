@@ -27,3 +27,8 @@ type node(type T scalarOnly) struct {
 	prev *node(T)
 }
 
+type list(type T scalarOnly) struct {
+	Count int
+	first *node(T)
+	last  *node(T)
+}
