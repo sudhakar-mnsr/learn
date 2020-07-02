@@ -9,3 +9,8 @@ func main() {
 	l.add("ale")
 
 	f := func(n *node) error {
+		fmt.Println(n.Data)
+		return nil
+	}
+	l.operate(f)
+}
