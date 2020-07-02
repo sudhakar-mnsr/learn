@@ -39,3 +39,8 @@ func (l *list(T)) add(data T) *node(T) {
 		prev: l.last,
 	}
 	l.Count++
+	if l.first == nil && l.last == nil {
+		l.first = &n
+		l.last = &n
+		return &n
+	}
