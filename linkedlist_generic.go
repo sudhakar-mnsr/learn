@@ -32,3 +32,10 @@ type list(type T scalarOnly) struct {
 	first *node(T)
 	last  *node(T)
 }
+
+func (l *list(T)) add(data T) *node(T) {
+	n := node(T) {
+		Data: data,
+		prev: l.last,
+	}
+	l.Count++
