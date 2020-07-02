@@ -7,3 +7,11 @@ func main() {
 
 	l.add("bill")
 	l.add("ale")
+
+	f := func(n *node(string)) error {
+		fmt.Println(n.Data)
+		return nil
+	}
+	l.operate(f)
+}
+
