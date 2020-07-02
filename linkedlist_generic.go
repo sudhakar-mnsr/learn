@@ -15,3 +15,8 @@ func main() {
 	l.operate(f)
 }
 
+// =============================================================================
+
+type scalarOnly interface {
+	type int, int8, int16, int32, int64, string
+}
