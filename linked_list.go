@@ -58,3 +58,7 @@ func (l *list) operate(f op) error {
 		if err := f(n); err != nil {
 			return err
 		}
+		n = n.next
+	}
+	return nil
+}
