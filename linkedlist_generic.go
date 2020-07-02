@@ -57,3 +57,10 @@ type op(type T scalarOnly) func(n *node(T)) error
 func (l *list(T)) operate(f op(T)) error {
 	n := l.first
 	for n != nil {
+		if err := f(n); err != nil {
+			return err
+		}
+		n = n.next
+	}
+	return nil
+}
