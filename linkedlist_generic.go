@@ -20,3 +20,10 @@ func main() {
 type scalarOnly interface {
 	type int, int8, int16, int32, int64, string
 }
+
+type node(type T scalarOnly) struct {
+	Data T
+	next *node(T)
+	prev *node(T)
+}
+
