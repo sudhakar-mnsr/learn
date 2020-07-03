@@ -24,3 +24,8 @@ type SliceConstraint(type T) interface {
 // for the SliceConstraint interface.
 func operate(type T SliceConstraint(V), V interface{})(slice T, fn operateFunc(V)) T {
 	ret := make(T, len(slice))
+	for i, v := range slice {
+		ret[i] = fn(v)
+	}
+	return ret
+}
