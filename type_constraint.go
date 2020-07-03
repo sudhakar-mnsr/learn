@@ -11,3 +11,11 @@ func main() {
 	n = Double(n)
 	fmt.Println(n)
 }
+
+// =============================================================================
+
+type operateFunc(type V) func(v V) V
+
+type SliceConstraint(type T) interface {
+	type []T
+}
