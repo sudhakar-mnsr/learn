@@ -23,3 +23,10 @@ type addOnly interface {
 func Add(type T addOnly)(v1 T, v2 T) T {
     return v1 + v2
 }
+
+// =============================================================================
+
+type matcher(type T) interface {
+    type int, int8, int16, int32, int64, float32, float64
+    match(find T) bool
+}
