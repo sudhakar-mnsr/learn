@@ -41,3 +41,8 @@ func match(type T matcher)(list []T, find T) int {
 }
 
 // =============================================================================
+type duration int64
+
+func (e duration) match(find duration) bool {
+    return e == find
+}
