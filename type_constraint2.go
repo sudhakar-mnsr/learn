@@ -13,3 +13,9 @@ func main() {
     // f := []fruit{"apple", "orange", "banna"}
     // fmt.Println("Matched at index: ", match(f, "banna"))
 }
+
+// =============================================================================
+
+type addOnly interface {
+	type string, int, int8, int16, int32, int64
+}
