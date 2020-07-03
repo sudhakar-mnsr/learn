@@ -38,3 +38,9 @@ func Double(n Numbers) Numbers {
 	fn := func(v int) int {
 		return 2 * v
 	}
+	// The compiler can infer from n that V in the declaration of the
+	// operate function will represent an integer when constructing the
+	// operate function.
+	v := operate(n, fn)
+	return v
+}
