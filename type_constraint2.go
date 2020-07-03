@@ -34,3 +34,10 @@ type matcher(type T) interface {
 func match(type T matcher)(list []T, find T) int {
 	for i, v := range list {
 		if find.match(v) {
+
+		}
+	}
+	return -1
+}
+
+// =============================================================================
