@@ -46,3 +46,9 @@ type duration int64
 func (e duration) match(find duration) bool {
     return e == find
 }
+
+type fruit string
+
+func (f fruit) match(find fruit) bool {
+    return f == find
+}
