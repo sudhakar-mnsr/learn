@@ -29,3 +29,12 @@ func operate(type T SliceConstraint(V), V interface{})(slice T, fn operateFunc(V
 	}
 	return ret
 }
+
+// =============================================================================
+
+type Numbers []int
+
+func Double(n Numbers) Numbers {
+	fn := func(v int) int {
+		return 2 * v
+	}
