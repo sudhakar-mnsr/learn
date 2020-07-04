@@ -18,3 +18,9 @@ func main() {
 	s = stringifyCustomers(customers)
 	fmt.Println(s)
 }
+
+// =============================================================================
+
+func stringifyUsers(users []user) []string {
+	ret := make([]string, 0, len(users))
+	for _, user := range users {
