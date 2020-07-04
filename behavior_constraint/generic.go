@@ -19,3 +19,8 @@ func main() {
 	s = stringify(customers)
 	fmt.Println(s)
 }
+
+// =============================================================================
+
+func stringify(type T fmt.Stringer)(list []T) []string {
+    ret := make([]string, 0, len(list))
