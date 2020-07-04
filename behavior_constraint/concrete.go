@@ -37,3 +37,9 @@ func stringifyCustomers(customers []customer) []string {
 	return ret
 }
 
+// =============================================================================
+
+type user struct {
+	name  string
+	email string
+}
