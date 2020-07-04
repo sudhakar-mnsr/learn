@@ -24,3 +24,8 @@ func main() {
 
 func stringify(type T fmt.Stringer)(list []T) []string {
     ret := make([]string, 0, len(list))
+    for _, value := range list {
+        ret = append(ret, value.String())
+    }
+    return ret
+}
