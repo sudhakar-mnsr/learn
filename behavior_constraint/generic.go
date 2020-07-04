@@ -7,3 +7,6 @@ func main() {
 		{name: "Bill", email: "bill@ardanlabs.com"},
 		{name: "Ale", email: "ale@whatever.com"},
 	}
+
+	s := stringify(users)
+	fmt.Println(s)
