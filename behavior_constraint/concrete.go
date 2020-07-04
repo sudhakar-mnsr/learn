@@ -24,3 +24,8 @@ func main() {
 func stringifyUsers(users []user) []string {
 	ret := make([]string, 0, len(users))
 	for _, user := range users {
+		ret = append(ret, user.String())
+	}
+	return ret
+}
+
