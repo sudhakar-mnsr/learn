@@ -29,3 +29,10 @@ func stringify(type T fmt.Stringer)(list []T) []string {
     }
     return ret
 }
+
+// =============================================================================
+
+type user struct {
+	name  string
+	email string
+}
