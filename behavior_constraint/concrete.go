@@ -9,3 +9,8 @@ func main() {
 	}
 	s := stringifyUsers(users)
 	fmt.Println(s)
+
+	customers := []customer{
+		{name: "Google", email: "you@google.com"},
+		{name: "MSFT", email: "you@msft.com"},
+	}
