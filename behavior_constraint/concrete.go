@@ -52,3 +52,7 @@ type customer struct {
 	name  string
 	email string
 }
+
+func (u customer) String() string {
+	return fmt.Sprintf("{type: \"customer\", name: %q, email: %q}", u.name, u.email)
+}
