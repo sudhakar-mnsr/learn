@@ -32,3 +32,9 @@ func stringify(v interface{}) []string {
 	case []customer:
 		ret := make([]string, 0, len(list))
 		for _, value := range list {
+			ret = append(ret, value.String())
+		}
+		return ret
+	}
+	return nil
+}
