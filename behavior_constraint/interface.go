@@ -19,3 +19,8 @@ func main() {
 	fmt.Println(s)
 }
 
+// =============================================================================
+
+func stringify(v interface{}) []string {
+	switch list := v.(type) {
+	case []user:
