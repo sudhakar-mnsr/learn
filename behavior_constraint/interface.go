@@ -15,3 +15,7 @@ func main() {
 		{name: "Google", email: "you@google.com"},
 		{name: "MSFT", email: "you@msft.com"},
 	}
+	s = stringify(customers)
+	fmt.Println(s)
+}
+
