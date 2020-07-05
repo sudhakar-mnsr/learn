@@ -49,3 +49,8 @@ type user struct {
 func (u user) String() string {
 	return fmt.Sprintf("{type: \"user\", name: %q, email: %q}", u.name, u.email)
 }
+
+type customer struct {
+	name  string
+	email string
+}
