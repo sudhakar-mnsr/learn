@@ -24,3 +24,7 @@ func main() {
 func stringify(v interface{}) []string {
 	switch list := v.(type) {
 	case []user:
+		ret := make([]string, 0, len(list))
+		for _, value := range list {
+			ret = append(ret, value.String())
+		}
