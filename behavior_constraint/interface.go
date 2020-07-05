@@ -38,3 +38,10 @@ func stringify(v interface{}) []string {
 	}
 	return nil
 }
+
+// =============================================================================
+
+type user struct {
+	name  string
+	email string
+}
