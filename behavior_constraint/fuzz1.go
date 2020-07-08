@@ -44,3 +44,5 @@ func Process(w http.ResponseWriter, r *http.Request) {
 	// Create a slice of users.
 	var users []user
 
+	// Iterate over the set of users we received.
+	for _, part := range parts {
