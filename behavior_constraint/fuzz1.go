@@ -53,3 +53,8 @@ func Process(w http.ResponseWriter, r *http.Request) {
 			SendError(w, err)
 			return
 		}
+
+
+		// Add a user to the slice.
+		users = append(users, u)
+	}
