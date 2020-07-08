@@ -8,3 +8,10 @@ import (
 	"strconv"
 	"strings"
 )
+
+// Need a named type for our user.
+type user struct {
+	Type string
+	Name string
+	Age  int
+}
