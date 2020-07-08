@@ -37,3 +37,10 @@ func Process(w http.ResponseWriter, r *http.Request) {
 		SendError(w, err)
 		return
 	}
+
+	// Split the data by comma.
+	parts := strings.Split(string(data), ",")
+
+	// Create a slice of users.
+	var users []user
+
