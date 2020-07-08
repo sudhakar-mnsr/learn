@@ -46,3 +46,10 @@ func Process(w http.ResponseWriter, r *http.Request) {
 
 	// Iterate over the set of users we received.
 	for _, part := range parts {
+
+		// Extract the user.
+		u, err := extractUser(part)
+		if err != nil {
+			SendError(w, err)
+			return
+		}
