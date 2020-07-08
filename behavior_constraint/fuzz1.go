@@ -20,3 +20,10 @@ type user struct {
 func Routes() {
 	http.HandleFunc("/process", Process)
 }
+
+// SendError responds with an error.
+func SendError(w http.ResponseWriter, err error) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusBadRequest)
+	json.NewEncoder(w).Encode(struct{ Error string }{err.Error()})
+}
