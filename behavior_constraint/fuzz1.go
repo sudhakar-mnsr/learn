@@ -27,3 +27,13 @@ func SendError(w http.ResponseWriter, err error) {
 	w.WriteHeader(http.StatusBadRequest)
 	json.NewEncoder(w).Encode(struct{ Error string }{err.Error()})
 }
+
+// Process handles the processing of data.
+func Process(w http.ResponseWriter, r *http.Request) {
+
+	// Capture the data that was posted over.
+	data, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		SendError(w, err)
+		return
+	}
