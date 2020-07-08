@@ -64,3 +64,9 @@ func Process(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(users)
 }
+
+// extractUser knows how to extract a user from the string.
+func extractUser(data string) (user, error) {
+
+	// Capture the age and convert to integer.
+	age, err := strconv.Atoi(data[3:5])
