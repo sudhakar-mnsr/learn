@@ -15,3 +15,8 @@ type user struct {
 	Name string
 	Age  int
 }
+
+// Routes initializes the routes.
+func Routes() {
+	http.HandleFunc("/process", Process)
+}
