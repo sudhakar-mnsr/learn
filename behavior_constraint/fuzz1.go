@@ -75,3 +75,12 @@ func extractUser(data string) (user, error) {
 		return user{}, err
 	}
 
+	// Create the user value.
+	u := user{
+		Type: data[:3],
+		Name: data[5:],
+		Age:  age,
+	}
+
+	return u, nil
+}
