@@ -70,3 +70,8 @@ func extractUser(data string) (user, error) {
 
 	// Capture the age and convert to integer.
 	age, err := strconv.Atoi(data[3:5])
+
+	if err != nil {
+		return user{}, err
+	}
+
