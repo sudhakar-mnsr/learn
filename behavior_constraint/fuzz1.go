@@ -58,3 +58,9 @@ func Process(w http.ResponseWriter, r *http.Request) {
 		// Add a user to the slice.
 		users = append(users, u)
 	}
+
+	// Respond with the processed data.
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(users)
+}
