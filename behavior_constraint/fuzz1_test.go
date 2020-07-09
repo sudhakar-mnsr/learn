@@ -16,3 +16,12 @@ const failed = "\u2717"
 func init() {
 	api.Routes()
 }
+
+// TestProcess tests the Process endpoint with proper data.
+func TestProcess(t *testing.T) {
+	tests := []struct {
+		url    string
+		status int
+		val    []byte
+		resp   string
+	}{
