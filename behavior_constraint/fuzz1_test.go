@@ -27,5 +27,9 @@ func TestProcess(t *testing.T) {
 	}{
 		{"/process", http.StatusOK, []byte("ADM46Bill,ADM42Joan,DEV35John,USR46Eduardo"), `[{"Type":"ADM","Name":"Bill","Age":46},{"Type":"ADM","Name":"Joan","Age":42},{"Type":"DEV","Name":"John","Age":35},{"Type":"USR","Name":"Eduardo","Age":46}]`},
 	}
-
 	t.Log("Given the need to test the Process endpoint.")
+
+	{
+		for i, tt := range tests {
+			t.Logf("\tTest %d:\tWhen checking %q for status code %d with data %s", i, tt.url, tt.status, tt.val)
+			{
