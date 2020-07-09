@@ -36,3 +36,7 @@ func TestProcess(t *testing.T) {
 				r := httptest.NewRequest("POST", tt.url, bytes.NewBuffer(tt.val))
 				w := httptest.NewRecorder()
 				http.DefaultServeMux.ServeHTTP(w, r)
+				if w.Code != tt.status {
+					t.Fatalf("\t%s\tShould receive a status code of %d for the response. Received[%d].", failed, tt.status, w.Code)
+				}
+				t.Logf("\t%s\tShould receive a status code of %d for the response.", succeed, tt.status)
