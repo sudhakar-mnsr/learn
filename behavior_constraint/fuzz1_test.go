@@ -40,3 +40,8 @@ func TestProcess(t *testing.T) {
 					t.Fatalf("\t%s\tShould receive a status code of %d for the response. Received[%d].", failed, tt.status, w.Code)
 				}
 				t.Logf("\t%s\tShould receive a status code of %d for the response.", succeed, tt.status)
+
+				recv := w.Body.String()
+
+				if tt.resp != recv[:len(recv)-1] {
+					t.Log("GOT:", recv)
