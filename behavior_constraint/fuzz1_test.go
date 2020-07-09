@@ -45,3 +45,11 @@ func TestProcess(t *testing.T) {
 
 				if tt.resp != recv[:len(recv)-1] {
 					t.Log("GOT:", recv)
+					t.Log("EXP:", tt.resp)
+					t.Fatalf("\t%s\tShould get the expected result.", failed)
+				}
+				t.Logf("\t%s\tShould get the expected result.", succeed)
+			}
+		}
+	}
+}
