@@ -9,3 +9,10 @@ import (
 
 	"github.com/ardanlabs/gotraining/topics/go/testing/fuzzing/example1"
 )
+
+const succeed = "\u2713"
+const failed = "\u2717"
+
+func init() {
+	api.Routes()
+}
