@@ -12,7 +12,7 @@ func main() {
       os.Exit(1)
    }
    
-   ip = net.IP(os.Args[1])
+   ip := net.IP(os.Args[1])
    if ip == nil {
       fmt.Println("Unable to parse IP address")
       fmt.Println("Address should use IPv4 dot-notation or IPv6 colon-notation")
