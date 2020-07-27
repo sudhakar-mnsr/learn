@@ -25,3 +25,25 @@ func init() {
    flag.BoolVar(&txt, "txt", false, "Host domain TXT lookup")
    flag.BoolVar(&cname, "cname", false, "Host CNAME lookup")
 }
+
+type lsdns struct {
+   resolver *net.Resolver
+}
+
+func newLsdns() *lsdns {
+   return &lsdns{net.DefaultResolver}
+}
+
+func (ls *lsdns) reverseLkp(ip string) error {
+   names, err := ls.resolver.LookupAddr(context.Background(), ip)
+   if err != nil {
+      return err
+   }
+
+   fmt.Println("Reverse lookup")
+   fmt.Println("--------------")
+   for _, name := range names {
+      fmt.Println(name)
+   }
+   return nil
+}
