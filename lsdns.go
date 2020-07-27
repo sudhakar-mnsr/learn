@@ -62,3 +62,15 @@ func (ls *lsdns) hostLkp(host string) error {
    return nil
 }
 
+func (ls *lsdns) nsLkp(host string) error {
+   nses, err := ls.resolver.LookupNS(context.Background(), host)
+   if err != nil {
+      return err
+   }
+   fmt.Println("NS lookup")
+   fmt.Println("----------")
+   for _, ns := range nses {
+      fmt.Printf("%-25s%-20s\n", host, ns.Host)
+   }
+   return nil
+}
