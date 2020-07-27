@@ -74,3 +74,16 @@ func (ls *lsdns) nsLkp(host string) error {
    }
    return nil
 }
+
+func (ls *lsdns) mxLkp(host string) error {
+   mxes, err := ls.resolver.LookupMX(context.Background(), host)
+   if err != nil {
+      return err
+   }
+   fmt.Println("MX lookup")
+   fmt.Println("----------")
+   for _, mx := range mxes {
+      fmt.Printf("%-17s%-11s\n", host, mx.Host)
+   }
+   return nil
+}
