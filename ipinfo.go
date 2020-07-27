@@ -20,15 +20,15 @@ func main() {
    } 
    
    fmt.Println()
-   fmt.Println("IP:                     %s\n", ip)
-   fmt.Println("Default Mask:           %s\n", net.IP(ip.DefaultMask()))
-   fmt.Println("Loopback:               %t\n", ip.IsLoopback())
+   fmt.Printf("IP:                     %s\n", ip)
+   fmt.Printf("Default Mask:           %s\n", net.IP(ip.DefaultMask()))
+   fmt.Printf("Loopback:               %t\n", ip.IsLoopback())
    fmt.Println("Unicast:")
-   fmt.Println("   Global:              %t\n", ip.IsGlobalUnicast())
-   fmt.Println("   Link:                %t\n", ip.IsLinkLocalUnicast())
+   fmt.Printf("   Global:              %t\n", ip.IsGlobalUnicast())
+   fmt.Printf("   Link:                %t\n", ip.IsLinkLocalUnicast())
    fmt.Println("Multicast:")
-   fmt.Println("   Global:              %t\n", ip.IsMulticast())
-   fmt.Println("   Interface:           %t\n", ip.IsInterfaceLocalMulticast())
-   fmt.Println("   Link:                %t\n", ip.IsLinkLocalMulticast())
+   fmt.Printf("   Global:              %t\n", ip.IsMulticast())
+   fmt.Printf("   Interface:           %t\n", ip.IsInterfaceLocalMulticast())
+   fmt.Printf("   Link:                %t\n", ip.IsLinkLocalMulticast())
    fmt.Println()
 }
