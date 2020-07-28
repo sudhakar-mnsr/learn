@@ -27,17 +27,11 @@ func main() {
    rsp := make([]byte, 48)
    
    // Create an address representing remote host
-   raddr, err := net.ResolveUDPAddr("udp", nil, raddr)
+   raddr, err := net.ResolveUDPAddr("udp", host)
    if err != nil {
       fmt.Printf("failed to connect: %v\n", err)
       os.Exit(1)
    }
-   
-   defer func() {
-      if err := conn.Close(); err != nil {
-         fmt.Println("failed while closing connection:", err)
-      }
-   }()
    
    // setup connection (net.UDPConn) with net.DialUDP
    conn, err := net.DialUDP("udp", nil, raddr)
@@ -45,8 +39,13 @@ func main() {
       fmt.Printf("failed to connect: %v\n", err)
       os.Exit(1)
    }
-   
    fmt.Printf("time from (udp) %s\n", conn.RemoteAddr())
+
+   defer func() {
+      if err := conn.Close(); err != nil {
+         fmt.Println("failed while closing connection:", err)
+      }
+   }()
    
    // Once connection is established, the code pattern
    // is the same as in the other impl.
@@ -72,7 +71,7 @@ func main() {
    
    // Format as per specs
    secs := binary.BigEndian.Uint32(rsp[40:])
-   frac := binary.BigEndian.Uint32([44:])
+   frac := binary.BigEndian.Uint32(rsp[44:])
    
    ntpEpoch := time.Date(1900, 1, 1, 0, 0, 0, 0, time.UTC)
    unixEpoch := time.Date(1970, 1, 1, 0, 0, 0, 0, time.UTC)
