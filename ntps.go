@@ -23,3 +23,31 @@ if err != nil {
    os.Exit(1)
 }
 
+// setup connection UDPConn with ListenUDP
+conn, err := net.ListenUDP("udp", addr)
+if err != nil {
+   fmt.Println("failed to create socket:", err)
+   os.Exit(1)
+}
+defer conn.Close()
+
+fmt.Printf("listening for time requests: (udp) %s\n", conn.LocalAddr())
+
+// read incoming requests.
+// since we are using a sessionless proto, each request can
+// potentially go to different client. Therefore the ReadFromXXX 
+// returns the remote address saved in raddr (to send resp)
+
+_, raddr, err := conn.ReadFromUDP(make([]byte, 48))
+if err != nil {
+   fmt.Println("error getting request:", err)
+   os.Exit(1)
+}
+
+// ensure raddr is set
+if raddr == nil {
+   fmt.Println("request missing remote addr")
+   os.Exit(1)
+}
+
+
