@@ -44,7 +44,7 @@ func main() {
       continue
    }
    
-   //go handleRequest(conn, raddr)
+   go handleRequest(conn, raddr)
 }      
 
 func handleRequest(conn *net.UnixConn, addr *net.UnixAddr) {
