@@ -39,6 +39,7 @@ func main() {
    // returns the remote address saved in raddr (to send resp)
    
    _, raddr, err := conn.ReadFromUDP(make([]byte, 48))
+   fmt.Printf("sending response to: %s\n", raddr)
    if err != nil {
       fmt.Println("error getting request:", err)
       os.Exit(1)

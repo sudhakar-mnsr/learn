@@ -35,6 +35,9 @@ func main() {
    
    // setup connection (net.UDPConn) with net.DialUDP
    conn, err := net.DialUDP("udp", nil, raddr)
+   fmt.Printf("conn structure fields: %s\n", conn)
+   fmt.Printf("conn structure fields: %s\n", conn.LocalAddr())
+   // fmt.Printf("conn structure fields: %s\n", conn.fd.raddr)
    if err != nil {
       fmt.Printf("failed to connect: %v\n", err)
       os.Exit(1)
