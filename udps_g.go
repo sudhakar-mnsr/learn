@@ -40,6 +40,25 @@ fmt.Printf("listening on (%s)%s", network, conn.LocalAddr())
 
 // request response loop
 for {
+// block to read incoming requests
+// since we are using a sessionless protocol, each request can 
+// potentially go to a different client. Therefore, RaadFrom operation
+// returns remote addres where to send the response
 
+_, raddr, err := conn.ReadFrom(make[]byte, 48)
+if err != nil {
+   fmt.Println("error getting request:", err
+   os.Exit(1)
+}
+
+// ensure raddr is set
+if raddr == nil {
+   fmt.Println("Warning: request missing remote addr")
+   continue
+}
+
+go handleRequest(conn, raddr)
+}
+}   
 
  
