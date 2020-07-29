@@ -61,4 +61,32 @@ func main() {
    }
 }   
 
- 
+// handleRequest handles incoming request and sends current time.
+// if network=unixgram the the global host address path is used
+// for both read and write
+func handleRequest(conn net.PacketConn, addr net.Addr) {
+   // get seconds and fractional secs since 1900
+   secs, fracs :=getNTPSeconds(time.now())
+   
+   // response packet is filled with the seconds and the fractional
+   // sec values using Big-Endian
+   
+   rsp := make([]byte, 48)
+   // write seconds (as uingt32) in buffer at [40:43] 
+   binary.BigEndian.PutUint32(rsp[40:], uint32(secs))
+   // Write seconds as uint32 in buffer at [44:47]
+   binary.BigEndian.PutUnit32(rsp[44:], uint32(fracs))
+   
+   // Send data
+   if _, err := conn.writeTo(rsp, addr); err != nil {
+      fmt.Println("err sending data:", err)
+      os.Exit(1)
+}
+
+func getNTPSeconds(t time.Time) (int64, int64) {
+   // convert time to total # of secs since 1970
+   // add NTP offsets as total #secs between 1900 to 1970
+   secs := t.Unix() + int64(getNTPOffset())
+   fracs := t.Nanosecond()
+   return secs, int64(fracs)
+}
