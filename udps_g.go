@@ -90,3 +90,12 @@ func getNTPSeconds(t time.Time) (int64, int64) {
    fracs := t.Nanosecond()
    return secs, int64(fracs)
 }
+
+// getNTPOffset returns the 70yrs between Unix epoch
+// and NTP epoch (1970-1900) in seconds
+func getNTPOffset() float64 {
+	ntpEpoch := time.Date(1900, 1, 1, 0, 0, 0, 0, time.UTC)
+	unixEpoch := time.Date(1970, 1, 1, 0, 0, 0, 0, time.UTC)
+	offset := unixEpoch.Sub(ntpEpoch).Seconds()
+	return offset
+}
