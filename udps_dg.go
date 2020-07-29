@@ -49,8 +49,8 @@ func main() {
          fmt.Println("warning: request missing remote addr")
          continue
       }
-   } 
-   go handleRequest(conn, raddr)
+      go handleRequest(conn, raddr)
+   }
 }      
 
 func handleRequest(conn *net.UnixConn, addr *net.UnixAddr) {
