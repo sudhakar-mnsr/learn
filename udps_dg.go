@@ -20,6 +20,12 @@ func main() {
    // Creates a UnixAddr address
    addr, err := net.ResolveUnixAddr("unixgram", path)
    if err != nil {
+      fmt.Println(err)
+      os.Exit(1)
+   }
+
+   conn, err := net.ListenUnixgram("unixgram", addr)
+   if err != nil {
       fmt.Println("failed to create socket:", err)
       os.Exit(1)
    }
