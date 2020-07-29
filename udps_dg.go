@@ -46,3 +46,23 @@ func main() {
    
    //go handleRequest(conn, raddr)
 }      
+
+func handleRequest(conn *net.UnixConn, addr *net.UnixAddr) {
+   // get seconds and fractional secs since 1900
+   secs, fracs := getNTPSeconds(time.Now())
+   
+   // response packet filled with seconds and
+   // fractional sec values using BE
+   rsp := make([]byte, 48)
+   // write seconds (as uint32) in buffer at [40:43]
+   binary.BigEndian.PutUint32(rsp[40:], uint32(secs))
+   // write seconds (as uint32) in buffer at [44:47]
+   binary.BigEndian.PutUint32(rsp[44:], uint32(fracs))
+   
+   // send response to client
+   fmt.Printf("writing response %v to %v\n", rsp, addr)
+   if _, err := conn.WriteToUnix(rsp, addr); err != nil {
+      fmt.Println("err sending data:", err)
+      os.Exit(1)
+   }
+}
