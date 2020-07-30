@@ -41,4 +41,20 @@ func main() {
    fmt.Printf("listening on (%s)%s\n", network, conn.LocalAddr())
 
    for {
-   // use generic ReadFrom instead of ReadFromXXX
+      // use generic ReadFrom instead of ReadFromXXX
+      // ReadFrom returns remote address (which addr udp or unixgram)
+      // MNSR provide clarity on the above (how it knows)
+      _, raddr, err := conn.ReadFrom(make([]byte, 48))
+      if err != nil {
+         fmt.Println("error getting request:", err)
+         os.Exit(1)
+      }
+
+      if raddr == nil {
+         fmt.Println("warning: request missing remote addr")
+         continue
+      }
+
+      go handleRequest(conn, raddr)
+   }
+}
