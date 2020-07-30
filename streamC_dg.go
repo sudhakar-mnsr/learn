@@ -24,3 +24,10 @@ default:
    os.Exit(1)
 }
 
+conn, err := net.Dial(network, addr)
+if err != nil {
+   fmt.Println("failed to connect to server:", err)
+   os.Exit(1)
+}
+defer conn.Close()
+
