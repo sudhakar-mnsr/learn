@@ -20,7 +20,7 @@ func main() {
    switch network {
    case "tcp", "tcp4", "tcp6", "unix":
    default:
-      fmt.Println("unsupported network protocol)
+      fmt.Println("unsupported network protocol")
       os.Exit(1)
    }
    

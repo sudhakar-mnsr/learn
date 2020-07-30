@@ -18,7 +18,7 @@ func main() {
    switch network {
    case "tcp", "tcp4", "tcp6", "unix":
    default:
-      fmt.Println(unsupported network protocol")
+      fmt.Println("unsupported network protocol")
       os.Exit(1)
    }
    
@@ -28,7 +28,7 @@ func main() {
       fmt.Println(err)
       os.Exit(1)
    }
-   defer l.close()
+   defer l.Close()
    fmt.Println("listening at (%s) %s\n", network, addr)
    
    for {
@@ -62,7 +62,7 @@ func handleConnection(conn net.Conn) {
       return
    }
    
-   if w != nil {
+   if w != n {
       fmt.Println("warning: not all data sent to client")
       return
    }
