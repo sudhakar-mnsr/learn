@@ -58,3 +58,20 @@ func main() {
       go handleRequest(conn, raddr)
    }
 }
+
+// network=udp passed address is used.
+// network=unixgram the global host address path is used for read/write
+func handleRequest(conn net.PacketConn, addr net.Addr) {
+   secs, fracs := getNTPSeconds(time.Now())
+   rsp := make([]byte, 48)
+   
+   // write seconds as uint32 in buffer at [40:43]
+   binary.BigEndian.PutUint32(rsp[40:], uint32(secs))
+   // write seconds as uint32 in buffer at [44:47]
+   binary.BigEndian.PutUint32(rsp[44:], uint32(fracs))
+   
+   if _, err := conn.WriteTo(rsp, addr); err != nil {
+      fmt.Println("err sending data:", err)
+      os.Exit(1)
+   }
+}
