@@ -39,3 +39,6 @@ func main() {
    }
    defer conn.Close()
    fmt.Printf("listening on (%s)%s\n", network, conn.LocalAddr())
+
+   for {
+   // use generic ReadFrom instead of ReadFromXXX
