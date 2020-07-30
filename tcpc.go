@@ -10,7 +10,7 @@ import (
 // Simple echo client over tcp
 
 func main() {
-   var add string
+   var addr string
    flag.StringVar(&addr, "e", "localhost:4040", "service address endpoint")
    flag.Parse()
    text := flag.Arg(0)

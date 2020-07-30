@@ -25,7 +25,7 @@ func main() {
       fmt.Println(err)
       os.Exit(1)
    }
-   defer l.close()
+   defer l.Close()
    fmt.Println("listening at (tcp)", laddr.String())
    
    for {
