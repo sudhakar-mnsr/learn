@@ -43,3 +43,26 @@ func main() {
       go handleConnection(conn)
    }
 }
+
+func handleConnection(conn *net.UnixConn) {
+   defer conn.Close()
+   
+   buf := make([]byte, 1024)
+   
+   n, err := conn.Read(buf)
+   if err != nil {
+      fmt.Println(err)
+      return
+   }
+   
+   w, err := conn.Write(buf[:n])
+   if err != nil {
+      fmt.Println("failed to write to client:", err)
+      return
+   }
+   
+   if w != n {
+      fmt.Println("warning: not all data sent to client")
+      return
+   }
+}
