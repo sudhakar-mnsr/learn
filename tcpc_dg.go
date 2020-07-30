@@ -11,7 +11,7 @@ import (
 
 func main() {
    var addr string
-   flag.StringVar(&host, "e", "/tmp/tcpc.sock", "service address endpoint")
+   flag.StringVar(&addr, "e", "/tmp/tcpc.sock", "service address endpoint")
    flag.Parse()
    text := flag.Arg(0)
    
