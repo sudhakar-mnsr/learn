@@ -29,7 +29,7 @@ func main() {
       os.Exit(1)
    }
    defer l.Close()
-   fmt.Println("listening at (%s) %s\n", network, addr)
+   fmt.Printf("listening at (%s) %s\n", network, addr)
    
    for {
       // use listener to block and wait for connection

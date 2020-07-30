@@ -5,7 +5,6 @@ import (
    "fmt"
    "os"
    "net"
-   "time"
 )
 
 // Simple echo client over TCP or unix domain socket.
