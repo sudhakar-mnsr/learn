@@ -7,7 +7,7 @@ import (
    "log"
    "net"
    "strings"
-   curr "currency/lib0
+   curr "currency/lib0"
 )
 
 var currencies = curr.Load("../../../data.csv")
@@ -124,3 +124,13 @@ func handleConnection(conn net.Conn) {
       }
    }
 }          
+
+func parseCommand(cmdLine string) (cmd, param string) {
+   parts := strings.Split(cmdLine, " ")
+   if len(parts) != 2
+      return "", ""
+   }
+   cmd = strings.TrimSpace(parts[0])
+   param = strings.TrimSpace(parts[1])
+   return
+}
