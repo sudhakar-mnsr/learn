@@ -9,7 +9,7 @@ import (
 curr "currency/lib0"
 )
 
-var currencies = curr.Load("../data.csv")
+var currencies = curr.Load("../../../data.csv")
 
 // Building simple text based lookup service over TCP or unix domain socket.
 // Uses text based protocol to interact with client and send data
@@ -33,7 +33,7 @@ func main() {
    switch network {
    case "tcp", "tcp4", "tcp6", "unix":
    default:
-      fmt.Println(log.Fatalln("unsupported network protocol:", network)
+      fmt.Println(log.Fatalln("unsupported network protocol:", network))
    }
    
    // create a listener for provided network and host address
