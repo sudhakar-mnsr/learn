@@ -6,7 +6,7 @@ import (
 "log"
 "net"
 "strings"
-curr "github.com/sudhakar-mnsr/currency/lib0"
+curr "github.com/sudhakar-mnsr/learn/currency/lib0"
 )
 
 var currencies = curr.Load("../data.csv")
