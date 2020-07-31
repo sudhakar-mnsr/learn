@@ -33,7 +33,7 @@ func main() {
    switch network {
    case "tcp", "tcp4", "tcp6", "unix":
    default:
-      fmt.Println(log.Fatalln("unsupported network protocol:", network))
+      log.Fatalln("unsupported network protocol:", network)
    }
    
    // create a listener for provided network and host address
