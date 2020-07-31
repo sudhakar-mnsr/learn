@@ -92,42 +92,43 @@ func handleConnection(conn net.Conn) {
          if cmdLine, err = appendBytes(cmdLine, chunk[:n]); err == io.EOF {
             break
          }
-         cmd, param := parseCommand(string(cmdLine))
-         if cmd == "" {
-            if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
-               log.Println("failed to write:", err)
-            }
-            continue
+      }
+      cmd, param := parseCommand(string(cmdLine))
+      if cmd == "" {
+         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+            log.Println("failed to write:", err)
          }
+         continue
+      }
 
-         switch string.ToUpper(cmd) {
-         case "GET":
-            result := curr.Find(currencies, param)
-            if len(result) == 0 {
-               if _, err := conn.Write([]byte("Nothing found\n")); err != nil {
-                  log.Println("failed to write:"err)
-                }
-                continue
-            }
-            for _, cur := range result {
-               _, err := conn.Write([]byte(fmt.Sprintf(%s %s %s %s\n", cur.Name, cur.code, cur.Number, cur.Country,),))
+      switch strings.ToUpper(cmd) {
+      case "GET":
+         result := curr.Find(currencies, param)
+         if len(result) == 0 {
+            if _, err := conn.Write([]byte("Nothing found\n")); err != nil {
+               log.Println("failed to write:", err)
+             }
+             continue
+         }
+         for _, cur := range result {
+            _, err := conn.Write([]byte(fmt.Sprintf("%s %s %s %s\n", cur.Name, cur.Code, cur.Number, cur.Country,),))
             if err != nil {
                log.Println("failed to write response", err)
                return
             }
          }
       default:
-         if _, err  conn.Write([]byte("Invalid command\n)); err != nil {
+         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
             log.Println("failed to wirte", err)
             return
          }
       }
    }
-}          
+} 
 
 func parseCommand(cmdLine string) (cmd, param string) {
    parts := strings.Split(cmdLine, " ")
-   if len(parts) != 2
+   if len(parts) != 2 {
       return "", ""
    }
    cmd = strings.TrimSpace(parts[0])
