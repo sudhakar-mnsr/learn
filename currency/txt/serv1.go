@@ -57,3 +57,32 @@ func main() {
       go handleConnection(conn)
    }
 }
+
+func handleConnection(conn net.Conn) {
+defer func() {
+   if err := conn.Close(); err != nil {
+      log.Println("error closing connection:", err)
+   }
+}()
+
+if _, err := conn.Write([]byte("Connected ...\nUsage: GET <currency, country, or code>\n")); err != nil {
+   log.Println("error writing:", err)
+   return
+}
+
+for {
+cmdLine := make([]byte, (1024))
+n, err := conn.Read(cmdLine)
+if n == 0 || err != nil {
+   log.Println("connection read error:", err)
+   return
+}
+cmd, param := parseCommand(string(cmdLine[0:n]))
+if cmd == "" {
+   if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+      log.Println("failed to write:", err)
+      return
+   }
+   continue
+}
+
