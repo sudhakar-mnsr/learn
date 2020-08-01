@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+        "io"
 	"log"
 	"net"
 	"strings"
@@ -15,8 +16,9 @@ var currencies = curr.Load("../../../data.csv")
 // This is simple currency lookup service over TCP or Unix Data Socket
 // Text based protocol designed to work on top of TCP or UDS
 // Focus:
-// There is no streaming strategy for read/write operations
-// Buffers are read in one shot creating opportunities for missing data
+// There is streaming strategy for read/write operations to avoid dropping
+// data when the request is larger than internal buffer. This relies on
+// fact that net.Conn implements io.Reader which allows stream data
 
 func main() {
    var addr string
