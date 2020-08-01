@@ -68,6 +68,46 @@ func handleConnection(conn net.Conn) {
       log.Println("error writing:", err)
       return
    }   
+   // appendBytes is a function that simulates end-of-file marker error.
+   // Since we will use streaming IO on top of a streaming protocol,
+   // there may never be an actual EOF marker. so this function simulates
+   // io.EOF using char '\n'
+   appendBytes := func(dest, src []byte) ([]byte, error) {
+      for _, b := range src {
+         if b == '\n' {
+            return dest, io.EOF
+         }
+         dest = append(dest, b)
+      }
+   }
+
+   for {
+      var cmdLine []byte
+      // stream data using 4-byte chunks until io.EOF
+      // The chunks are kept small to demo streaming using io.Reader
+      for {
+         chunk := make([]byte, 4)
+         n, err := conn.Read(chunk)
+         if err != nil {
+            if err == io.EOF {
+               cmdLine, _ = appendBytes(cmdLine, chunk[:n])
+               break
+            }
+            log.Println("connection read error:", err)
+            return
+         }
+         if cmdLine, err = appendBytes(cmdLine, chunk[:n]); err == io.EOF {
+            break
+         }
+      }
+      cmd, param := parseCommand(string(cmdLine))
+      if cmd == "" {
+         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+            log.Println("failed to write:", err)
+            return
+         }
+      }
+
    
    for {
       cmdLine := make([]byte, (1024 * 4))
