@@ -57,28 +57,53 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-defer func() {
-   if err := conn.Close(); err != nil {
-      log.Println("error causing connection:", err)
-   }
-}()
-if _, err := conn.Write([]byte("Connected...\nUsage: GET <currency, country, or code>\n")); err != nil {
-   log.Println("error writing:", err)
-   return
-}   
-
-for {
-cmdLine := make([]byte, (1024 * 4))
-n, err := conn.Read(cmdLine)
-if n == 0 || err != nil {
-   log.Println("connection read error:", err)
-   return
-}
-cmd, param := parseCommand(string(cmdLine[0:n]))
-if cmd == "" {
-   if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
-      log.Println("failed to write:", err)
+   defer func() {
+      if err := conn.Close(); err != nil {
+         log.Println("error causing connection:", err)
+      }
+   }()
+   if _, err := conn.Write([]byte("Connected...\nUsage: GET <currency, country, or code>\n")); err != nil {
+      log.Println("error writing:", err)
       return
+   }   
+   
+   for {
+      cmdLine := make([]byte, (1024 * 4))
+      n, err := conn.Read(cmdLine)
+      if n == 0 || err != nil {
+         log.Println("connection read error:", err)
+         return
+      }
+      cmd, param := parseCommand(string(cmdLine[0:n]))
+      if cmd == "" {
+         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+            log.Println("failed to write:", err)
+            return
+         }
+         continue
+      }
+      
+      switch strings.ToUpper(cmd) {
+      case "GET":
+         result := curr.Find(currencies, param)
+         if len(result) == 0 {
+            if _, err := conn.Write([]byte("Nothing found\n")); err != nil {
+               log.Println("failed to write:", err)
+            }
+            continue
+         }
+         for _, cur := range result {
+            _, err := conn.Write([]byte(fmt.Sprintf("%s %s %s %s\n", cur.Name, cur.Code, cur.Number, cur.Country,),))
+            if err != nil {
+               log.Println("failed to write response:", err)
+               return
+            }
+         }
+      default:
+         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
+            log.Println("failed to write:", err)
+            return
+         }
+      }
    }
-   continue
 }
