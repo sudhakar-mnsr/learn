@@ -82,9 +82,8 @@ func handleConnection(conn net.Conn) {
    }
 
    for {
+      // cmdLine := make([]byte, (1024 * 4))
       var cmdLine []byte
-      // stream data using 4-byte chunks until io.EOF
-      // The chunks are kept small to demo streaming using io.Reader
       for {
          chunk := make([]byte, 4)
          n, err := conn.Read(chunk)
@@ -95,7 +94,7 @@ func handleConnection(conn net.Conn) {
             }
             log.Println("connection read error:", err)
             return
-         }
+         } 
          if cmdLine, err = appendBytes(cmdLine, chunk[:n]); err == io.EOF {
             break
          }
@@ -106,25 +105,9 @@ func handleConnection(conn net.Conn) {
             log.Println("failed to write:", err)
             return
          }
-      }
-
-   
-   for {
-      cmdLine := make([]byte, (1024 * 4))
-      n, err := conn.Read(cmdLine)
-      if n == 0 || err != nil {
-         log.Println("connection read error:", err)
-         return
-      }
-      cmd, param := parseCommand(string(cmdLine[0:n]))
-      if cmd == "" {
-         if _, err := conn.Write([]byte("Invalid command\n")); err != nil {
-            log.Println("failed to write:", err)
-            return
-         }
          continue
       }
-      
+
       switch strings.ToUpper(cmd) {
       case "GET":
          result := curr.Find(currencies, param)
