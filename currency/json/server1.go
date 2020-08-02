@@ -8,7 +8,7 @@ import (
 	"net"
 	"os"
 
-	curr "curlib/lib"
+	curr "currency/lib"
 )
 
 var (
