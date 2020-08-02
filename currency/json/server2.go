@@ -60,3 +60,48 @@ func main() {
    go handleConnection(conn)
    }
 }
+
+func handleConnection(conn net.Conn) {
+   defer conn.Close()
+   for {
+      // The following call uses the JSON encoder support for
+      // Go's IO streaming API (io.Reader). It blocks then stream incoming 
+      // data from net.Conn implements io.Reader
+      dec := json.NewDecoder(conn)
+      
+      // Next decode the incoming data into Go value curr.CurrencyRequest
+      var req curr.CurrencyRequest
+      if err := dec.Decode(&req); err != nil {
+         // json.Decode() could return decoding err, io err, or networking err
+         // hence handle error based on type
+         switch err := err.(type) {
+         case net.Error:
+            fmt.Println("network error:", err)
+            return
+         default:
+            if err == io.EOF {
+               fmt.Println("closing connection:", err)
+               return
+            }
+            continue
+         }
+      }
+      result := curr.Find(currencies, req.Get)
+      
+      enc := json.NewEncoder(conn)
+      if err := enc.Encode(&result); err != nil {
+         switch err := err.(type) {
+         case net.Error:
+            fmt.Println("failed to send response:", err)
+            return
+         default:
+            enc := json.NewEncoder(conn)
+            if err := enc.Encode(&curr.CurrencyError{Error: err.Error()}); err != nil {
+               fmt.Println("failed to send error:", err)
+               return
+            }
+            continue
+         }
+      }
+   }
+}  
