@@ -63,6 +63,14 @@ func main() {
 
 func handleConnection(conn net.Conn) {
    defer conn.Close()
+   // set initial deadline prior to entering the client request/response
+   // loop to 90 secs. This means that the client has 90 secs to send its
+   // initial request or loose the connection.
+   if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
+      fmt.Println("failed to set deadline:", err)
+      return
+   }
+
    for {
       // The following call uses the JSON encoder support for
       // Go's IO streaming API (io.Reader). It blocks then stream incoming 
@@ -102,6 +110,9 @@ func handleConnection(conn net.Conn) {
             }
             continue
          }
+      if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
+         fmt.Println("failed to set deadline:", err)
+         return
       }
    }
-}  
+}
