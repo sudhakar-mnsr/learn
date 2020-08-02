@@ -91,7 +91,7 @@ func handleConnection(conn net.Conn) {
       if err := enc.Encode(&result); err != nil {
          switch err := err.(type) {
          case net.Error:
-            fmt.Println("failed to send response"), err)
+            fmt.Println("failed to send response:", err)
             return
          default:
             if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
