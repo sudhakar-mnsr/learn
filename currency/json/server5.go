@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	currencies = curr.Load(../../../data.csv")
+	currencies = curr.Load("../../../data.csv")
 )
 
 // Focus:
