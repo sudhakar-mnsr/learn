@@ -60,7 +60,7 @@ func main() {
          case net.Error:
             if e.Temporary() {
                if acceptCount > 5 {
-                  log.Printf("unable to connect after %d retries: %v", acceptCount, err)
+                  log.Printf("unable to connect after %d retries: %v", err)
                   return
                }
                acceptDelay *=2
