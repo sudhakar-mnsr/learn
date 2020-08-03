@@ -76,7 +76,7 @@ func main() {
          acceptDelay = time.Millisecond * 10
          acceptCount = 0
       }
-      log.Println("connected to ", conn, RemoteAddr())
+      log.Println("connected to ", conn.RemoteAddr())
       go handleConnection(conn)
    }
 }
