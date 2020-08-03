@@ -60,7 +60,7 @@ func main() {
          case net.Error:
             if e.Temporary() {
                if acceptCount > 5 {
-                  log.Printf("unable to connect after %d retries: %v, err)
+                  log.Printf("unable to connect after %d retries: %v", acceptCount, err)
                   return
                }
                acceptDelay *=2
@@ -73,10 +73,14 @@ func main() {
             conn.Close()
             continue
          }
+         acceptDelay := time.Millisecond * 10
+         acceptCount := 0
+     } 
          log.Println("Connected to ", conn.RemoteAddr())
          go handleConnection(conn)
-      }
+   }
 }
+
 
 func handleConnection(conn net.Conn) {
    defer func() {
