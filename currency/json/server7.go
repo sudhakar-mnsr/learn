@@ -131,7 +131,7 @@ func handleConnection(conn net.Conn) {
       
       enc := json.NewEncoder(conn)
       if err := enc.Encode(&result); err != nil {
-         switch er := err.(type) {
+         switch err := err.(type) {
          case net.Error:
             fmt.Println("failed to send response:", err)
             return
