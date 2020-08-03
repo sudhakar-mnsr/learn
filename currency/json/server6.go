@@ -79,34 +79,49 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-defer func() {
-   if err := conn.Close(); err != nil {
-      log.Println("error closing connection:", err)
-   }
-}()
-
-for {
-dec := json.NewDecoder(conn)
-var req curr.CurrencyRequest
-if err := dec.Decode(&req); err != nil {
-   switch err := err.(type) {
-   case net.Error:
-      fmt.Println("network error:", err)
-      return
-   default:
-      if err != io.EOF {
-         fmt.Println("closing connection:", err)
-         return
+   defer func() {
+      if err := conn.Close(); err != nil {
+         log.Println("error closing connection:", err)
       }
+   }()
+   
+   for {
+      dec := json.NewDecoder(conn)
+      var req curr.CurrencyRequest
+      if err := dec.Decode(&req); err != nil {
+         switch err := err.(type) {
+         case net.Error:
+            fmt.Println("network error:", err)
+            return
+         default:
+            if err != io.EOF {
+               fmt.Println("closing connection:", err)
+               return
+            }
+            enc := json.NewEncoder(conn)
+            if encerr := enc.Encoder(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+               fmt.Println("failed error encoding:", encerr)
+               return
+            }
+            continue
+         }
+      }
+      
+      result := curr.Find(currencies, req.Get)
+      
       enc := json.NewEncoder(conn)
-      if encerr := enc.Encoder(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
-         fmt.Println("failed error encoding:", encerr)
-         return
+      if err := enc.Encode(&result); err != nil {
+         switch err := err.(type) {
+         case net.Error:
+            fmt.Println("failed to send response:", err)
+            return
+         default:
+            if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+               fmt.Println("failed to send error:", encerr)
+               return
+            }
+            continue
+         }
       }
-      continue
    }
 }
-
-result := curr.Find(currencies, req.Get)
-
-enc := json.NewEncoder(conn)
