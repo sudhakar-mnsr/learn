@@ -98,4 +98,31 @@ if err := conn.SetDeadline(time.Now().Add(time.Second * 45)); err != nil {
    return
 }
 
-
+for {
+dec := json.NewDecoder(conn)
+var req curr.CurrencyRequest
+if err := dec.Decode(&req); err != nil {
+   switch err := err.(type) {
+   case net.Error:
+      // is it a timeout error
+      // A deadline policy maybe implemented here using a decreasing
+      // grace period that eventually causes an error if reached.
+      // Here we just reject the connection if timeout is reached.
+      if err.Timeout() {
+         fmt.Println("deadline reached, disconnecting...")
+      }
+      fmt.Println("network error:", err)
+      return
+   default:
+      if err == io.EOF {
+         fmt.Println("closing connection:", err)
+         return
+      }
+      enc := json.NewEncoder(conn)
+      if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+         fmt.Println("failed error encoding:", encerr)
+         return
+      }
+      continue
+   }
+} 
