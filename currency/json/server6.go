@@ -40,3 +40,15 @@ default:
 	os.Exit(1)
 }
 
+ln, err := net.Listen(network, addr)
+if err != nil {
+   log.Println(err)
+   os.Exit(1)
+}
+defer ln.Close()
+log.Println("***** Global Currency Service *****")
+log.Printf("Service started: (%s) %s\n", network, addr)
+
+// delay to sleep when accept fails with a temporary error
+acceptDelay := time.Millisecond * 10
+acceptCount := 0
