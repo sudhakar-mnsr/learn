@@ -126,3 +126,27 @@ if err := dec.Decode(&req); err != nil {
       continue
    }
 } 
+
+result := curr.Find(currencies, req.Get)
+
+enc := json.NewEncoder(conn)
+if err := enc.Encode(&result); err != nil {
+   switch er := err.(type) {
+   case net.Error:
+      fmt.Println("failed to send response:", err)
+      return
+   default:
+      if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+         fmt.Println("failed to send error:", encerr)
+         return
+      }
+      continue
+   }
+}
+
+if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
+   fmt.Println("failed to set deadline:", err)
+   return
+}
+}
+} 
