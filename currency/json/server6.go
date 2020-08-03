@@ -73,8 +73,8 @@ func main() {
             conn.Close()
             continue
          }
-         acceptDelay := time.Millisecond * 10
-         acceptCount := 0
+         acceptDelay = time.Millisecond * 10
+         acceptCount = 0
      } 
          log.Println("Connected to ", conn.RemoteAddr())
          go handleConnection(conn)
@@ -103,7 +103,7 @@ func handleConnection(conn net.Conn) {
                return
             }
             enc := json.NewEncoder(conn)
-            if encerr := enc.Encoder(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+            if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
                fmt.Println("failed error encoding:", encerr)
                return
             }
