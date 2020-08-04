@@ -37,7 +37,7 @@ func main() {
    var param string
    for {
       fmt.Println("Enter search string or *")
-      fmt.Print(promt, ">")
+      fmt.Print(prompt, ">")
       _, err = fmt.Scanf("%s", &param)
       if err != nil {
          fmt.Println("Usage: <search string or *>")
