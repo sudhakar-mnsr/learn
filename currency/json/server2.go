@@ -7,7 +7,7 @@ import (
 	"io"
 	"net"
 	"os"
-
+        "time"
 	curr "currency/lib"
 )
 
@@ -110,6 +110,7 @@ func handleConnection(conn net.Conn) {
             }
             continue
          }
+      }
       if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
          fmt.Println("failed to set deadline:", err)
          return
