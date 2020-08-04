@@ -43,6 +43,11 @@ func main() {
    }
    
    ln, err := net.Listen(network, addr)
+   if err != nil {
+   	log.Println(err)
+   	os.Exit(1)
+   }
+   defer ln.Close()
    log.Println("***** Global Currency Service *****")
    log.Printf("Service started: (%s) %s\n", network, addr)
    
