@@ -92,4 +92,16 @@ if err != nil {
 
 req := curr.CurrencyRequest{Get: param}
 
-
+// send request:
+// use json encoder to encode value of type curr.CurrencyRequest
+// and stream it to the server via net.Conn
+if err := json.NewEncoder(conn).Encode(&req); err != nil {
+   switch err := err.(type)
+   case net.Error:
+      fmt.Println("failed to send request:", err)
+      os.Exit(1)
+   default:
+      fmt.Println("failed to encode request:", err)
+      continue
+   }
+}
