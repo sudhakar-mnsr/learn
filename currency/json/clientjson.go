@@ -25,3 +25,35 @@ flag.StringVar(&addr, "e", "localhost:4040", "service endpoint [ip addr or socke
 flag.StringVar(&network, "n", "tcp", "network protocol [tcp, unix]")
 flag.Parse()
 
+conn, err := net.Dial(network, addr)
+if err != nil {
+   fmt.Println("failed to create socket:", err)
+   os.Exit(1)
+}
+
+defer conn.Close()
+fmt.Println("connected to currency service:", addr)
+
+var param string
+for {
+fmt.Println("Enter search string or *")
+fmt.Print(promt, ">")
+_, err = fmt.Scanf("%s", &param)
+if err != nil {
+   fmt.Println("Usage: <search string or *>")
+   continue
+}
+
+req := curr.CurrencyRequest{Get: param}
+// use json encoder to encode value of type curr.CurrencyRequest
+// and stream it to the server via net.Conn
+if err := json.NewEncoder(conn).Encode(&req); err != nil {
+   switch err := err.(type) {
+   case net.Error:
+      fmt.Println("failed to send request:", err)
+      os.Exit(1)
+   default:
+      fmt.Println("failed to encode request:", err)
+      continue
+   }
+} 
