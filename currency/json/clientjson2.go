@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"learning-go/ch11/curr1"
+	curr1 "currency/lib"
 	"net"
 	"os"
 	"time"
@@ -96,7 +96,7 @@ func main() {
       // use json encoder to encode value of type curr.CurrencyRequest
       // and stream it to the server via net.Conn
       if err := json.NewEncoder(conn).Encode(&req); err != nil {
-         switch err := err.(type)
+         switch err := err.(type) {
          case net.Error:
             fmt.Println("failed to send request:", err)
             os.Exit(1)
