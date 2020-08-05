@@ -100,3 +100,18 @@ func main() {
       go handleConnection(conn)
    }
 } 
+
+func handleConnection(conn net.Conn) {
+defer func() {
+   if err := conn.Close(); err != nil {
+      log.Println("error closing connection:", err)
+   }
+}()
+
+// set initial deadline prior to entering the client request/response
+// loop to 45 seconds to send its initial request to loose the connection.
+if err := conn.SetDeadline(time.Now().Add(time.Second * 45)); err != nil {
+   log.Println("failed to set deadline:", err)
+   return
+}
+
