@@ -1,3 +1,5 @@
+package main
+
 import (
 	"crypto/tls"
 	"crypto/x509"
@@ -75,11 +77,11 @@ func main() {
       var currencies []curr.Currency
       err = jsonNewDecoder(conn).Decode(&currencies)
       if err != nil {
-      switch err: err.(type) {
+      switch err := err.(type) {
       case net.Error:
          fmt.Println("failed to receive response:", err)
          continue
-      default
+      default:
          fmt.Println("failed to receive response:", err)
          continue
       }
