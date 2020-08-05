@@ -75,7 +75,7 @@ func main() {
       }
       
       var currencies []curr.Currency
-      err = jsonNewDecoder(conn).Decode(&currencies)
+      err = json.NewDecoder(conn).Decode(&currencies)
       if err != nil {
       switch err := err.(type) {
       case net.Error:
@@ -87,7 +87,7 @@ func main() {
       }
       }
       for i, c := range currencies {
-         fmt.Println(%2d. %s[%s]\t%s, %s\n", i, c.Code, c.Number, c.Name, c.Country)
+         fmt.Println("%2d. %s[%s]\t%s, %s\n", i, c.Code, c.Number, c.Name, c.Country)
       }
    }
 }
