@@ -35,7 +35,7 @@ func main() {
    certPool.AppendCertsFromPEM(caCert)
    
    // TLS configuration
-   tlsConfig := &tls.Config{
+   tlsConf := &tls.Config{
       InsecureSkipVerify: false,
       RootCAs: certPool,
    }
