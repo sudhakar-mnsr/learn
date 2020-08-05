@@ -47,7 +47,7 @@ func main() {
    
    // instead of net.Listen we now use tls.Listen to start
    // a listener on the secure port
-   ln, err := tls.Listen(network, addr, tlsconfig)
+   ln, err := tls.Listen(network, addr, tlsConfig)
    if err != nil {
       log.Println(err)
    }
