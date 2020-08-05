@@ -21,7 +21,7 @@ var (
 // Focus:
 // tls usage for communication
 func main() {
-   var addr, network, cert, key, string
+   var addr, network, cert, key string
    flag.StringVar(&addr, "e", ":4443", "service endpoint [ip addr or socket path]")
    flag.StringVar(&network, "n", "tcp", "network protocol [tcp, unix]")
    flag.StringVar(&cert, "cert", "../certs/localhost-cert.pem", "public cert")
