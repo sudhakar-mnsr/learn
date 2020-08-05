@@ -52,10 +52,10 @@ func main() {
    
    for {
       fmt.Println("Enter search string or *")
-      continue
-      }
+      fmt.Print(prompt, "> ")
+      _, err := fmt.Scanf("%s", &param)
       if err != nil {
-         fmt.Println("Usage: <search string or *>)
+         fmt.Println("Usage: <search string or *>")
          continue
       }
       
