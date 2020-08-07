@@ -25,9 +25,9 @@ func main() {
 var addr, network, cert, key, ca string
 flag.StringVar(&addr, "e", ":4443", "service endpoint [ip addr or socket path]")
 flag.StringVar(&network, "n", "tcp", "network protocol [tcp,unix]")
-flag.StringVar(&cert, "cert", "../certs/localhost-cert.pem", "public cert")
-flag.StringVar(&key, "key", "../certs/localhost-key.pem", "private key")
-flag.StringVar(&ca, "ca", "../certs/ca-cert.pem", "root CA certificate")
+flag.StringVar(&cert, "cert", "/tmp/certs/cert.pem", "public cert")
+flag.StringVar(&key, "key", "/tmp/certs/key.pem", "private key")
+flag.StringVar(&ca, "ca", "/tmp/certs/cert.pem", "root CA certificate")
 flag.Parse()
 
 // validate supported network protocols
@@ -45,3 +45,26 @@ if err != nil {
 }
 
 caCert, err := ioutil.Readfile(ca)
+if err != nil {
+   log.Fatal(er)
+}
+
+caPool := x509.NewCertPool()
+caPool.AppendCertsFromPEM(caCert)
+
+// configure tls with certs and other settings
+tlsConfig := &tls.Config{
+   ClientAuth: tls.RequireAndVerifyClientCert,
+   ClientCAs: caPool,
+   Certificates: []tls.Certificate{cer},
+}
+
+// instead of net.Listen, we now use tls.Listen to start
+// a listener on the secure port
+ln, err := tls.Listen(network, addr, tlsConfig)
+if err != nil {
+	log.Println(err)
+}
+defer ln.Close()
+log.Println("**** Global Currency Service (secure) ***")
+log.Printf("Service started: (%s) %s; server cert %s\n", network, addr, cert)
