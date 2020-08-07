@@ -1,6 +1,9 @@
 package main
 
 import (
+   "crypto/tls"
+   "crypto/x509"
+   "io/ioutil"
    "io"
    "log"
    "net/http"
