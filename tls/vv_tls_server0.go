@@ -25,8 +25,8 @@ func main() {
 var addr, network, cert, key string
 flag.StringVar(&addr, "e", ":4443", "service endpoint [ip addr or socket path]")
 flag.StringVar(&network, "n", "tcp", "network protocol [tcp,unix]")
-flag.StringVar(&cert, "cert", "../certs/localhost-cert.pem", "public cert")
-flag.StringVar(&key, "key", "../certs/localhost-key.pem", "private key")
+flag.StringVar(&cert, "cert", "/tmp/certs/cert.pem", "public cert")
+flag.StringVar(&key, "key", "/tmp/certs/key.pem", "private key")
 flag.Parse()
 
 // validate supported network protocols
