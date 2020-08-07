@@ -56,3 +56,31 @@ if err != nil {
 defer ln.Close()
 log.Println("***** Global Currency Service *****")
 log.Printf("Service started: (%s) %s; server cert %s\n", network, addr, cert)
+
+acceptDelay := time.Millisecond *10
+acceptCount := 0
+
+for {
+   conn, err := ln.Accept()
+   if err != nil {
+      switch e := err.(type) {
+      case net.Error:
+         if e.Temporary() {
+            if acceptCount > 5
+               log.Fatalf("unable fo connect after %d retries, acceptCount, err)
+               acceptDelay *= 2
+               acceptCount++ 
+               time.Sleep(acceptDelay)
+               continue
+            }
+      default:
+         log.Println(err)
+         if err != conn.Close(); err != nil {
+            log.Fatal(err)
+         }
+         continue
+      }
+      acceptDelay = time.Millisecond * 10
+      go handleConnection(conn)
+   }
+}  
