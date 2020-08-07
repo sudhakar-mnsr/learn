@@ -44,9 +44,9 @@ func main() {
       log.Fatal(err)
    }
    
-   caCert, err := ioutil.Readfile(ca)
+   caCert, err := ioutil.ReadFile(ca)
    if err != nil {
-      log.Fatal(er)
+      log.Fatal(err)
    }
    
    caPool := x509.NewCertPool()
@@ -74,17 +74,24 @@ func main() {
    acceptCount := 0
    
    for {
-   conn, err := ln.Accept()
-   if err != nil {
-      switch e := err.(type) {
-      case net.Error:
-         if e.Temporary() {
-            if acceptCount > 5 {
-               log.Fatalf("unable to connect after %d retries: %v", acceptCount, err)
+      conn, err := ln.Accept()
+      if err != nil {
+         switch e := err.(type) {
+         case net.Error:
+            if e.Temporary() {
+               if acceptCount > 5 {
+                  log.Fatalf("unable to connect after %d retries: %v", acceptCount, err)
+               }
+               acceptDelay *= 2
+               acceptCount++
+               time.Sleep(acceptDelay)
+               continue
             }
-            acceptDelay *= 2
-            acceptCount++
-            time.Sleep(acceptDelay)
+         default:
+            log.Println(err)
+            if err := conn.Close(); err != nil {
+               log.Fatal(err)
+            } 
             continue
          }
          acceptDelay = time.Millisecond * 10
@@ -143,7 +150,7 @@ func handleConnection(conn net.Conn) {
       
       enc := json.NewEncoder(conn)
       if err := enc.Encode(&result); err != nil {
-         switch err := err.(type)
+         switch err := err.(type) {
          case net.Error:
             log.Println("failed to send response:", err)
             return
