@@ -84,3 +84,67 @@ for {
       go handleConnection(conn)
    }
 }  
+
+func handleConnection(conn net.Conn) {
+   defer func {
+      if err := conn.Close(); err != nil {
+         log.Println("error closing connection:", err)
+      }
+   }()
+
+   // set initial deadline prior to entering the client request/response
+   // loop to 45 secs. This meansthat client has 45 seconds to send its 
+   // initial request or loose the connection
+   if err := conn.SetDeadline(time.Now().Add(time.Second *45)); err != nil {
+      log.Println("failed to set deadline:", err)
+      return
+   // Command loop
+   for {
+      dec = json.NewDecoder(conn)
+      var req curr.CurrencyRequest
+      if err := dec.Decode(&req); err != nil {
+                switch err := err.(type) {
+                case net.Error:
+                if err.Timeout() {
+                   log.Println("deadline reached, disconnecting.....")
+                }
+                log.Println("network error:", err)
+                return
+                default:
+                   if err = io.EOF {
+                      log.Println("closing connection:", err)
+                      return
+                   }
+                   enc := json.NewEncoder(conn)
+                   if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr = nil {    
+                      log.Println("failed error encoding", err)
+                      return
+                    }
+                    continue
+         }
+      }
+      
+      // search currencies
+      result := curr.Find(currencies, req.Get)
+
+      enc := json.NewEncoder(conn)
+      if err := enc.Encode(&result); err != nil {
+         switch err := err.(type) {
+         case net.Error:
+            log.Println("failed to send response:"err
+            return
+         default:
+            if encerr := enc.Encode(&curr.CurrencyError{Error: err.Error()}); encerr != nil {
+               log.Println("failed to send error:", encerr)
+               return
+            }
+            continue
+         }
+      }
+      
+      if err := conn.SetDeadline(time.Now().Add(time.Second * 90)); err != nil {
+         log.Println(failed to set deadline:", err)
+         return
+      } 
+   }
+}
