@@ -55,3 +55,28 @@ fmt.Println("connected to currency service:", addr)
 
 var param string
 
+for {
+fmt.Println("Enter search string or *")
+fmt.Print(prompt, ">")
+_, err = fmt.Scanf("%s", &param)
+if err != nil {
+   fmt.Println("Usage: <search sting or *")
+   continue
+}
+req := curr.CurrencyRequest{Get: param}
+
+// Send request
+// use json encoder to encode value of type curr.CurrencyRequest and stream
+// it to the server via net.Conn 
+
+if err := json.NewEncoder(conn).Encode(&req); err != nil {
+   switch err := err.(type) {
+   case net.Error:
+      fmt.Println("failed to send request:", err)
+      continue
+   default:
+      fmt.Println("failed to encode request:", err)
+      continue
+   }
+}
+
