@@ -36,13 +36,13 @@ func main() {
       log.Fatal("failed to read CA cert", err)
    }
    
-   certPool := x509,NewCertPool()
+   certPool := x509.NewCertPool()
    certPool.AppendCertsFromPEM(caCert)
    
    // TLS configuration
    tlsConf := &tls.Config{
            RootCAs: certPool,
-           Certificates: []tls.Certificate{cer}.
+           Certificates: []tls.Certificate{cer},
    }
    
    // create a tls.Conn to connect to server
@@ -89,7 +89,7 @@ func main() {
             fmt.Println("failed to receive response:", err)
             continue
          default:
-            fmt.Println("failed to decode response:, err)
+            fmt.Println("failed to decode response:", err)
             continue
          }
       }
